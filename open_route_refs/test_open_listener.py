@@ -9,6 +9,8 @@ from google.appengine.api import users
 from ferris.core import routing
 from google.appengine.api import mail, users, urlfetch
 
+from app.models.nypl_user import NyplUser ,UserRole
+
 
 def domain_chain(controller):
     """
@@ -20,3 +22,5 @@ def domain_chain(controller):
 @on('controller_before_authorization')
 def inject_authorization_chains(controller, authorizations):
     authorizations.insert(0, domain_chain)
+
+

@@ -29,6 +29,7 @@ libraries:
 - name: pycrypto
   version: latest
 
+
 skip_files:
 - ^(.*/)?app\.ya?ml
 - ^(.*/)?index\.ya?ml
@@ -46,4 +47,3 @@ handlers:
 # Main script
 - url: .*
   script: main.main_app
-  login: required

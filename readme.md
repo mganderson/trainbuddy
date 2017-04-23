@@ -1,39 +1,23 @@
-The Ferris Framework
-====================
+========================================
+Michael Anderson
+IS 322 Project (TrainBuddy)
+Webhook for API.AI Conversational Agent
+Spring 2017
+========================================
 
-Ferris is a web framework written in Python for App Engine, inspired by: Ruby on Rails, CakePHP, Django, and Flask. Unlike most other frameworks, Ferris is designed specifically for App Engine.
+Project makes use of the Ferris framework (http://ferrisframework.org/) for Python and the Google App Engine.   The Google App Engine's NoSQL database NDB is used for this project.
 
-For information and documentation:
+For information:
 
-    http://ferrisframework.org/
+    mga25@njit.edu
+ 
 
-For help and questions: 
-
-    https://groups.google.com/forum/?fromgroups#!forum/ferris-framework
-
-
-Ferris 3
---------
-
-If you are starting a new project from scratch it is recommend to use [Ferris 3](https://github.com/jonparrott/Ferris3) instead. This repository will only receive bugfixes from the core team. 
-
-
-Starting a new project
-----------------------
-
-Download Ferris from bitbucket using the [downloads]() tab and choosing "tags" and downloading the newest version.
-
-Then, just extract the downloaded zip file into your project directory (top-level, there should be an app.yaml in the top level of your project directory).
-
-You're ready to go! Just open your project directory and  run the app engine server.
-
-License
+Licenses
 -------
-
-Ferris is licensed under the Apache License, Version 2.
 
 Third-party libraries that are in the packages directory have varying licenses. Please check the license file that is included within each package.
 
+ * Ferris: Apache License, v2
  * WTForms: BSD
  * ProtoPigeon: Apache License v2
  * PyTZ: MIT

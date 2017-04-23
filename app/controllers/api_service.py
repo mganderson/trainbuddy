@@ -39,6 +39,11 @@ class ApiService(Controller):
         Trip.upload_trips_to_datastore("trips.csv")
         return 200
 
+    @route_with('/api/generate_stop_times')
+    def generate_stop_times(self):
+        StopTime.upload_stop_times_to_datastore("stop_times.csv")
+        return 200
+
     @route_with('/api/get_local_services')
     def api_get_local_services(self):
         """

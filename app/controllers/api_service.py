@@ -1,4 +1,7 @@
 from app.models.service import Service
+from app.models.stop import Stop
+from app.models.stop_time import StopTime
+from app.models.trip import Trip
 from ferris import Controller, scaffold, route, ndb, messages, route_with, localize
 from ferris.components.flash_messages import FlashMessages
 from google.appengine.api import memcache, mail, users
@@ -25,6 +28,16 @@ class ApiService(Controller):
     @route_with('/api/say_hello')
     def say_hello(self):
         return "HELLO"
+
+    @route_with('/api/generate_stops')
+    def generate_stops(self):
+        Stop.upload_stops_to_datastore("stops.csv")
+        return 200
+
+    @route_with('/api/generate_trips')
+    def generate_trips(self):
+        Trip.upload_trips_to_datastore("trips.csv")
+        return 200
 
     @route_with('/api/get_local_services')
     def api_get_local_services(self):
@@ -78,10 +91,13 @@ class ApiService(Controller):
 
 
     def format_response(self, speech, displayText, data, contextOut, source):
+
+        slack_message = { "text": speech}
+
         data = {
                 "speech": speech,
                 "displayText": displayText,
-                "data": data, #should be a dictionary
+                "data": {"slack": slack_message}, #should be a dictionary
                 "contextOut": contextOut, #should be a list
                 "source": source
                 }

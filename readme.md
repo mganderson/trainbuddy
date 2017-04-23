@@ -1,9 +1,8 @@
-========================================
 Michael Anderson
 IS 322 Project (TrainBuddy)
 Webhook for API.AI Conversational Agent
 Spring 2017
-========================================
+
 
 Project makes use of the Ferris framework (http://ferrisframework.org/) for Python and the Google App Engine.   The Google App Engine's NoSQL database NDB is used for this project.
 

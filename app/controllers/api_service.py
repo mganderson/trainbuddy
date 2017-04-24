@@ -23,11 +23,21 @@ class ApiService(Controller):
         Model = (Service)
         authorizations = (require_user,)
 
-    @route_with()
-
     @route_with('/api/say_hello')
     def say_hello(self):
         return "HELLO"
+
+    @route_with('/api/get_stops_by_id')
+    def get_stops_by_id(self):
+        return str(StopTime.get_stop_times_for_station_id(self.request.params["station_id"]))
+
+    @route_with('/api/get_stops_by_name')
+    def get_stops_by_name(self):
+        return str(StopTime.get_stop_times_for_station_name(self.request.params["station_name"]))
+
+    @route_with("/api/get_next_train_by_station_name")
+    def get_next_train_by_station_name(self):
+        return str(StopTime.get_next_stop_time_for_station_name(self.request.params["station_name"]))
 
     @route_with('/api/generate_stops')
     def generate_stops(self):
@@ -36,28 +46,16 @@ class ApiService(Controller):
 
     @route_with('/api/generate_trips')
     def generate_trips(self):
-        Trip.upload_trips_to_datastore("trips.csv")
+        filename = self.request.params["filename"] +".csv"
+        Trip.upload_trips_to_datastore(filename)
         return 200
 
     @route_with('/api/generate_stop_times')
     def generate_stop_times(self):
-        StopTime.upload_stop_times_to_datastore("stop_times.csv")
+        filename = self.request.params["filename"] +".csv"
+        StopTime.upload_stop_times_to_datastore(filename)
         return 200
 
-    @route_with('/api/get_local_services')
-    def api_get_local_services(self):
-        """
-        This API gets all the local services
-        """
-        self.meta.change_view('JSON')
-
-
-
-        try:
-            local_services = [{"service_name":service.service_name, "service_id":service.key.urlsafe()} for service in Service.get_all_services()]
-            self.context['data'] = {"local_services":local_services}
-        except Exception as e:
-            self.context['data'] = {"error":e}
 
     @route_with('/api/webhook')
     def api_webhook(self):
@@ -68,31 +66,51 @@ class ApiService(Controller):
 
         # Get JSON data from POST request sent by API.ai
         json_data = json.loads(self.request.body)
-        my_param = json_data.get("result").get("parameters").get("geo-city")
+        # my_param = json_data.get("result").get("parameters").get("geo-city")
 
         
         if json_data.get("result").get("action") == "yahooWeatherForecast":
             self.context['data'] = self.praise_colin(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_one_station":
+            self.context['data'] = self.get_next_train_one_station(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_in_direction":
+            self.context['data'] = self.get_next_train_in_direction(json_data)
         else:
             return {}
 
-        """
-        try:
-            self.context['data'] = {
-                                    "speech": "Col Bol is top cat",
-                                    "displayText": "Barack Hussein Obama II is the 44th and current President of the United States, and the first African American to hold the office. Born in Honolulu, Hawaii, Obama is a graduate of Columbia University   and Harvard Law School, where ",
-                                    "data": {},
-                                    "contextOut": [],
-                                    "source": "DuckDuckGo"
-                                    }
-        except Exception as e:
-            self.context['data'] = {"error":e}
-        """
+
 
     def praise_colin(self, json_data):
         city = json_data.get("result").get("parameters").get("geo-city")
         speech = "ColBol is top cat in {}".format(city)
         return self.format_response(speech, city, {}, [], "NJTransit")
+
+    def get_next_train_one_station(self, json_data):
+        station = json_data.get("result").get("parameters").get("stations")
+        train = StopTime.get_next_stop_time_for_station_name(station.upper())
+        if train:
+            speech = "The next departure from {} is the {} {} train to {}".format(  train.get("departing_from",""),
+                                                                                    train.get("pretty_departure_time",""),
+                                                                                    train.get("route_name",""),
+                                                                                    train.get("direction","") )
+        else:
+            speech = "I can't seem to find a departure for that station :'("
+        return self.format_response(speech, speech, {}, [], "NJTransit")
+
+    def get_next_train_in_direction(self, json_data):
+        station = json_data.get("result").get("parameters").get("stations")
+        destination = json_data.get("result").get("parameters").get("destination")
+        train = StopTime.get_next_stop_time_for_station_name_in_direction(station.upper(), destination)
+        if train:
+            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
+                                                                                    train.get("direction",""),
+                                                                                    train.get("pretty_departure_time",""),
+                                                                                    train.get("route_name","")
+                                                                                   )
+        else:
+            speech = "I can't seem to find a departure for that station :'("
+        return self.format_response(speech, speech, {}, [], "NJTransit")
+
 
 
     def format_response(self, speech, displayText, data, contextOut, source):

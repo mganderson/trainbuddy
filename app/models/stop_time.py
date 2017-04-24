@@ -1,5 +1,10 @@
 from ferris import BasicModel, Model
 from google.appengine.ext import ndb
+from app.models.stop import Stop
+from app.models.trip import Trip
+from app.models.route import Route
+from datetime import datetime
+from pytz import timezone
 import csv
 
 class StopTime(Model):
@@ -13,6 +18,144 @@ class StopTime(Model):
     # pickup_type
     # drop_off_type
     # shape_dist_traveled
+
+    @classmethod
+    def get_stop_times_for_station_id(cls, station_id):
+        stop_times = list(StopTime.query(StopTime.stop_id==int(station_id)))
+        return stop_times
+
+    @classmethod
+    def get_stop_times_for_station_name(cls, station_name_as_string):
+        station_id = Stop.get_station_id_from_station_name(station_name_as_string)
+        print "STATION ID: {}".format(station_id)
+        return StopTime.get_stop_times_for_station_id(station_id)
+
+    @classmethod
+    def get_next_stop_time_for_station_name(cls, station_name_as_string):
+        # get current local seconds after midnight
+        tz = timezone('US/Eastern')
+        now = datetime.now(tz)
+        print now
+        seconds_since_midnight = int((now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds())
+        """
+        First departure of the SERVICE day is at 3:48
+        So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
+        so that services after midnight show as being available
+        """
+        if seconds_since_midnight < 3*3600 + 48*60:
+            seconds_since_midnight = seconds_since_midnight + 24*3600
+
+        print "Seconds_since_midnight: {}".format(seconds_since_midnight)
+        
+        # Get station_id from station_name
+        station_id = Stop.get_station_id_from_station_name(station_name_as_string)
+
+        found_a_train_thats_not_terminating = False
+        attempt_no = 1
+        train = {}
+        while not found_a_train_thats_not_terminating and attempt_no < 10:
+            # The query will return a list
+            result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
+            print result[attempt_no - 1]
+
+            # If there are no results, this means that the last train of the night 
+            # has departed the station.  Subtract 24*3600 from seconds_since_midnight 
+            # and query again 
+            if len(result) == 0:
+                seconds_since_midnight -= 24*3600
+                result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
+                print result[attempt_no - 1]
+
+            trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
+            print trip[0]
+
+            # Check to make sure the trip is not terminating at the 
+            # station provided by the user
+            if str(trip[0].trip_headsign).lower() != station_name_as_string.lower():
+                train = {   "departure_time": result[attempt_no - 1].departure_time,
+                            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
+                            "direction": str(trip[0].trip_headsign).title(), # Title case the direction sign
+                            "departing_from": str(station_name_as_string).title(),
+                            "direction_id": trip[0].direction_id,
+                            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id] # Get route name from route id
+                }
+                found_a_train_thats_not_terminating = True
+            # check if we get a result when we subtract 24 hours
+            # elif():
+            else:
+                attempt_no += 1
+        return train
+
+    @classmethod
+    def get_next_stop_time_for_station_name_in_direction(cls, station_name_as_string, direction):
+        print "In get_next_stop_time_for_station_name_in_direction()"
+        # get current local seconds after midnight
+        tz = timezone('US/Eastern')
+        now = datetime.now(tz)
+        print now
+        seconds_since_midnight = int((now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds())
+        """
+        First departure of the SERVICE day is at 3:48
+        So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
+        so that services after midnight show as being available
+        """
+        if seconds_since_midnight < 3*3600 + 48*60:
+            seconds_since_midnight = seconds_since_midnight + 24*3600
+
+        print "Seconds_since_midnight: {}".format(seconds_since_midnight)
+        
+        # Get station_id from station_name
+        station_id = Stop.get_station_id_from_station_name(station_name_as_string)
+
+        found_a_train_thats_not_terminating = False
+        attempt_no = 1
+        train = {}
+        while not found_a_train_thats_not_terminating and attempt_no < 10:
+            # The query will return a list
+            result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
+            print result[attempt_no - 1]
+
+            # If there are no results, this means that the last train of the night 
+            # has departed the station.  Subtract 24*3600 from seconds_since_midnight 
+            # and query again 
+            if len(result) == 0:
+                seconds_since_midnight -= 24*3600
+                result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
+                print result[attempt_no - 1]
+
+            trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
+            print trip[0]
+
+            # Check to make sure the trip is not terminating at the 
+            # station provided by the user
+            if (str(trip[0].trip_headsign).lower() == direction.lower()):
+                train = {   "departure_time": result[attempt_no - 1].departure_time,
+                            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
+                            "direction": str(trip[0].trip_headsign).title(), # Title case the direction sign
+                            "departing_from": str(station_name_as_string).title(),
+                            "direction_id": trip[0].direction_id,
+                            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id] # Get route name from route id
+                }
+                found_a_train_thats_not_terminating = True
+            else:
+                attempt_no += 1
+        return train
+
+    @classmethod
+    def pretty_format_time(cls, time_as_seconds_after_midnight):
+        if time_as_seconds_after_midnight < 12*3600: # If it is the morning
+            ampm = "A.M."
+        elif time_as_seconds_after_midnight < 24*3600: # If it is after 12:00PM, but before midnight
+            time_as_seconds_after_midnight -= 12*3600
+            ampm = "P.M."
+        else: # If it is after midnight (but the same service day)
+            time_as_seconds_after_midnight -= 24*3600
+            ampm = "A.M."
+        hours = int(time_as_seconds_after_midnight/3600)
+        minutes = int( (time_as_seconds_after_midnight % 3600) / 60 )
+
+        return "{}:{:02d} {}".format(hours,minutes,ampm)
+
 
     @classmethod
     def upload_stop_times_to_datastore(cls, csv_filepath):

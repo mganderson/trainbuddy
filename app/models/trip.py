@@ -20,17 +20,17 @@ class Trip(Model):
             for row in reader:
                 # skip first row
                 if row[0] != 'route_id':
-				    route_id_from_csv = int(row[0])
-				    service_id_from_csv = int(row[1])
-				    trip_id_from_csv = int(row[2])
-				    # Strip out extraneous quote marks from CSV values
-				    trip_headsign_from_csv = row[3].replace('"','')
-				    direction_id_from_csv = int(row[4])
-				    # Construct object
-				    trip_object = Trip( route_id=route_id_from_csv,
-				    					service_id=service_id_from_csv,
-				    					trip_id=trip_id_from_csv,
-				    					trip_headsign=trip_headsign_from_csv,
-				    					direction_id=direction_id_from_csv)
-				    trip_object.put()
+                    route_id_from_csv = int(row[0])
+                    service_id_from_csv = int(row[1])
+                    trip_id_from_csv = int(row[2])
+                    # Strip out extraneous quote marks from CSV values
+                    trip_headsign_from_csv = row[3].replace('"','')
+                    direction_id_from_csv = int(row[4])
+                    # Construct object
+                    trip_object = Trip( route_id=route_id_from_csv,
+                                        service_id=service_id_from_csv,
+                                        trip_id=trip_id_from_csv,
+                                        trip_headsign=trip_headsign_from_csv,
+                                        direction_id=direction_id_from_csv)
+                    trip_object.put()
 

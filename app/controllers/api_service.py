@@ -8,7 +8,6 @@ from google.appengine.api import memcache, mail, users
 from datetime import datetime, timedelta
 import json
 import os
-
 import urllib
 
 
@@ -69,17 +68,34 @@ class ApiService(Controller):
         # my_param = json_data.get("result").get("parameters").get("geo-city")
 
         
-        if json_data.get("result").get("action") == "yahooWeatherForecast":
+        if json_data.get("result").get("action") == "get_the_weather_for_city":
+            self.context['data'] = self.get_the_weather_for_city(json_data)
+        elif json_data.get("result").get("action") == "praise_colin":
             self.context['data'] = self.praise_colin(json_data)
         elif json_data.get("result").get("action") == "get_next_train_one_station":
             self.context['data'] = self.get_next_train_one_station(json_data)
         elif json_data.get("result").get("action") == "get_next_train_in_direction":
             self.context['data'] = self.get_next_train_in_direction(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_two_stations":
+            self.context['data'] = self.get_next_train_two_stations(json_data)
         else:
             return {}
 
 
+    # Just a test / not core functionality
+    def get_the_weather_for_city(self, json_data):
+        baseurl = "https://query.yahooapis.com/v1/public/yql?"
+        yql_query = makeYqlQuery(req)
+        if yql_query is None:
+            return {}
+        yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+        result = urlopen(yql_url).read()
+        data = json.loads(result)
+        res = makeWebhookResult(data)
+        return res
 
+
+    # Just a test
     def praise_colin(self, json_data):
         city = json_data.get("result").get("parameters").get("geo-city")
         speech = "ColBol is top cat in {}".format(city)
@@ -92,7 +108,7 @@ class ApiService(Controller):
             speech = "The next departure from {} is the {} {} train to {}".format(  train.get("departing_from",""),
                                                                                     train.get("pretty_departure_time",""),
                                                                                     train.get("route_name",""),
-                                                                                    train.get("direction","") )
+                                                                                    train.get("terminus","") )
         else:
             speech = "I can't seem to find a departure for that station :'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
@@ -103,7 +119,7 @@ class ApiService(Controller):
         train = StopTime.get_next_stop_time_for_station_name_in_direction(station.upper(), destination)
         if train:
             speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    train.get("direction",""),
+                                                                                    train.get("terminus",""),
                                                                                     train.get("pretty_departure_time",""),
                                                                                     train.get("route_name","")
                                                                                    )
@@ -111,6 +127,19 @@ class ApiService(Controller):
             speech = "I can't seem to find a departure for that station :'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
 
+    def get_next_train_two_stations(self, json_data):
+        origin = json_data.get("result").get("parameters").get("origin")
+        destination = json_data.get("result").get("parameters").get("destination")
+        train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
+        if train:
+            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
+                                                                                    train.get("user_destination",""),
+                                                                                    train.get("pretty_departure_time",""),
+                                                                                    train.get("route_name","")
+                                                                                   )
+        else:
+            speech = "I can't seem to find a departure for that station combo:'("
+        return self.format_response(speech, speech, {}, [], "NJTransit")
 
 
     def format_response(self, speech, displayText, data, contextOut, source):

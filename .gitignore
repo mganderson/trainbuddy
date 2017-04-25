@@ -3,3 +3,10 @@ ds
 *.coverage
 *~
 .appengine_data
+test_settings.py
+*.Icon
+.appengine_data
+datastore.db
+.DS_Store
+db
+config.codekit

@@ -2,6 +2,7 @@ from app.models.service import Service
 from app.models.stop import Stop
 from app.models.stop_time import StopTime
 from app.models.trip import Trip
+from weather import get_weather_json_by_stop_id
 from ferris import Controller, scaffold, route, ndb, messages, route_with, localize
 from ferris.components.flash_messages import FlashMessages
 from google.appengine.api import memcache, mail, users
@@ -9,6 +10,7 @@ from datetime import datetime, timedelta
 import json
 import os
 import urllib
+
 
 def require_user(controller):
     return True
@@ -48,6 +50,8 @@ class ApiService(Controller):
             self.context['data'] = self.get_next_train_two_stations(json_data)
         elif json_data.get("result").get("action") == "get_next_train_two_stations.get_next_train_two_stations-next":
             self.context['data'] = self.get_next_train_two_stations_next(json_data)
+        elif json_data.get("result").get("action") == "get_weather":
+            self.context['data'] = self.get_weather(json_data)
         else:
             return {}
 
@@ -117,7 +121,7 @@ class ApiService(Controller):
     def praise_colin(self, json_data):
         city = json_data.get("result").get("parameters").get("geo-city")
         speech = "ColBol is top cat in {}".format(city)
-        return self.format_response(speech, city, {}, [], "NJTransit")
+        return self.format_response(speech, city, {}, [], "NJTransit GTFS Static Data")
 
     ##############################
     # Methods for API.AI webhook #
@@ -132,7 +136,7 @@ class ApiService(Controller):
                                                                                     train.get("terminus","") )
         else:
             speech = "I can't seem to find a departure for that station :'("
-        return self.format_response(speech, speech, {}, [], "NJTransit")
+        return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
 
     def get_next_train_one_station_towards(self, json_data):
         origin = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
@@ -146,7 +150,7 @@ class ApiService(Controller):
                                                                                    )
         else:
             speech = "I can't seem to find a departure for that station combo:'("
-        return self.format_response(speech, speech, {}, [], "NJTransit")
+        return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
 
     def get_next_train_one_station_next(self, json_data):
         station = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
@@ -158,7 +162,7 @@ class ApiService(Controller):
                                                                                         train.get("terminus","") )
         else:
             speech = "I can't seem to find a departure for that station :'("
-        return self.format_response(speech, speech, {}, [], "NJTransit")
+        return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
 
     def get_next_train_in_direction(self, json_data):
         station = json_data.get("result").get("parameters").get("stations")
@@ -172,7 +176,7 @@ class ApiService(Controller):
                                                                                    )
         else:
             speech = "I can't seem to find a departure for that station :'("
-        return self.format_response(speech, speech, {}, [], "NJTransit")
+        return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
 
     def get_next_train_two_stations(self, json_data):
         origin = json_data.get("result").get("parameters").get("origin")
@@ -186,7 +190,7 @@ class ApiService(Controller):
                                                                                    )
         else:
             speech = "I can't seem to find a departure for that station combo:'("
-        return self.format_response(speech, speech, {}, [], "NJTransit")
+        return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
 
     def get_next_train_two_stations_next(self, json_data):
         origin = json_data.get("result").get("contexts")[0].get("parameters").get("origin")
@@ -202,6 +206,26 @@ class ApiService(Controller):
             speech = "I can't seem to find a departure for that station combo:'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
 
+    def get_weather(self, json_data):
+        stop = json_data.get("result").get("parameters").get("stations")
+        stop_id = Stop.get_station_id_from_station_name(stop)
+        weather = get_weather_json_by_stop_id(stop_id)
+        if weather:
+            try:
+                city = weather.get("query").get("results").get("channel").get("location").get("city")
+                description = weather.get("query").get("results").get("channel").get("item").get("condition").get("text").lower()
+                temp = weather.get("query").get("results").get("channel").get("item").get("condition").get("temp")
+                units = weather.get("query").get("results").get("channel").get("units").get("temperature")
+                speech = "Currently, it's {} {} and {} in {}".format(temp,
+                                                                    units,
+                                                                    description,
+                                                                    city)
+            except:
+                speech = "The weather service seems to have crapped out.  I'm sorry :'("
+        else:
+            speech = "The weather service seems to have crapped out.  I'm sorry :'("
+
+        return self.format_response(speech, speech, {}, [], "Yahoo Weather")
 
     def format_response(self, speech, displayText, data, contextOut, source):
         slack_message = { "text": speech}
@@ -213,6 +237,7 @@ class ApiService(Controller):
                 "source": source
                 }
         return data
+
 
 
 

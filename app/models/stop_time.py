@@ -5,6 +5,7 @@ from app.models.trip import Trip
 from app.models.route import Route
 from datetime import datetime
 from pytz import timezone
+import json
 import csv
 
 class StopTime(Model):

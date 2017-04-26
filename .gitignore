@@ -10,3 +10,4 @@ datastore.db
 .DS_Store
 db
 config.codekit
+*.DS_Store

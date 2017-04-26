@@ -1,0 +1,136 @@
+{
+  "userSays": [
+    {
+      "id": "afa878af-19be-4caa-a724-4465e09fb72a",
+      "data": [
+        {
+          "text": "what\u0027s the best cat in "
+        },
+        {
+          "text": "new york city",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ae09a9e9-875a-4b02-932a-3acd1d3d4707",
+      "data": [
+        {
+          "text": "who is the most awesome cat in "
+        },
+        {
+          "text": "vancouver",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": false
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "fac0833e-b075-4431-8a9d-e4b638272f47",
+      "data": [
+        {
+          "text": "what\u0027s the top cat in "
+        },
+        {
+          "text": "montreal",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": false
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9d1cc505-e728-4c43-a86d-3d2b7c2e564f",
+      "data": [
+        {
+          "text": "who\u0027s top cat in "
+        },
+        {
+          "text": "amsterdam",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "35e3c27c-0093-44ea-bd22-55c63049ae5a",
+      "data": [
+        {
+          "text": "who\u0027s top cat in "
+        },
+        {
+          "text": "moscow",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ee74b0b3-f821-48ca-846d-1bb9261eb0a3",
+      "data": [
+        {
+          "text": "who is the best cat in "
+        },
+        {
+          "text": "london",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "6f75d2d7-11bd-470a-9b03-f37cdc7d9743",
+  "name": "praise_colin",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "praise_colin",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@sys.geo-city",
+          "name": "geo-city",
+          "value": "$geo-city",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Colin is top cat!"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

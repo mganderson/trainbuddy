@@ -1,0 +1,184 @@
+{
+  "userSays": [
+    {
+      "id": "18d8c72b-4d1e-42df-8c08-d7ab4b5ca1f1",
+      "data": [
+        {
+          "text": "the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "4d0f1c48-9723-42a8-acd4-9a7202cf7f95",
+      "data": [
+        {
+          "text": "life meaning"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "61b90b74-5652-43bf-acc4-a1412eec476e",
+      "data": [
+        {
+          "text": "what\u0027s the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9fe0aade-ff83-4d0b-8ba6-af28c66b31fa",
+      "data": [
+        {
+          "text": "tell me the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "94df5aed-8d06-4107-a39c-27a314f723ab",
+      "data": [
+        {
+          "text": "do you know the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "29c89515-8223-468c-96d6-a9ff85415283",
+      "data": [
+        {
+          "text": "can you tell me the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "658a58a9-6700-4925-b7a0-36b54db9e881",
+      "data": [
+        {
+          "text": "show me the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2f814c11-c0f8-4492-b4e0-627032055095",
+      "data": [
+        {
+          "text": "so what is the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "62aa288d-a8b0-4808-97cb-030e4ced1085",
+      "data": [
+        {
+          "text": "what\u0027s the meaning "
+        },
+        {
+          "text": "of",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " life the universe and everything"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "139ad69f-ac35-4eb6-8f4d-13411eca9183",
+  "name": "easteregg.meaning_of_life",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "easteregg.meaning_of_life",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "\"To spend it for something that will outlast it.\" John Cook (2007). The Book of Positive Quotations.",
+            "42. Just 42."
+          ]
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -1,0 +1,92 @@
+{
+  "userSays": [
+    {
+      "id": "7b712cf1-8dd3-467d-8940-a062f80cce46",
+      "data": [
+        {
+          "text": "whens the next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "cdad20a3-9611-4897-a08e-42c8500b9ce5",
+      "data": [
+        {
+          "text": "next departure"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8231915d-2600-4aea-9371-5bd99eaacdcf",
+      "data": [
+        {
+          "text": "next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "fb093ad2-6bec-4256-9393-b210dc175098",
+      "data": [
+        {
+          "text": "when\u0027s the next scheduled train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6b2dc31e-a677-4e89-bb33-8556afea98fb",
+      "data": [
+        {
+          "text": "next train times"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "636a41d5-0193-4bd3-b0f3-2671aeebd47c",
+      "data": [
+        {
+          "text": "when\u0027s the next train?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "17db7d2a-3095-4827-a9d1-0da011a866ad",
+  "name": "get_favoritepair_train_time",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "getting_favoritepair_train_times",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I acknowledge get_favoritepair_train_time"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

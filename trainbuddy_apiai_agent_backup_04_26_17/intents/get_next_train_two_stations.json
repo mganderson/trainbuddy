@@ -1,0 +1,319 @@
+{
+  "userSays": [
+    {
+      "id": "7051a8d8-50ad-4ff2-9efe-136e8cfc13b1",
+      "data": [
+        {
+          "text": "hey, when\u0027s the next train leaving "
+        },
+        {
+          "text": "metropark",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " for "
+        },
+        {
+          "text": "new york",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "05946caf-ff27-4645-9c06-79e496612b7c",
+      "data": [
+        {
+          "text": "When\u0027s the next "
+        },
+        {
+          "text": "newark",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " to "
+        },
+        {
+          "text": "long branch",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3087390c-6bc7-4897-92f0-2ae9462b541d",
+      "data": [
+        {
+          "text": "when\u0027s the next train going to "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "9d42de73-a092-4405-baa2-a5780292c12c",
+      "data": [
+        {
+          "text": "when\u0027s the next train to "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d646c741-720e-4f84-b25a-560832ea67e4",
+      "data": [
+        {
+          "text": "next train to "
+        },
+        {
+          "text": "north elizabeth",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " from "
+        },
+        {
+          "text": "rahway",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "37b191bc-a68f-4aeb-959d-ea84f573b437",
+      "data": [
+        {
+          "text": "when\u0027s the next train "
+        },
+        {
+          "text": "newark",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " to "
+        },
+        {
+          "text": "metropark",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "7ea46046-5df7-486b-aa61-363b826bec48",
+      "data": [
+        {
+          "text": "nex train to "
+        },
+        {
+          "text": "north elizabeth",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " from "
+        },
+        {
+          "text": "rahway",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e11507fc-0146-4c79-86a0-03d1e99b319a",
+      "data": [
+        {
+          "text": "next train from "
+        },
+        {
+          "text": "msu",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " to "
+        },
+        {
+          "text": "newark broad street",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5dda6977-8d66-453e-85fd-e1d2098cf24c",
+      "data": [
+        {
+          "text": "when\u0027s the next train from "
+        },
+        {
+          "text": "peapack",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " to "
+        },
+        {
+          "text": "gladstone",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "520bc6f5-ef2a-4956-b01b-e5fbcf0a5490",
+      "data": [
+        {
+          "text": "when\u0027s the next train to "
+        },
+        {
+          "text": "metropark",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " from "
+        },
+        {
+          "text": "trenton",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "802a47f1-862d-4d41-91d7-5addcf0e86c3",
+      "data": [
+        {
+          "text": "when\u0027s the next train from "
+        },
+        {
+          "text": "red bank",
+          "alias": "origin",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " to "
+        },
+        {
+          "text": "middletown",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "195f7012-219b-48ef-9e84-3472162bd2a6",
+  "name": "get_next_train_two_stations",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "get_next_train_two_stations",
+      "affectedContexts": [
+        {
+          "name": "get_next_train_two_stations-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "destination",
+          "value": "$destination",
+          "prompts": [
+            "What\u0027s the destination station?",
+            "Which station are you going to?",
+            "What\u0027s your destination?"
+          ],
+          "isList": false
+        },
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "origin",
+          "value": "$origin",
+          "prompts": [
+            "What station are you leaving from?",
+            "What\u0027s the origin station?"
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Uh oh - I can\u0027t seem to get any trains for that station combo! Try again in a moment - sometimes it takes me a few seconds to wake up after a long stretch of not talking to anyone."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

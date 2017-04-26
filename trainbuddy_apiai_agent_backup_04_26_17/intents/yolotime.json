@@ -1,0 +1,66 @@
+{
+  "userSays": [
+    {
+      "id": "e9444db2-3cc4-49f4-8979-bd6493ed90c1",
+      "data": [
+        {
+          "text": "what\u0027s the weather like in "
+        },
+        {
+          "text": "montreal",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "94445236-d3a7-4e97-ae0b-0594571d3598",
+      "data": [
+        {
+          "text": "weather in "
+        },
+        {
+          "text": "london",
+          "alias": "geo-city",
+          "meta": "@sys.geo-city",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "9081074e-2513-40d7-964c-7ab257aad03a",
+  "name": "yolotime",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "yahooWeatherForecast",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@sys.geo-city",
+          "name": "geo-city",
+          "value": "$geo-city",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "It seems the weather service has crapped the bed"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

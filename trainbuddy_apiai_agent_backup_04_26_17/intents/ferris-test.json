@@ -1,0 +1,98 @@
+{
+  "userSays": [
+    {
+      "id": "db36d675-89cf-44dc-b6c7-baa75986c3f4",
+      "data": [
+        {
+          "text": "I\u0027m "
+        },
+        {
+          "text": "Joaquin",
+          "alias": "given-name",
+          "meta": "@sys.given-name",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d4fb3bc8-a630-47af-8012-bb52898ff986",
+      "data": [
+        {
+          "text": "My name is "
+        },
+        {
+          "text": "Roberto",
+          "alias": "given-name",
+          "meta": "@sys.given-name",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a4bc078f-74e3-463c-8a62-f01d6a5cba74",
+      "data": [
+        {
+          "text": "My name is "
+        },
+        {
+          "text": "Jonas",
+          "alias": "given-name",
+          "meta": "@sys.given-name",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "947ced39-1d31-401c-a77f-86afac8cfe9b",
+      "data": [
+        {
+          "text": "My name is "
+        },
+        {
+          "text": "Michael",
+          "alias": "given-name",
+          "meta": "@sys.given-name",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "e358f613-0fca-421b-834e-7a1af973356f",
+  "name": "ferris-test",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@sys.given-name",
+          "name": "given-name",
+          "value": "$given-name",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "OH HI (the test didn\u0027t work)"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

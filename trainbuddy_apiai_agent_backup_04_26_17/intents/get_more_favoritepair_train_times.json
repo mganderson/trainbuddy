@@ -1,0 +1,164 @@
+{
+  "userSays": [
+    {
+      "id": "de83816e-d1fd-4dc6-9384-ca01d01468c6",
+      "data": [
+        {
+          "text": "what else"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "13b16a88-8a47-405c-8a1b-dcc59c3eb4a2",
+      "data": [
+        {
+          "text": "another one"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2d7b34f1-21ed-4997-b3db-6dd8a06e2939",
+      "data": [
+        {
+          "text": "what\u0027s next"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1ea9cf7e-f984-4f81-b39b-52adcd5dd743",
+      "data": [
+        {
+          "text": "what\u0027s afterwards"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8284a235-2b73-4955-ae01-0f034d3d24d3",
+      "data": [
+        {
+          "text": "next few trains"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1ed6e500-7d00-4729-9bfe-bb482c9440b3",
+      "data": [
+        {
+          "text": "what\u0027s after that?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d7495dbb-6d02-4297-9621-15cbffad2f8f",
+      "data": [
+        {
+          "text": "after that?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b59e7a02-1574-44f8-8115-7b3cb8240ce5",
+      "data": [
+        {
+          "text": "when\u0027s the next departure"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6e942f4b-2a1b-4f64-8b16-529fdb916330",
+      "data": [
+        {
+          "text": "next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "72868eab-35c0-4212-a5bc-677632bf34d2",
+      "data": [
+        {
+          "text": "what\u0027s after that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "cdc7a9bc-58ab-4160-9d75-b2315b0fd304",
+      "data": [
+        {
+          "text": "when\u0027s the next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9db5b52c-4763-4e0f-b982-25665f8500ee",
+      "data": [
+        {
+          "text": "when\u0027s the one after that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f329e75c-4422-4630-8ba2-c65ce727b12e",
+      "data": [
+        {
+          "text": "get me the next departure"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "2d4cfa01-57b0-4427-b642-26d6c1ad8b65",
+  "name": "get_more_favoritepair_train_times",
+  "auto": true,
+  "contexts": [
+    "getting_favoritepair_train_times"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "getting_favoritepair_train_times",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I acknowledge get_more_favoritepair_train_times"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -1,0 +1,136 @@
+{
+  "userSays": [
+    {
+      "id": "a0a5ed4b-2697-486a-81db-b7a08937c732",
+      "data": [
+        {
+          "text": "fox says"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "313d22ef-7b41-472d-81f6-27172f1c64a2",
+      "data": [
+        {
+          "text": "do you know what does the fox say"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "c4a6761c-bbc9-47d0-86c7-bc51bc23255e",
+      "data": [
+        {
+          "text": "do you have an idea what does the fox say"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d7cf72e2-5663-4fc2-b510-cd722b531925",
+      "data": [
+        {
+          "text": "what sound does a fox make"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "6675f06c-8c5b-491a-a5e7-1c349ba7fbb4",
+      "data": [
+        {
+          "text": "can you tell me what does the fox say"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0aee7f91-b6fd-4faa-af3c-1e2c91ac27af",
+      "data": [
+        {
+          "text": "can you show me what does the "
+        },
+        {
+          "text": "fox say",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "68e0a268-e9bc-43ed-93c0-0445947230a4",
+      "data": [
+        {
+          "text": "can you answer me what does the fox say"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a94c2f0a-1b5d-4ff5-8339-514f091bf394",
+      "data": [
+        {
+          "text": "what sounds does a fox make"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0d626e3b-f49b-423a-bb81-b4b362507307",
+      "data": [
+        {
+          "text": "find out what sound does a fox make"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a0fd9058-d96e-4e36-97bf-9438ac50473d",
+      "data": [
+        {
+          "text": "what does the fox say"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "a7e1d14b-bf7c-4aeb-ada5-23d0fd41a8a4",
+  "name": "easteregg.fox_sounds",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "easteregg.fox_sounds",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "Ring-ding-ding-ding-dingeringeding!",
+            "Wa-pa-pa-pa-pa-pa-pow!",
+            "Hatee-hatee-hatee-ho!"
+          ]
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

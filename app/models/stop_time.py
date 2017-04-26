@@ -361,6 +361,9 @@ class StopTime(Model):
             time_as_seconds_after_midnight -= 24*3600
             ampm = "A.M."
         hours = int(time_as_seconds_after_midnight/3600)
+        # display 00 as 12:00
+        if hours == 0:
+            hours = 12
         minutes = int( (time_as_seconds_after_midnight % 3600) / 60 )
 
         return "{}:{:02d} {}".format(hours,minutes,ampm)

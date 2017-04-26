@@ -1,8 +1,8 @@
 Michael Anderson | TrainBuddy - Webhook for API.AI Conversational Agent
 -------
-IS 322 Project (Spring 2017)
+IS 322 Project (Spring 2017 - API.AI conversational agent with webhook that processes NJTransit's GTFS schedule data to provide train time information.
 
-Project makes use of the Ferris framework (http://ferrisframework.org/) for Python and the Google App Engine.   The Google App Engine's NoSQL database NDB is used for this project.
+Webhook makes use of the Ferris framework (http://ferrisframework.org/) for Python and the Google App Engine.   The Google App Engine's NoSQL database NDB is used for this project.
 
 For information:
 

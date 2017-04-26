@@ -74,6 +74,11 @@ class ApiService(Controller):
         Stop.upload_stops_to_datastore("stops.csv")
         return 200
 
+    @route_with('/api/update_stops_with_lat_lon')
+    def update_stops_with_lat_lon(self):
+        Stop.update_stops_with_lat_long("stops.csv")
+        return 200
+
     @route_with('/api/generate_trips')
     def generate_trips(self):
         filename = self.request.params["filename"] +".csv"

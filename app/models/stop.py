@@ -5,12 +5,13 @@ import csv
 class Stop(Model):
     stop_id = ndb.IntegerProperty(required=True, indexed=True)
     stop_name = ndb.StringProperty(required=True, indexed=True)
+    stop_lat = ndb.FloatProperty()
+    stop_lon = ndb.FloatProperty()
 
     # Unnecessary fields in NJT data
     # stop_code
     # stop_desc
-    # stop_lat
-    # stop_lon
+
     # zone_id
 
     @classmethod
@@ -26,6 +27,20 @@ class Stop(Model):
                     stop_object = Stop(stop_id=stop_id_from_csv, stop_name=stop_name_from_csv)
                     # put() to datastore
                     stop_object.put()
+
+    @classmethod
+    def update_stops_with_lat_long(cls, csv_filepath):
+        with open(csv_filepath) as csvfile:
+            reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in reader:
+                # skip first row
+                if row[0] != 'stop_id':
+                    stop_id_from_csv = int(row[0])
+                    current_stop = Stop.query(Stop.stop_id == int(stop_id_from_csv)).fetch(1)[0]
+                    if current_stop:
+                        current_stop.stop_lat = float(row[4])
+                        current_stop.stop_lon = float(row[5])
+                        current_stop.put()
 
     @classmethod 
     def get_station_id_from_station_name(cls, station_name_as_string):

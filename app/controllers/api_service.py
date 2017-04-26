@@ -10,8 +10,6 @@ import json
 import os
 import urllib
 
-
-
 def require_user(controller):
     return True
 
@@ -22,6 +20,8 @@ class ApiService(Controller):
         Model = (Service)
         authorizations = (require_user,)
 
+    # Determine which action is being passed in the JSON from API.AI
+    # and call the matching method
     @route_with('/api/webhook')
     def api_webhook(self):
         """
@@ -31,8 +31,6 @@ class ApiService(Controller):
 
         # Get JSON data from POST request sent by API.ai
         json_data = json.loads(self.request.body)
-        # my_param = json_data.get("result").get("parameters").get("geo-city")
-
         
         if json_data.get("result").get("action") == "get_the_weather_for_city":
             self.context['data'] = self.get_the_weather_for_city(json_data)
@@ -53,6 +51,10 @@ class ApiService(Controller):
         else:
             return {}
 
+    ############################
+    # Methods for testing only #
+    ############################
+
     @route_with('/api/say_hello')
     def say_hello(self):
         return "HELLO"
@@ -69,28 +71,35 @@ class ApiService(Controller):
     def get_next_train_by_station_name(self):
         return str(StopTime.get_next_stop_time_for_station_name(self.request.params["station_name"]))
 
-    @route_with('/api/generate_stops')
+    ###################################
+    # END of Methods for testing only #
+    ###################################
+
+    # Don't expose this unless needed
+    # @route_with('/api/generate_stops')
     def generate_stops(self):
         Stop.upload_stops_to_datastore("stops.csv")
         return 200
 
-    @route_with('/api/update_stops_with_lat_lon')
+    # Don't expose this unless needed
+    # @route_with('/api/update_stops_with_lat_lon')
     def update_stops_with_lat_lon(self):
         Stop.update_stops_with_lat_long("stops.csv")
         return 200
 
-    @route_with('/api/generate_trips')
+    # Don't expose this unless needed
+    # @route_with('/api/generate_trips')
     def generate_trips(self):
         filename = self.request.params["filename"] +".csv"
         Trip.upload_trips_to_datastore(filename)
         return 200
 
-    @route_with('/api/generate_stop_times')
+     # Don't expose this unless needed
+    # @route_with('/api/generate_stop_times')
     def generate_stop_times(self):
         filename = self.request.params["filename"] +".csv"
         StopTime.upload_stop_times_to_datastore(filename)
         return 200
-
 
     # Just a test / not core functionality
     def get_the_weather_for_city(self, json_data):
@@ -104,13 +113,15 @@ class ApiService(Controller):
         res = makeWebhookResult(data)
         return res
 
-
     # Just a test
     def praise_colin(self, json_data):
         city = json_data.get("result").get("parameters").get("geo-city")
         speech = "ColBol is top cat in {}".format(city)
         return self.format_response(speech, city, {}, [], "NJTransit")
 
+    ##############################
+    # Methods for API.AI webhook #
+    ##############################
     def get_next_train_one_station(self, json_data):
         station = json_data.get("result").get("parameters").get("stations")
         train = StopTime.get_next_stop_time_for_station_name(station.upper())
@@ -122,9 +133,6 @@ class ApiService(Controller):
         else:
             speech = "I can't seem to find a departure for that station :'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
-
-
-
 
     def get_next_train_one_station_towards(self, json_data):
         origin = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
@@ -139,9 +147,6 @@ class ApiService(Controller):
         else:
             speech = "I can't seem to find a departure for that station combo:'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
-
-
-
 
     def get_next_train_one_station_next(self, json_data):
         station = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
@@ -199,9 +204,7 @@ class ApiService(Controller):
 
 
     def format_response(self, speech, displayText, data, contextOut, source):
-
         slack_message = { "text": speech}
-
         data = {
                 "speech": speech,
                 "displayText": displayText,

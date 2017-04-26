@@ -22,6 +22,37 @@ class ApiService(Controller):
         Model = (Service)
         authorizations = (require_user,)
 
+    @route_with('/api/webhook')
+    def api_webhook(self):
+        """
+        This API gets all the local services
+        """
+        self.meta.change_view('JSON')
+
+        # Get JSON data from POST request sent by API.ai
+        json_data = json.loads(self.request.body)
+        # my_param = json_data.get("result").get("parameters").get("geo-city")
+
+        
+        if json_data.get("result").get("action") == "get_the_weather_for_city":
+            self.context['data'] = self.get_the_weather_for_city(json_data)
+        elif json_data.get("result").get("action") == "praise_colin":
+            self.context['data'] = self.praise_colin(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_one_station":
+            self.context['data'] = self.get_next_train_one_station(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_one_station.get_next_train_one_station-towards":
+            self.context['data'] = self.get_next_train_one_station_towards(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_one_station.get_next_train_one_station-next":
+            self.context['data'] = self.get_next_train_one_station_next(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_in_direction":
+            self.context['data'] = self.get_next_train_in_direction(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_two_stations":
+            self.context['data'] = self.get_next_train_two_stations(json_data)
+        elif json_data.get("result").get("action") == "get_next_train_two_stations.get_next_train_two_stations-next":
+            self.context['data'] = self.get_next_train_two_stations_next(json_data)
+        else:
+            return {}
+
     @route_with('/api/say_hello')
     def say_hello(self):
         return "HELLO"
@@ -56,32 +87,6 @@ class ApiService(Controller):
         return 200
 
 
-    @route_with('/api/webhook')
-    def api_webhook(self):
-        """
-        This API gets all the local services
-        """
-        self.meta.change_view('JSON')
-
-        # Get JSON data from POST request sent by API.ai
-        json_data = json.loads(self.request.body)
-        # my_param = json_data.get("result").get("parameters").get("geo-city")
-
-        
-        if json_data.get("result").get("action") == "get_the_weather_for_city":
-            self.context['data'] = self.get_the_weather_for_city(json_data)
-        elif json_data.get("result").get("action") == "praise_colin":
-            self.context['data'] = self.praise_colin(json_data)
-        elif json_data.get("result").get("action") == "get_next_train_one_station":
-            self.context['data'] = self.get_next_train_one_station(json_data)
-        elif json_data.get("result").get("action") == "get_next_train_in_direction":
-            self.context['data'] = self.get_next_train_in_direction(json_data)
-        elif json_data.get("result").get("action") == "get_next_train_two_stations":
-            self.context['data'] = self.get_next_train_two_stations(json_data)
-        else:
-            return {}
-
-
     # Just a test / not core functionality
     def get_the_weather_for_city(self, json_data):
         baseurl = "https://query.yahooapis.com/v1/public/yql?"
@@ -113,6 +118,38 @@ class ApiService(Controller):
             speech = "I can't seem to find a departure for that station :'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
 
+
+
+
+    def get_next_train_one_station_towards(self, json_data):
+        origin = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
+        destination = json_data.get("result").get("contexts")[0].get("parameters").get("destination")
+        train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
+        if train:
+            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
+                                                                                    train.get("user_destination",""),
+                                                                                    train.get("pretty_departure_time",""),
+                                                                                    train.get("route_name","")
+                                                                                   )
+        else:
+            speech = "I can't seem to find a departure for that station combo:'("
+        return self.format_response(speech, speech, {}, [], "NJTransit")
+
+
+
+
+    def get_next_train_one_station_next(self, json_data):
+        station = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
+        train = StopTime.get_nth_stop_time_for_station_name(station.upper(), 2)
+        if train:
+            speech = "The departure after that from {} is the {} {} train to {}".format(train.get("departing_from",""),
+                                                                                        train.get("pretty_departure_time",""),
+                                                                                        train.get("route_name",""),
+                                                                                        train.get("terminus","") )
+        else:
+            speech = "I can't seem to find a departure for that station :'("
+        return self.format_response(speech, speech, {}, [], "NJTransit")
+
     def get_next_train_in_direction(self, json_data):
         station = json_data.get("result").get("parameters").get("stations")
         destination = json_data.get("result").get("parameters").get("destination")
@@ -131,6 +168,20 @@ class ApiService(Controller):
         origin = json_data.get("result").get("parameters").get("origin")
         destination = json_data.get("result").get("parameters").get("destination")
         train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
+        if train:
+            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
+                                                                                    train.get("user_destination",""),
+                                                                                    train.get("pretty_departure_time",""),
+                                                                                    train.get("route_name","")
+                                                                                   )
+        else:
+            speech = "I can't seem to find a departure for that station combo:'("
+        return self.format_response(speech, speech, {}, [], "NJTransit")
+
+    def get_next_train_two_stations_next(self, json_data):
+        origin = json_data.get("result").get("contexts")[0].get("parameters").get("origin")
+        destination = json_data.get("result").get("contexts")[0].get("parameters").get("destination")
+        train = StopTime.get_nth_stop_time_for_station_to_station(origin.upper(), destination.upper(), 2)
         if train:
             speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
                                                                                     train.get("user_destination",""),

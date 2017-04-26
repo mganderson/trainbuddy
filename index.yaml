@@ -13,10 +13,10 @@ indexes:
 - kind: StopTime
   properties:
   - name: stop_id
-  - name: trip_id
   - name: departure_time
 
 - kind: StopTime
   properties:
   - name: stop_id
+  - name: trip_id
   - name: departure_time

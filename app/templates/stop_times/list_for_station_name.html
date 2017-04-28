@@ -18,7 +18,12 @@
             {% for result in results %}
             <tr>
                 <td>{{ result.terminus }}</td>
-                <td>{{ result.route_name }}</td>
+                <!--<td>{{ result.route_name }}</td>-->
+                <td>
+                    <span class="label label-default" style="background-color: {{result.route_color}}">
+                        {{result.route_short_name}}
+                    </span>
+                </td>
                 <td>{{ result.pretty_departure_time }}</td>
             </tr>
             {% endfor %}

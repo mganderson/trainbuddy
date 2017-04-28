@@ -57,7 +57,7 @@ class StopTime(Model):
         while not found_a_train_thats_not_terminating and attempt_no < 30:
             # The query will return a list
             result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-            print result[attempt_no - 1]
+            #print result[attempt_no - 1]
 
             # If there are no results, this means that the last train of the night 
             # has departed the station.  Subtract 24*3600 from seconds_since_midnight 
@@ -65,10 +65,10 @@ class StopTime(Model):
             if len(result) == 0:
                 seconds_since_midnight -= 24*3600
                 result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-                print result[attempt_no - 1]
+                #print result[attempt_no - 1]
 
             trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
-            print trip[0]
+            #print trip[0]
 
             # Check to make sure the trip is not terminating at the 
             # station provided by the user
@@ -123,7 +123,7 @@ class StopTime(Model):
         while not found_a_train_thats_not_terminating and attempt_no < 30:
             # The query will return a list
             result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-            print result[attempt_no - 1]
+            #print result[attempt_no - 1]
 
             # If there are no results, this means that the last train of the night 
             # has departed the station.  Subtract 24*3600 from seconds_since_midnight 
@@ -131,10 +131,10 @@ class StopTime(Model):
             if len(result) == 0:
                 seconds_since_midnight -= 24*3600
                 result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-                print result[attempt_no - 1]
+                #print result[attempt_no - 1]
 
             trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
-            print trip[0]
+            #print trip[0]
 
             # Check to make sure the trip is not terminating at the 
             # station provided by the user
@@ -190,7 +190,7 @@ class StopTime(Model):
         while not found_a_train_thats_going_to_station2 and attempt_no < 30:
             # The query will return a list
             result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-            print result[attempt_no - 1]
+            #print result[attempt_no - 1]
 
             # If there are no results, this means that the last train of the night 
             # has departed the station.  Subtract 24*3600 from seconds_since_midnight 
@@ -198,10 +198,10 @@ class StopTime(Model):
             if len(result) == 0:
                 seconds_since_midnight -= 24*3600
                 result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-                print result[attempt_no - 1]
+                #print result[attempt_no - 1]
 
             trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
-            print trip[0]
+            #print trip[0]
 
             # Check to make sure the train will be stopping at station2:
             # Check if there exists a StopTime entity for the destination
@@ -268,7 +268,7 @@ class StopTime(Model):
         while not found_a_train_thats_going_to_station2 and attempt_no < 30:
             # The query will return a list
             result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-            print result[attempt_no - 1]
+            #print result[attempt_no - 1]
 
             # If there are no results, this means that the last train of the night 
             # has departed the station.  Subtract 24*3600 from seconds_since_midnight 
@@ -276,10 +276,10 @@ class StopTime(Model):
             if len(result) == 0:
                 seconds_since_midnight -= 24*3600
                 result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
-                print result[attempt_no - 1]
+                #print result[attempt_no - 1]
 
             trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
-            print trip[0]
+            #print trip[0]
 
             # Check to make sure the train will be stopping at station2
             # TODO:
@@ -404,7 +404,6 @@ class StopTime(Model):
     @classmethod
     def build_train_object(cls, departure_time, terminus, departure_from, direction_id, route_id):
         direction_id = int(direction_id)
-        print "direction_id is: {}".format(direction_id)
         train = {   "departure_time": departure_time,
                     "pretty_departure_time": cls.pretty_format_time(departure_time),
                     "terminus": terminus.title(), # Title case the direction sign
@@ -415,7 +414,6 @@ class StopTime(Model):
                     "route_short_name": Route.get_route_info_dict_from_id().get(route_id).get("route_short_name",""),
                     "route_color": Route.get_route_info_dict_from_id().get(route_id).get("route_color",""),
                 }
-        print train
         return train
 
 

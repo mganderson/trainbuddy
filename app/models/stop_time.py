@@ -369,6 +369,19 @@ class StopTime(Model):
 
         return "{}:{:02d} {}".format(hours,minutes,ampm)
 
+    @classmethod
+    def build_train_object(cls, **kwargs):
+        train = {   "departure_time": departure_time,
+                    "pretty_departure_time": cls.pretty_format_time(departure_time),
+                    "terminus": terminus, # Title case the direction sign
+                    "departing_from": departure_from,
+                    "direction_id": direction_id,
+                    "route_name": Route.get_route_info_dict_from_id(direction_id).get("route_long_name",""),
+                    "route_short_name": Route.get_route_info_dict_from_id(direction_id).get("route_short_name",""),
+                    "route_color": Route.get_route_info_dict_from_id(direction_id).get("route_color",""),
+                }
+        return train
+
 
     @classmethod
     def upload_stop_times_to_datastore(cls, csv_filepath):

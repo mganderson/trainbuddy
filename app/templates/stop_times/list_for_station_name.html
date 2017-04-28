@@ -1,0 +1,27 @@
+{% extends "layouts/default.html" %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block bodycontent %}
+    <h1>Train departing {{results[0].origin}}:</h1>
+
+    <table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Destination</th>
+            <th>Line</th>
+            <th>Leaving</th>
+        </tr>
+    </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.terminus }}</td>
+                <td>{{ result.route_name }}</td>
+                <td>{{ result.pretty_departure_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

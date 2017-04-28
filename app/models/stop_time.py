@@ -73,6 +73,11 @@ class StopTime(Model):
             # Check to make sure the trip is not terminating at the 
             # station provided by the user
             if str(trip[0].trip_headsign).lower() != station_name_as_string.lower():
+                #Takes departure_time, terminus, departure_from (origin), direction_id
+                train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
+                                           terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string), 
+                                           direction_id=trip[0].direction_id, route_id=trip[0].route_id)
+                """
                 train = {   "departure_time": result[attempt_no - 1].departure_time,
                             "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
                             "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
@@ -81,6 +86,7 @@ class StopTime(Model):
                             "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
                             "user_destination": ""
                 }
+                """
                 found_a_train_thats_not_terminating = True
             # check if we get a result when we subtract 24 hours
             # elif():
@@ -133,6 +139,11 @@ class StopTime(Model):
             # Check to make sure the trip is not terminating at the 
             # station provided by the user
             if str(trip[0].trip_headsign).lower() != station_name_as_string.lower():
+                #Takes departure_time, terminus, departure_from (origin), direction_id
+                train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
+                                           terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string), 
+                                           direction_id=trip[0].direction_id, route_id=trip[0].route_id)
+                """
                 train = {   "departure_time": result[attempt_no - 1].departure_time,
                             "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
                             "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
@@ -141,6 +152,7 @@ class StopTime(Model):
                             "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
                             "user_destination": ""
                 }
+                """
                 if trains_to_skip <= 0:
                     found_a_train_thats_not_terminating = True
                 else:
@@ -191,8 +203,7 @@ class StopTime(Model):
             trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
             print trip[0]
 
-            # Check to make sure the train will be stopping at station2
-            # TODO:
+            # Check to make sure the train will be stopping at station2:
             # Check if there exists a StopTime entity for the destination
             # station under the same trip_id; if so, check to make sure
             # it that departure_time is AFTER the departure_time of
@@ -205,6 +216,13 @@ class StopTime(Model):
             query_result = query3.fetch()
             if len(query_result) == 1:
             #if str(trip[0].trip_headsign).lower() != station_name_as_string.lower():
+                #DELETE ME
+                #Takes departure_time, terminus, departure_from (origin), direction_id
+                train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
+                                           terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string1), 
+                                           direction_id=trip[0].direction_id, route_id=trip[0].route_id)
+
+                """
                 train = {   "departure_time": result[attempt_no - 1].departure_time,
                             "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
                             "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
@@ -213,6 +231,7 @@ class StopTime(Model):
                             "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
                             "user_destination": station_name_as_string2.title()
                 }
+                """
                 found_a_train_thats_going_to_station2 = True
             # check if we get a result when we subtract 24 hours
             # elif():
@@ -276,6 +295,11 @@ class StopTime(Model):
             query_result = query3.fetch()
             if len(query_result) == 1:
             #if str(trip[0].trip_headsign).lower() != station_name_as_string.lower():
+                #Takes departure_time, terminus, departure_from (origin), direction_id
+                train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
+                                           terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string1), 
+                                           direction_id=trip[0].direction_id, route_id=trip[0].route_id)
+                """
                 train = {   "departure_time": result[attempt_no - 1].departure_time,
                             "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
                             "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
@@ -284,6 +308,7 @@ class StopTime(Model):
                             "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
                             "user_destination": station_name_as_string2.title()
                 }
+                """
                 if trains_to_skip <= 0:
                     found_a_train_thats_going_to_station2 = True
                 else:
@@ -338,6 +363,11 @@ class StopTime(Model):
             # Check to make sure the trip is not terminating at the 
             # station provided by the user
             if (str(trip[0].trip_headsign).lower() == direction.lower()):
+                #Takes departure_time, terminus, departure_from (origin), direction_id
+                train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
+                                           terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string), 
+                                           direction_id=trip[0].direction_id)
+                """
                 train = {   "departure_time": result[attempt_no - 1].departure_time,
                             "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
                             "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
@@ -346,6 +376,7 @@ class StopTime(Model):
                             "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
                             "user_destination": ""
                 }
+                """
                 found_a_train_thats_not_terminating = True
             else:
                 attempt_no += 1
@@ -369,17 +400,22 @@ class StopTime(Model):
 
         return "{}:{:02d} {}".format(hours,minutes,ampm)
 
+    #Takes departure_time, terminus, departure_from (origin), direction_id
     @classmethod
-    def build_train_object(cls, **kwargs):
+    def build_train_object(cls, departure_time, terminus, departure_from, direction_id, route_id):
+        direction_id = int(direction_id)
+        print "direction_id is: {}".format(direction_id)
         train = {   "departure_time": departure_time,
                     "pretty_departure_time": cls.pretty_format_time(departure_time),
-                    "terminus": terminus, # Title case the direction sign
-                    "departing_from": departure_from,
+                    "terminus": terminus.title(), # Title case the direction sign
+                    "departing_from": departure_from.title(), # Title case the departure station
                     "direction_id": direction_id,
-                    "route_name": Route.get_route_info_dict_from_id(direction_id).get("route_long_name",""),
-                    "route_short_name": Route.get_route_info_dict_from_id(direction_id).get("route_short_name",""),
-                    "route_color": Route.get_route_info_dict_from_id(direction_id).get("route_color",""),
+                    "route_id": route_id,
+                    "route_name": Route.get_route_info_dict_from_id().get(route_id).get("route_long_name",""),
+                    "route_short_name": Route.get_route_info_dict_from_id().get(route_id).get("route_short_name",""),
+                    "route_color": Route.get_route_info_dict_from_id().get(route_id).get("route_color",""),
                 }
+        print train
         return train
 
 

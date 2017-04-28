@@ -51,7 +51,7 @@ class Route(Model):
     def get_route_info_dict_from_id(cls):
         return {	1: {"route_long_name": "Atlantic City Rail Line",
         				"route_short_name": "ACL",
-        				"route_color": "#005DAA"}
+        				"route_color": "#005DAA"},
 					2: {"route_long_name": "Montclair-Boonton Line",
         				"route_short_name": "MBL",
         				"route_color": "#E66B5B"},
@@ -64,7 +64,7 @@ class Route(Model):
 					5: {"route_long_name": "Main/Bergen County Line",
         				"route_short_name": "MBCL",
         				"route_color": "#FFCF01"},
-					6: {"route_long_name": "Port Jervis Line"",
+					6: {"route_long_name": "Port Jervis Line",
         				"route_short_name": "PJL",
         				"route_color": "#FF7900"},
 					7: {"route_long_name": "Morris & Essex Line",

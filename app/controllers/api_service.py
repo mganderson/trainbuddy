@@ -28,7 +28,8 @@ class ApiService(Controller):
     @route_with('/api/webhook')
     def api_webhook(self):
         """
-        This API gets all the local services
+        This method receives all JSON from API.AI and then calls the appropriate
+        method based on the value of the "action" key in the API.AI JSON
         """
         self.meta.change_view('JSON')
 
@@ -53,8 +54,6 @@ class ApiService(Controller):
             print "Yes, this request is from a slack user! User ID is {}".format(slack_user_id)
         else:
             print "No, this request is NOT from a slack user"
-
-
         
         if json_data.get("result").get("action") == "get_the_weather_for_city":
             self.context['data'] = self.get_the_weather_for_city(json_data)
@@ -65,6 +64,12 @@ class ApiService(Controller):
                 self.context['data'] = self.create_profile(json_data, slack_user_id)
             else:
                 speech = "Sorry, I can only create accounts for Slack users right now."
+                self.context['data'] = self.format_response(speech, speech,{}, [], "")
+        elif json_data.get("result").get("action") == "delete_profile.delete_profile-yes":
+            if slack_user:
+                self.context['data'] = self.delete_profile(json_data, slack_user_id)
+            else:
+                speech = "Sorry, there's only profile for Slack users at this point, so there's no profile to delete for you."
                 self.context['data'] = self.format_response(speech, speech,{}, [], "")
         elif json_data.get("result").get("action") == "get_next_train_one_station":
             self.context['data'] = self.get_next_train_one_station(json_data)
@@ -107,6 +112,20 @@ class ApiService(Controller):
         except Exception as e:
             print e
             speech = "Uh oh - I suffered some sort of error trying to create your account.  I apologize for the inconvenience."
+            return self.format_response(speech, speech, {}, [], "")
+
+    def delete_profile(self, json_data, slack_id):
+        existing_user = User.get_by_id(slack_id)
+        if existing_user is None:
+            speech = "A profile doesn't seem to be saved for you, so there's nothing to delete.  If you'd like to create one at any point, just say \"create profile\""
+            return self.format_response(speech, speech, {}, [], "")
+        try:
+            User.delete_slack_user(slack_id)
+            speech = "User profile deleted successfully.  If you ever want to create a new profile just say \"create profile\""
+            return self.format_response(speech, speech, {}, [], "")
+        except Exception as e:
+            print e
+            speech = "Uh oh - I suffered some sort of error trying to delete your account.  I apologize for the inconvenience."
             return self.format_response(speech, speech, {}, [], "")
 
     def get_next_train_one_station(self, json_data):

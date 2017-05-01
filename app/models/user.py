@@ -12,15 +12,16 @@ class User(Model):
     @classmethod
     def add_slack_user(cls, slack_id_arg, favorite_station_1, favorite_station_2):
     	"""
-    	# Use slack_id as ndb key in lieu of autogen_key
+    	# Use slack_id as ndb key ID in lieu of autogen key id
     	new_key = ndb.Key(cls, slack_id_arg)
-    	# Construct new user
-    	new_user = cls(key=new_key, origin_station=favorite_station_1, destination_station=favorite_station_2, slack_id=slack_id_arg)
-    	# Update datastore with new user entity
-    	new_user.put()
     	"""
     	new_key = ndb.Key(cls, slack_id_arg)
     	# Construct new user
     	new_user = cls(id=slack_id_arg, origin_station=favorite_station_1, destination_station=favorite_station_2, slack_id=slack_id_arg)
     	# Update datastore with new user entity
     	new_user.put()
+
+    @classmethod
+    def delete_slack_user(cls, slack_id_arg):
+    	user = cls.get_by_id(slack_id_arg)
+    	user.key.delete()

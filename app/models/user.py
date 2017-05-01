@@ -25,3 +25,10 @@ class User(Model):
     def delete_slack_user(cls, slack_id_arg):
     	user = cls.get_by_id(slack_id_arg)
     	user.key.delete()
+
+    @classmethod
+    def update_slack_user(cls, slack_id_arg, favorite_station_1, favorite_station_2):
+    	user = cls.get_by_id(slack_id_arg)
+    	user.origin_station = favorite_station_1
+    	user.destination_station = favorite_station_2
+    	user.put()

@@ -71,6 +71,12 @@ class ApiService(Controller):
             else:
                 speech = "Sorry, there's only profile for Slack users at this point, so there's no profile to delete for you."
                 self.context['data'] = self.format_response(speech, speech,{}, [], "")
+        elif json_data.get("result").get("action") == "edit_profile.edit_profile-yes":
+            if slack_user:
+                self.context['data'] = self.edit_profile(json_data, slack_user_id)
+            else:
+                speech = "Sorry, there doesn't seem to be a current profile for you."
+                self.context['data'] = self.format_response(speech, speech,{}, [], "")
         elif json_data.get("result").get("action") == "get_next_train_one_station":
             self.context['data'] = self.get_next_train_one_station(json_data)
         elif json_data.get("result").get("action") == "get_next_train_one_station.get_next_train_one_station-towards":
@@ -128,6 +134,22 @@ class ApiService(Controller):
         except Exception as e:
             print e
             speech = "Uh oh - I suffered some sort of error trying to delete your account.  I apologize for the inconvenience."
+            return self.format_response(speech, speech, {}, [], "")
+
+    def edit_profile(self, json_data, slack_id):
+        existing_user = User.get_by_id(slack_id)
+        favorite_station_1 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_1")
+        favorite_station_2 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_2")
+        if existing_user is None:
+            speech = "A profile doesn't seem to be saved for you, so there's nothing to edit or update.  If you'd like to create one at any point, just say \"create profile\""
+            return self.format_response(speech, speech, {}, [], "")
+        try:
+            User.update_slack_user(slack_id, favorite_station_1, favorite_station_2)
+            speech = "User profile deleted successfully.  If you ever want to create a new profile just say \"create profile\""
+            return self.format_response(speech, speech, {}, [], "")
+        except Exception as e:
+            print e
+            speech = "Uh oh - I suffered some sort of error trying to update your profile.  I apologize for the inconvenience."
             return self.format_response(speech, speech, {}, [], "")
 
     def get_next_train_one_station(self, json_data):

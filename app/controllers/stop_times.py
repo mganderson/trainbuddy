@@ -25,6 +25,8 @@ class StopTimes(Controller):
         for i in range (1, num_results+1):
             results.append(StopTime.get_nth_stop_time_for_station_to_station(origin, destination, i))
         self.context["results"] = results
+        self.context["origin"] = self.request.params["origin"].title()
+        self.context["destination"] = self.request.params["destination"].title()
 
     @route
     def list_for_station_name(self):
@@ -34,6 +36,7 @@ class StopTimes(Controller):
         for i in range (1, num_results+1):
             results.append(StopTime.get_nth_stop_time_for_station_name(origin, i))
         self.context["results"] = results
+        self.context["origin"] = self.request.params["origin"].title()
 
     #TODO
 	def view(self):

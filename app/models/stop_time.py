@@ -133,6 +133,8 @@ class StopTime(Model):
                 result = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(attempt_no))
                 #print result[attempt_no - 1]
 
+            print "len(result): {}".format(len(result))
+            print "attempt_no: {}".format(attempt_no)
             trip = Trip.query(Trip.trip_id == int(result[attempt_no - 1].trip_id)).fetch(1)
             #print trip[0]
 

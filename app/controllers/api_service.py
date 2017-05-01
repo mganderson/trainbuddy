@@ -52,6 +52,8 @@ class ApiService(Controller):
             self.context['data'] = self.get_next_train_two_stations_next(json_data)
         elif json_data.get("result").get("action") == "get_weather":
             self.context['data'] = self.get_weather(json_data)
+        elif json_data.get("result").get("action") == "get_request_json":
+            self.context['data'] = self.format_response(json.dumps(json_data),json.dumps(json_data),{}, [], "")
         else:
             return {}
 
@@ -144,7 +146,7 @@ class ApiService(Controller):
         train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
         if train:
             speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    train.get("user_destination",""),
+                                                                                    destination.title(),
                                                                                     train.get("pretty_departure_time",""),
                                                                                     train.get("route_name","")
                                                                                    )
@@ -184,7 +186,7 @@ class ApiService(Controller):
         train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
         if train:
             speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    train.get("user_destination",""),
+                                                                                    destination.title(),
                                                                                     train.get("pretty_departure_time",""),
                                                                                     train.get("route_name","")
                                                                                    )
@@ -198,7 +200,7 @@ class ApiService(Controller):
         train = StopTime.get_nth_stop_time_for_station_to_station(origin.upper(), destination.upper(), 2)
         if train:
             speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    train.get("user_destination",""),
+                                                                                    destination.title(),
                                                                                     train.get("pretty_departure_time",""),
                                                                                     train.get("route_name","")
                                                                                    )

@@ -2,6 +2,7 @@ from app.models.service import Service
 from app.models.stop import Stop
 from app.models.stop_time import StopTime
 from app.models.trip import Trip
+from app.models.user import User
 from weather import get_weather_json_by_stop_id
 from ferris import Controller, scaffold, route, ndb, messages, route_with, localize
 from ferris.components.flash_messages import FlashMessages
@@ -33,11 +34,38 @@ class ApiService(Controller):
 
         # Get JSON data from POST request sent by API.ai
         json_data = json.loads(self.request.body)
+
+        # Check if user is using Slack by seeing if nested key "source"
+        # exists in json_data and whether its value is equal to "slack"
+        slack_user = False
+        slack_user_id = ""
+        try:
+            if 'originalRequest' in json_data:
+                if 'source' in json_data['originalRequest']:
+                    if json_data['originalRequest']['source'].lower() == 'slack':
+                        slack_user = True
+                        slack_user_id = json_data['originalRequest']['data']['event']['user']
+
+        except Exception as e:
+            print "Exception: {}".format(e)
+
+        if slack_user:
+            print "Yes, this request is from a slack user! User ID is {}".format(slack_user_id)
+        else:
+            print "No, this request is NOT from a slack user"
+
+
         
         if json_data.get("result").get("action") == "get_the_weather_for_city":
             self.context['data'] = self.get_the_weather_for_city(json_data)
         elif json_data.get("result").get("action") == "praise_colin":
             self.context['data'] = self.praise_colin(json_data)
+        elif json_data.get("result").get("action") == "create_profile.create_profile-yes":
+            if slack_user:
+                self.context['data'] = self.create_profile(json_data, slack_user_id)
+            else:
+                speech = "Sorry, I can only create accounts for Slack users right now."
+                self.context['data'] = self.format_response(speech, speech,{}, [], "")
         elif json_data.get("result").get("action") == "get_next_train_one_station":
             self.context['data'] = self.get_next_train_one_station(json_data)
         elif json_data.get("result").get("action") == "get_next_train_one_station.get_next_train_one_station-towards":
@@ -57,77 +85,30 @@ class ApiService(Controller):
         else:
             return {}
 
-    ############################
-    # Methods for testing only #
-    ############################
-
-    @route_with('/api/say_hello')
-    def say_hello(self):
-        return "HELLO"
-
-    @route_with('/api/get_stops_by_id')
-    def get_stops_by_id(self):
-        return str(StopTime.get_stop_times_for_station_id(self.request.params["station_id"]))
-
-    @route_with('/api/get_stops_by_name')
-    def get_stops_by_name(self):
-        return str(StopTime.get_stop_times_for_station_name(self.request.params["station_name"]))
-
-    @route_with("/api/get_next_train_by_station_name")
-    def get_next_train_by_station_name(self):
-        return str(StopTime.get_next_stop_time_for_station_name(self.request.params["station_name"]))
-
-    ###################################
-    # END of Methods for testing only #
-    ###################################
-
-    # Don't expose this unless needed
-    # @route_with('/api/generate_stops')
-    def generate_stops(self):
-        Stop.upload_stops_to_datastore("stops.csv")
-        return 200
-
-    # Don't expose this unless needed
-    # @route_with('/api/update_stops_with_lat_lon')
-    def update_stops_with_lat_lon(self):
-        Stop.update_stops_with_lat_long("stops.csv")
-        return 200
-
-    # Don't expose this unless needed
-    # @route_with('/api/generate_trips')
-    def generate_trips(self):
-        filename = self.request.params["filename"] +".csv"
-        Trip.upload_trips_to_datastore(filename)
-        return 200
-
-     # Don't expose this unless needed
-    # @route_with('/api/generate_stop_times')
-    def generate_stop_times(self):
-        filename = self.request.params["filename"] +".csv"
-        StopTime.upload_stop_times_to_datastore(filename)
-        return 200
-
-    # Just a test / not core functionality
-    def get_the_weather_for_city(self, json_data):
-        baseurl = "https://query.yahooapis.com/v1/public/yql?"
-        yql_query = makeYqlQuery(req)
-        if yql_query is None:
-            return {}
-        yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-        result = urlopen(yql_url).read()
-        data = json.loads(result)
-        res = makeWebhookResult(data)
-        return res
-
-    # Just a test
-    def praise_colin(self, json_data):
-        city = json_data.get("result").get("parameters").get("geo-city")
-        speech = "ColBol is top cat in {}".format(city)
-        return self.format_response(speech, city, {}, [], "NJTransit GTFS Static Data")
 
     ##############################
     # Methods for API.AI webhook #
     ##############################
+
+    def create_profile(self, json_data, slack_id):
+        favorite_station_1 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_1")
+        favorite_station_2 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_2")
+        print 'Value of json_data.get("result").get("parameters"): {}'.format(json_data.get("result").get("parameters"))
+        # Check if profile already exists
+        existing_user = User.get_by_id(slack_id)
+        if existing_user != None:
+            speech = "A profile already exists for you.  You can say \"edit profile\" if you'd like to change your station preferences."
+            return self.format_response(speech, speech, {}, [], "")
+        try:
+            print "In create_profile try block | slack_id: {} | favorite_station_1: {} | favorite_station_2: {}".format(slack_id, favorite_station_1, favorite_station_2)
+            User.add_slack_user(slack_id, favorite_station_1, favorite_station_2)
+            speech = "User profile created successfully!  If you ever want to update or delete it, just say \"edit profile\" or \"delete profile\""
+            return self.format_response(speech, speech, {}, [], "")
+        except Exception as e:
+            print e
+            speech = "Uh oh - I suffered some sort of error trying to create your account.  I apologize for the inconvenience."
+            return self.format_response(speech, speech, {}, [], "")
+
     def get_next_train_one_station(self, json_data):
         station = json_data.get("result").get("parameters").get("stations")
         train = StopTime.get_next_stop_time_for_station_name(station.upper())
@@ -229,6 +210,24 @@ class ApiService(Controller):
 
         return self.format_response(speech, speech, {}, [], "Yahoo Weather")
 
+    # Not used anymore
+    def get_the_weather_for_city(self, json_data):
+        baseurl = "https://query.yahooapis.com/v1/public/yql?"
+        yql_query = makeYqlQuery(req)
+        if yql_query is None:
+            return {}
+        yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+        result = urlopen(yql_url).read()
+        data = json.loads(result)
+        res = makeWebhookResult(data)
+        return res
+
+
+    ############################
+    #      Helper Methods      #
+    ############################
+
+
     def format_response(self, speech, displayText, data, contextOut, source):
         slack_message = { "text": speech}
         data = {
@@ -240,6 +239,61 @@ class ApiService(Controller):
                 }
         return data
 
+    ############################
+    # Methods for testing only #
+    ############################
+
+    @route_with('/api/say_hello')
+    def say_hello(self):
+        return "HELLO"
+
+    @route_with('/api/get_stops_by_id')
+    def get_stops_by_id(self):
+        return str(StopTime.get_stop_times_for_station_id(self.request.params["station_id"]))
+
+    @route_with('/api/get_stops_by_name')
+    def get_stops_by_name(self):
+        return str(StopTime.get_stop_times_for_station_name(self.request.params["station_name"]))
+
+    @route_with("/api/get_next_train_by_station_name")
+    def get_next_train_by_station_name(self):
+        return str(StopTime.get_next_stop_time_for_station_name(self.request.params["station_name"]))
+
+    # Test for webhook
+    def praise_colin(self, json_data):
+        city = json_data.get("result").get("parameters").get("geo-city")
+        speech = "ColBol is top cat in {}".format(city)
+        return self.format_response(speech, city, {}, [], "NJTransit GTFS Static Data")
+
+    #########################################
+    # Methods for generating datastore data #
+    #########################################
+
+    # Don't expose this unless needed
+    # @route_with('/api/generate_stops')
+    def generate_stops(self):
+        Stop.upload_stops_to_datastore("stops.csv")
+        return 200
+
+    # Don't expose this unless needed
+    # @route_with('/api/update_stops_with_lat_lon')
+    def update_stops_with_lat_lon(self):
+        Stop.update_stops_with_lat_long("stops.csv")
+        return 200
+
+    # Don't expose this unless needed
+    # @route_with('/api/generate_trips')
+    def generate_trips(self):
+        filename = self.request.params["filename"] +".csv"
+        Trip.upload_trips_to_datastore(filename)
+        return 200
+
+     # Don't expose this unless needed
+    # @route_with('/api/generate_stop_times')
+    def generate_stop_times(self):
+        filename = self.request.params["filename"] +".csv"
+        StopTime.upload_stop_times_to_datastore(filename)
+        return 200
 
 
 

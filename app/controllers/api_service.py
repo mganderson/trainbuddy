@@ -83,6 +83,8 @@ class ApiService(Controller):
             self.context['data'] = self.get_next_train_two_stations(json_data)
         elif json_data.get("result").get("action") == "get_next_train_two_stations.get_next_train_two_stations-next":
             self.context['data'] = self.get_next_train_two_stations_next(json_data)
+        elif json_data.get("result").get("action") == "get_favoritepair_train_time":
+            self.context['data'] = self.get_favoritepair_train_time(json_data, slack_user_id)
         elif json_data.get("result").get("action") == "get_weather":
             self.context['data'] = self.get_weather(json_data)
         elif json_data.get("result").get("action") == "get_request_json":
@@ -207,6 +209,36 @@ class ApiService(Controller):
         else:
             speech = "I can't seem to find a departure for that station combo:'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
+
+    def get_favoritepair_train_time(self, json_data, slack_id):
+        # Check if user has a profile saved; if not
+        # return an error message
+        existing_user = None
+        try:
+            existing_user = User.get_by_id(slack_id)
+        except Exception as e:
+            print e
+            speech = "I don't seem to have a profile saved with your favorite stations.  You can specify what station(s) you want train information for, or, if you are a Slack user, create a profile by saying \"create profile\""
+            return self.format_response(speech, speech, {}, [], "")
+        #else:
+        favorite_station_1 = existing_user.origin_station
+        favorite_station_2 = existing_user.destination_station
+        train_from_1_to_2 = StopTime.get_next_stop_time_for_station_to_station(favorite_station_1.upper(), favorite_station_2.upper())
+        train_from_2_to_1 = StopTime.get_next_stop_time_for_station_to_station(favorite_station_2.upper(), favorite_station_1.upper())
+        if train_from_1_to_2 and train_from_2_to_1:
+            speech = "The next departure from {} to {} is the {} {} train.  ".format(  train_from_1_to_2.get("departing_from",""),
+                                                                                    favorite_station_2.title(),
+                                                                                    train_from_1_to_2.get("pretty_departure_time",""),
+                                                                                    train_from_1_to_2.get("route_name","")
+                                                                                   )
+            speech += "The next departure from {} to {} is the {} {} train".format( train_from_2_to_1.get("departing_from",""),
+                                                                                    favorite_station_1.title(),
+                                                                                    train_from_2_to_1.get("pretty_departure_time",""),
+                                                                                    train_from_2_to_1.get("route_name","")
+                                                                                       )
+        else:
+            speech = "I can't seem to find departures between {} and {}.".format(favorite_station_1.title(), favorite_station_2.title())
+        return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
 
     def get_weather(self, json_data):
         stop = json_data.get("result").get("parameters").get("stations")

@@ -145,7 +145,7 @@ class ApiService(Controller):
             return self.format_response(speech, speech, {}, [], "")
         try:
             User.update_slack_user(slack_id, favorite_station_1, favorite_station_2)
-            speech = "User profile deleted successfully.  If you ever want to create a new profile just say \"create profile\""
+            speech = "User profile updated successfully."
             return self.format_response(speech, speech, {}, [], "")
         except Exception as e:
             print e
@@ -169,11 +169,12 @@ class ApiService(Controller):
         destination = json_data.get("result").get("contexts")[0].get("parameters").get("destination")
         train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
         if train:
-            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    destination.title(),
-                                                                                    train.get("pretty_departure_time",""),
-                                                                                    train.get("route_name","")
-                                                                                   )
+            speech = "The next departure from {} to {} is the {} {} train to {}".format(train.get("departing_from",""),
+                                                                                        destination.title(),
+                                                                                        train.get("pretty_departure_time",""),
+                                                                                        train.get("route_name",""),
+                                                                                        train.get("terminus","")
+                                                                                       )
         else:
             speech = "I can't seem to find a departure for that station combo:'("
         return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
@@ -223,11 +224,11 @@ class ApiService(Controller):
         destination = json_data.get("result").get("contexts")[0].get("parameters").get("destination")
         train = StopTime.get_nth_stop_time_for_station_to_station(origin.upper(), destination.upper(), 2)
         if train:
-            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    destination.title(),
-                                                                                    train.get("pretty_departure_time",""),
-                                                                                    train.get("route_name","")
-                                                                                   )
+            speech = "After that, the next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
+                                                                                                destination.title(),
+                                                                                                train.get("pretty_departure_time",""),
+                                                                                                train.get("route_name","")
+                                                                                               )
         else:
             speech = "I can't seem to find a departure for that station combo:'("
         return self.format_response(speech, speech, {}, [], "NJTransit")
@@ -326,7 +327,12 @@ class ApiService(Controller):
 
     @route_with('/api/get_stops_by_name')
     def get_stops_by_name(self):
-        return str(StopTime.get_stop_times_for_station_name(self.request.params["station_name"]))
+        return str(StopTime.get_n_many_departures_for_station(self.request.params["station_name"], int(self.request.params["no_results"])))
+
+    @route_with('/api/get_stops_origin_dest')
+    def get_stops_by_name(self):
+        return str(StopTime.get_n_many_departures_origin_dest(self.request.params["origin"], self.request.params["dest"], int(self.request.params["no_results"])))
+
 
     @route_with("/api/get_next_train_by_station_name")
     def get_next_train_by_station_name(self):

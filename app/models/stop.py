@@ -47,6 +47,17 @@ class Stop(Model):
         name_id_dict = cls.get_stop_name_id_dict()
         return name_id_dict.get(station_name_as_string.upper(), 0)
 
+    @classmethod 
+    def get_station_name_from_station_id(cls, station_id):
+        name_id_dict = cls.get_id_to_stop_name_dict()
+        return name_id_dict.get(station_id, 0)
+
+    @classmethod
+    def get_id_to_stop_name_dict(cls):
+        orig_map = cls.get_stop_name_id_dict()
+        inv_map = {v: k for k, v in orig_map.iteritems()}
+        return inv_map
+
     @classmethod
     def get_stop_name_id_dict(cls):
         return {"30TH ST. PHL.": 1,

@@ -99,53 +99,75 @@ class StopTime(Model):
 # BEGIN NEW WORK #
 ##################
 
-    # n is the max number of results to return.
+    # n is the max number of results to return
     @classmethod
     def get_n_many_departures_for_station(cls, station_name_as_string, n):
 
         # Get station_id from station_name
         station_id = Stop.get_station_id_from_station_name(station_name_as_string)
 
-        stop_time_list = cls.get_x_next_stop_times_by_station_id(station_id, 30)
-
+        # We request initially 5 times as many stop times as departures requested
+        # to allow a large buffer, since many trains may terminate at the user's
+        # origin station, and we don't want to return those to user.
+        # This will still limit the total number of datastore queries to a 
+        # relatively low number in cases where we are only getting one departure
+        stop_time_list = cls.get_x_next_stop_times_by_station_id(station_id, n*5)
+        train_list =[cls.build_train_object_from_stop_time(x) for x in stop_time_list]
+        train_list = cls.remove_trains_that_terminate_at_origin_station(train_list)
         # If n is greater than the number of results, set n to number of results
-        if n > len(stop_time_list):
-            n = len(stop_time_list)
+        if n > len(train_list):
+            n = len(train_list)
 
-        train_list =[]
-        # Iterate over the first n results of the results list and construct train objects
-        # for stop_times in stop_time_list
+        # Iterate over the first n results of the train_list and add them to return list
         i = 0
-        while len(train_list) < n and i < len(stop_time_list):
+        return_list = []
+        while len(return_list) < n and i < len(train_list):
             # TODO: determine if weekend run or not
-            train_list.append(cls.build_train_object_from_stop_time(stop_time_list[i]))
+            return_list.append(train_list[i])
             i += 1
-        return train_list
+        print "return_list: {}".format(return_list)
+        return return_list
 
     # n is the max number of results to return
     @classmethod
     def get_n_many_departures_origin_dest(cls, origin_name_as_string, dest_name_as_string, n):
         # Get station_ids from origin and destination names
+
+        seconds_after_midnight = cls.get_seconds_after_midnight()
         origin_id = Stop.get_station_id_from_station_name(origin_name_as_string)
         dest_id = Stop.get_station_id_from_station_name(dest_name_as_string)
 
-        # get a list of the next 60 departures from the origin station
-        stop_time_list = cls.get_x_next_stop_times_by_station_id(origin_id, 60)
+        iteration = 0
+        MAX_ITER = 40
+        train_list = []
 
-        # If n is greater than the number of results, set n to number of results
-        if n > len(stop_time_list):
-            n = len(stop_time_list)
+        while len(train_list) < n and iteration < MAX_ITER:
+            # get a list of the next n*3 departures from the origin station
+            # stop_time_list = cls.get_x_next_stop_times_by_station_id(origin_id, n*3)
+            stop_time_list = cls.get_x_next_stop_times_by_station_id_for_seconds_after_midnight(origin_id, n*3, seconds_after_midnight)
+            
+            # If another iteration is necessary to return n results, change the time
+            # passed to get_x_next_stop_times_by_station_id_for_seconds_after_midnight
+            # to the departure time of the last train stop_time_list
+            try:
+                seconds_after_midnight = stop_time_list[-1].departure_time
+            except Exception as e:
+                print "Exception in try block of get_n_many_departures_origin_dest: {}".format(e)
+                break
 
-        train_list =[]
-        # Iterate over the first n results of the results list and construct train objects
-        # for stop_times in stop_time_list
-        i = 0
-        while len(train_list) < n and i < len(stop_time_list):
-            # TODO: determine if weekend run or not
-            # Determine if the train referenced by the stop_time serves the destination station
-            if cls.does_trip_serve_station(stop_time_list[i], dest_id):
-                train_list.append(cls.build_train_object_from_stop_time(stop_time_list[i]))
-            i += 1
+            # Iterate over the first n results of the results list and construct train objects
+            # for stop_times in stop_time_list
+            i = 0
+            while len(train_list) < n and i < len(stop_time_list):
+                # TODO: determine if weekend run or not
+                # Determine if the train referenced by the stop_time serves the destination station
+                if cls.does_trip_serve_station(stop_time_list[i], dest_id):
+                    tmp_train = cls.build_train_object_from_stop_time(stop_time_list[i])
+                    if cls.does_train_continue_beyond_origin_station(tmp_train):
+                        train_list.append(tmp_train)
+                i += 1
+            train_list = cls.remove_trains_that_terminate_at_origin_station(train_list)
+            iteration += 1
         return train_list
 
 
@@ -487,6 +509,7 @@ class StopTime(Model):
                     "departing_from": Stop.get_station_name_from_station_id(stop_time.stop_id).title(), # Title case the departure station
                     "direction_id": trip[0].direction_id,
                     "route_id": trip[0].route_id,
+                    "trip_id": trip[0].trip_id,
                     "route_name": Route.get_route_info_dict_from_id().get(trip[0].route_id).get("route_long_name",""),
                     "route_short_name": Route.get_route_info_dict_from_id().get(trip[0].route_id).get("route_short_name",""),
                     "route_color": Route.get_route_info_dict_from_id().get(trip[0].route_id).get("route_color",""),
@@ -512,6 +535,7 @@ class StopTime(Model):
 
     @classmethod
     def does_trip_serve_station(cls, stop_time, dest_id):
+        # TAKES STOP_TIME AS ARG, NOT TRAIN
         # Check to make sure the train will be stopping at station:
         # Check if there exists a StopTime entity for the destination
         # station under the same trip_id; if so, check to make sure
@@ -521,6 +545,24 @@ class StopTime(Model):
         query1 = StopTime.query(StopTime.trip_id == stop_time.trip_id)
         query2 = query1.filter(StopTime.stop_id == dest_id)
         query3 = query2.filter(StopTime.departure_time > stop_time.departure_time)
+        query_result = query3.fetch()
+        if len(query_result) == 1:
+            return True
+        else:
+            return False
+
+    @classmethod
+    def does_train_serve_station(cls, train, dest_id):
+        # TAKES TRAIN AS ARG, NOT STOP_TIME
+        # Check to make sure the train will be stopping at station:
+        # Check if there exists a StopTime entity for the destination
+        # station under the same trip_id; if so, check to make sure
+        # it that departure_time is AFTER the departure_time of
+        # the origin station
+        
+        query1 = StopTime.query(StopTime.trip_id == train.trip_id)
+        query2 = query1.filter(StopTime.stop_id == dest_id)
+        query3 = query2.filter(StopTime.departure_time > train.departure_time)
         query_result = query3.fetch()
         if len(query_result) == 1:
             return True
@@ -549,8 +591,48 @@ class StopTime(Model):
             else:
                 seconds_since_midnight = 0
             results_list = results_list + list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(MAX-len(results_list)))
-
         return results_list
+
+    @classmethod
+    def get_x_next_stop_times_by_station_id_for_seconds_after_midnight(cls, station_id, x, seconds_after_midnight):
+        # NOTE: will return a MAX of x departures; may return fewer, so always check len() 
+        # of list it returns when iterating over it
+        MAX = x
+
+        seconds_since_midnight = seconds_after_midnight
+        #print "Seconds_since_midnight: {}".format(seconds_since_midnight)     
+
+        # Get a list of 30 stop times for the given station
+        results_list = []
+        results_list = list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(MAX))
+
+        # Check if there are no or few results; if so, it may be because the last train of the
+        # night has departed.  In this case, subtract a day's worth of seconds from
+        # seconds_since_midnight, then search again for stop times and concat results lists
+        if len(results_list) < MAX:
+            if seconds_since_midnight > 24*3600:
+                seconds_since_midnight -= 24*3600
+            else:
+                seconds_since_midnight = 0
+            results_list = results_list + list(StopTime.query(StopTime.stop_id==int(station_id)).filter(StopTime.departure_time > seconds_since_midnight).order(StopTime.departure_time).fetch(MAX-len(results_list)))
+        return results_list
+
+    @classmethod
+    def remove_trains_that_terminate_at_origin_station(cls, train_list):
+        """
+        for i in range(0,len(train_list)):
+            if train_list[i].get("departing_from","").lower() == train_list[i].get("terminus","").lower():
+                train_list.pop(i)
+        """
+        revised_list = [ x for x in train_list if x.get("departing_from","").lower() != x.get("terminus","").lower() ]
+        return revised_list
+
+    @classmethod
+    def does_train_continue_beyond_origin_station(cls, train):
+        if train.get("departing_from","").lower() == train.get("terminus","").lower():
+            return False
+        else:
+            return True
 
     @classmethod
     def upload_stop_times_to_datastore(cls, csv_filepath):

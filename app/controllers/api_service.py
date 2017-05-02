@@ -196,11 +196,12 @@ class ApiService(Controller):
         destination = json_data.get("result").get("parameters").get("destination")
         train = StopTime.get_next_stop_time_for_station_name_in_direction(station.upper(), destination)
         if train:
-            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    train.get("terminus",""),
-                                                                                    train.get("pretty_departure_time",""),
-                                                                                    train.get("route_name","")
-                                                                                   )
+            speech = "The next departure from {} to {} is the {} {} train to {}".format(train.get("departing_from",""),
+                                                                                        destination,
+                                                                                        train.get("pretty_departure_time",""),
+                                                                                        train.get("route_name",""),
+                                                                                        train.get("terminus","")
+                                                                                       )
         else:
             speech = "I can't seem to find a departure for that station :'("
         return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
@@ -210,11 +211,12 @@ class ApiService(Controller):
         destination = json_data.get("result").get("parameters").get("destination")
         train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
         if train:
-            speech = "The next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
-                                                                                    destination.title(),
-                                                                                    train.get("pretty_departure_time",""),
-                                                                                    train.get("route_name","")
-                                                                                   )
+            speech = "The next departure from {} to {} is the {} {} train to {}".format(train.get("departing_from",""),
+                                                                                        destination.title(),
+                                                                                        train.get("pretty_departure_time",""),
+                                                                                        train.get("route_name",""),
+                                                                                        train.get("terminus","")
+                                                                                       )
         else:
             speech = "I can't seem to find a departure for that station combo:'("
         return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
@@ -224,10 +226,11 @@ class ApiService(Controller):
         destination = json_data.get("result").get("contexts")[0].get("parameters").get("destination")
         train = StopTime.get_nth_stop_time_for_station_to_station(origin.upper(), destination.upper(), 2)
         if train:
-            speech = "After that, the next departure from {} to {} is the {} {} train".format(  train.get("departing_from",""),
+            speech = "After that, the next departure from {} to {} is the {} {} train to {}".format(  train.get("departing_from",""),
                                                                                                 destination.title(),
                                                                                                 train.get("pretty_departure_time",""),
-                                                                                                train.get("route_name","")
+                                                                                                train.get("route_name",""),
+                                                                                                train.get("terminus","")
                                                                                                )
         else:
             speech = "I can't seem to find a departure for that station combo:'("
@@ -249,15 +252,17 @@ class ApiService(Controller):
         train_from_1_to_2 = StopTime.get_next_stop_time_for_station_to_station(favorite_station_1.upper(), favorite_station_2.upper())
         train_from_2_to_1 = StopTime.get_next_stop_time_for_station_to_station(favorite_station_2.upper(), favorite_station_1.upper())
         if train_from_1_to_2 and train_from_2_to_1:
-            speech = "The next departure from {} to {} is the {} {} train.  ".format(  train_from_1_to_2.get("departing_from",""),
+            speech = "The next departure from {} to {} is the {} {} train to {}.  ".format(  train_from_1_to_2.get("departing_from",""),
                                                                                     favorite_station_2.title(),
                                                                                     train_from_1_to_2.get("pretty_departure_time",""),
-                                                                                    train_from_1_to_2.get("route_name","")
+                                                                                    train_from_1_to_2.get("route_name",""),
+                                                                                    train_from_1_to_2.get("terminus",""),
                                                                                    )
-            speech += "The next departure from {} to {} is the {} {} train".format( train_from_2_to_1.get("departing_from",""),
+            speech += "The next departure from {} to {} is the {} {} train to {}".format( train_from_2_to_1.get("departing_from",""),
                                                                                     favorite_station_1.title(),
                                                                                     train_from_2_to_1.get("pretty_departure_time",""),
-                                                                                    train_from_2_to_1.get("route_name","")
+                                                                                    train_from_2_to_1.get("route_name",""),
+                                                                                    train_from_2_to_1.get("terminus",""),
                                                                                        )
         else:
             speech = "I can't seem to find departures between {} and {}.".format(favorite_station_1.title(), favorite_station_2.title())

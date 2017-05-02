@@ -20,17 +20,25 @@ class StopTime(Model):
     # drop_off_type
     # shape_dist_traveled
 
+    """
+    # Not needed
     @classmethod
     def get_stop_times_for_station_id(cls, station_id):
         stop_times = list(StopTime.query(StopTime.stop_id==int(station_id)))
         return stop_times
+    """
 
+    """
+    # Not needed
     @classmethod
     def get_stop_times_for_station_name(cls, station_name_as_string):
         station_id = Stop.get_station_id_from_station_name(station_name_as_string)
         print "STATION ID: {}".format(station_id)
         return StopTime.get_stop_times_for_station_id(station_id)
+    """
 
+    """
+    # Not needed
     @classmethod
     def get_next_stop_time_for_station_name(cls, station_name_as_string):
         # get current local seconds after midnight
@@ -38,11 +46,11 @@ class StopTime(Model):
         now = datetime.now(tz)
         print now
         seconds_since_midnight = int((now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds())
-        """
-        First departure of the SERVICE day is at 3:48
-        So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
-        so that services after midnight show as being available
-        """
+        
+        #First departure of the SERVICE day is at 3:48
+        #So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
+        #so that services after midnight show as being available
+        
         if seconds_since_midnight < 3*3600 + 48*60:
             seconds_since_midnight = seconds_since_midnight + 24*3600
 
@@ -77,23 +85,23 @@ class StopTime(Model):
                 train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
                                            terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string), 
                                            direction_id=trip[0].direction_id, route_id=trip[0].route_id)
-                """
-                train = {   "departure_time": result[attempt_no - 1].departure_time,
-                            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
-                            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
-                            "departing_from": str(station_name_as_string).title(),
-                            "direction_id": trip[0].direction_id,
-                            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
-                            "user_destination": ""
-                }
-                """
+                
+                #train = {   "departure_time": result[attempt_no - 1].departure_time,
+                #            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
+                #            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
+                #            "departing_from": str(station_name_as_string).title(),
+                #            "direction_id": trip[0].direction_id,
+                #            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
+                #            "user_destination": ""
+                #}
+                
                 found_a_train_thats_not_terminating = True
             # check if we get a result when we subtract 24 hours
             # elif():
             else:
                 attempt_no += 1
         return train
-
+        """
 
 ##################
 # BEGIN NEW WORK #
@@ -175,6 +183,8 @@ class StopTime(Model):
 #  END NEW WORK  #
 ##################
 
+    """
+    # Not Necessary
     @classmethod
     def get_nth_stop_time_for_station_name(cls, station_name_as_string, n):
         # n is ordinal number for results (e.g. 1 for first train, 2 for second train, etc.)
@@ -184,11 +194,11 @@ class StopTime(Model):
         now = datetime.now(tz)
         print now
         seconds_since_midnight = int((now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds())
-        """
-        First departure of the SERVICE day is at 3:48
-        So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
-        so that services after midnight show as being available
-        """
+        
+        #First departure of the SERVICE day is at 3:48
+        #So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
+        #so that services after midnight show as being available
+        
         if seconds_since_midnight < 3*3600 + 48*60:
             seconds_since_midnight = seconds_since_midnight + 24*3600
 
@@ -226,16 +236,16 @@ class StopTime(Model):
                 train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
                                            terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string), 
                                            direction_id=trip[0].direction_id, route_id=trip[0].route_id)
-                """
-                train = {   "departure_time": result[attempt_no - 1].departure_time,
-                            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
-                            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
-                            "departing_from": str(station_name_as_string).title(),
-                            "direction_id": trip[0].direction_id,
-                            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
-                            "user_destination": ""
+                
+                #train = {   "departure_time": result[attempt_no - 1].departure_time,
+                #            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
+                #            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
+                #            "departing_from": str(station_name_as_string).title(),
+                #            "direction_id": trip[0].direction_id,
+                #            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
+                #            "user_destination": ""
                 }
-                """
+                
                 if trains_to_skip <= 0:
                     found_a_train_thats_not_terminating = True
                 else:
@@ -246,7 +256,10 @@ class StopTime(Model):
             else:
                 attempt_no += 1
         return train
+    """
 
+    """
+    # Not needed
     @classmethod
     def get_next_stop_time_for_station_to_station(cls, station_name_as_string1, station_name_as_string2):
         # get current local seconds after midnight
@@ -254,11 +267,11 @@ class StopTime(Model):
         now = datetime.now(tz)
         print now
         seconds_since_midnight = int((now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds())
-        """
-        First departure of the SERVICE day is at 3:48
-        So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
-        so that services after midnight show as being available
-        """
+        
+        #First departure of the SERVICE day is at 3:48
+        #So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
+        #so that services after midnight show as being available
+        
         if seconds_since_midnight < 3*3600 + 48*60:
             seconds_since_midnight = seconds_since_midnight + 24*3600
 
@@ -305,23 +318,26 @@ class StopTime(Model):
                                            terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string1), 
                                            direction_id=trip[0].direction_id, route_id=trip[0].route_id)
 
-                """
-                train = {   "departure_time": result[attempt_no - 1].departure_time,
-                            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
-                            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
-                            "departing_from": str(station_name_as_string1).title(),
-                            "direction_id": trip[0].direction_id,
-                            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
-                            "user_destination": station_name_as_string2.title()
-                }
-                """
+                
+                #train = {   "departure_time": result[attempt_no - 1].departure_time,
+                #            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
+                #            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
+                #            "departing_from": str(station_name_as_string1).title(),
+                #            "direction_id": trip[0].direction_id,
+                #            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
+                #            "user_destination": station_name_as_string2.title()
+                #}
+                
                 found_a_train_thats_going_to_station2 = True
             # check if we get a result when we subtract 24 hours
             # elif():
             else:
                 attempt_no += 1
         return train
+    """
 
+    """
+    # Not needed
     @classmethod
     def get_nth_stop_time_for_station_to_station(cls, station_name_as_string1, station_name_as_string2, n):
         # n is ordinal number for results (e.g. 1 for first train, 2 for second train, etc.)
@@ -331,11 +347,11 @@ class StopTime(Model):
         now = datetime.now(tz)
         print now
         seconds_since_midnight = int((now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds())
-        """
-        First departure of the SERVICE day is at 3:48
-        So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
-        so that services after midnight show as being available
-        """
+        
+        #First departure of the SERVICE day is at 3:48
+        #So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
+        #so that services after midnight show as being available
+        
         if seconds_since_midnight < 3*3600 + 48*60:
             seconds_since_midnight = seconds_since_midnight + 24*3600
 
@@ -382,16 +398,16 @@ class StopTime(Model):
                 train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
                                            terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string1), 
                                            direction_id=trip[0].direction_id, route_id=trip[0].route_id)
-                """
-                train = {   "departure_time": result[attempt_no - 1].departure_time,
-                            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
-                            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
-                            "departing_from": str(station_name_as_string1).title(),
-                            "direction_id": trip[0].direction_id,
-                            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
-                            "user_destination": station_name_as_string2.title()
-                }
-                """
+                
+                #train = {   "departure_time": result[attempt_no - 1].departure_time,
+                #            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
+                #            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
+                #            "departing_from": str(station_name_as_string1).title(),
+                #            "direction_id": trip[0].direction_id,
+                #            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
+                #            "user_destination": station_name_as_string2.title()
+                #}
+                
                 if trains_to_skip <= 0:
                     found_a_train_thats_going_to_station2 = True
                 else:
@@ -402,7 +418,9 @@ class StopTime(Model):
             else:
                 attempt_no += 1
         return train
-
+    """
+    """
+    Not needed
     @classmethod
     def get_next_stop_time_for_station_name_in_direction(cls, station_name_as_string, direction):
         print "In get_next_stop_time_for_station_name_in_direction()"
@@ -411,11 +429,11 @@ class StopTime(Model):
         now = datetime.now(tz)
         print now
         seconds_since_midnight = int((now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds())
-        """
-        First departure of the SERVICE day is at 3:48
-        So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
-        so that services after midnight show as being available
-        """
+        
+        #First departure of the SERVICE day is at 3:48
+        #So, if seconds less than 3*3600 + 48*60, add 24*3600 to seconds_since_midnight
+        #so that services after midnight show as being available
+        
         if seconds_since_midnight < 3*3600 + 48*60:
             seconds_since_midnight = seconds_since_midnight + 24*3600
 
@@ -450,20 +468,21 @@ class StopTime(Model):
                 train = cls.build_train_object(departure_time=result[attempt_no - 1].departure_time, 
                                            terminus=str(trip[0].trip_headsign), departure_from=str(station_name_as_string), 
                                            direction_id=trip[0].direction_id)
-                """
-                train = {   "departure_time": result[attempt_no - 1].departure_time,
-                            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
-                            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
-                            "departing_from": str(station_name_as_string).title(),
-                            "direction_id": trip[0].direction_id,
-                            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
-                            "user_destination": ""
-                }
-                """
+                
+                #train = {   "departure_time": result[attempt_no - 1].departure_time,
+                #            "pretty_departure_time": cls.pretty_format_time(result[attempt_no - 1].departure_time),
+                #            "terminus": str(trip[0].trip_headsign).title(), # Title case the direction sign
+                #            "departing_from": str(station_name_as_string).title(),
+                #            "direction_id": trip[0].direction_id,
+                #            "route_name": Route.get_route_name_from_id_dict()[trip[0].route_id], # Get route name from route id
+                #            "user_destination": ""
+                #}
+                
                 found_a_train_thats_not_terminating = True
             else:
                 attempt_no += 1
         return train
+    """
 
     @classmethod
     def pretty_format_time(cls, time_as_seconds_after_midnight):

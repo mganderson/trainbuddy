@@ -154,7 +154,7 @@ class ApiService(Controller):
 
     def get_next_train_one_station(self, json_data):
         station = json_data.get("result").get("parameters").get("stations")
-        train = StopTime.get_next_stop_time_for_station_name(station.upper())
+        train = StopTime.get_n_many_departures_for_station(station.upper(), 1)[0]
         if train:
             speech = "The next departure from {} is the {} {} train to {}".format(  train.get("departing_from",""),
                                                                                     train.get("pretty_departure_time",""),
@@ -167,7 +167,7 @@ class ApiService(Controller):
     def get_next_train_one_station_towards(self, json_data):
         origin = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
         destination = json_data.get("result").get("contexts")[0].get("parameters").get("destination")
-        train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
+        train = StopTime.get_n_many_departures_origin_dest(origin.upper(), destination.upper(),1)[0]
         if train:
             speech = "The next departure from {} to {} is the {} {} train to {}".format(train.get("departing_from",""),
                                                                                         destination.title(),
@@ -181,7 +181,7 @@ class ApiService(Controller):
 
     def get_next_train_one_station_next(self, json_data):
         station = json_data.get("result").get("contexts")[0].get("parameters").get("stations")
-        train = StopTime.get_nth_stop_time_for_station_name(station.upper(), 2)
+        train = StopTime.get_n_many_departures_for_station(station.upper(), 2)[1]
         if train:
             speech = "The departure after that from {} is the {} {} train to {}".format(train.get("departing_from",""),
                                                                                         train.get("pretty_departure_time",""),
@@ -194,7 +194,7 @@ class ApiService(Controller):
     def get_next_train_in_direction(self, json_data):
         station = json_data.get("result").get("parameters").get("stations")
         destination = json_data.get("result").get("parameters").get("destination")
-        train = StopTime.get_next_stop_time_for_station_name_in_direction(station.upper(), destination)
+        train = StopTime.get_n_many_departures_origin_dest(station.upper(), destination.upper(), 1)[0]
         if train:
             speech = "The next departure from {} to {} is the {} {} train to {}".format(train.get("departing_from",""),
                                                                                         destination,
@@ -209,7 +209,7 @@ class ApiService(Controller):
     def get_next_train_two_stations(self, json_data):
         origin = json_data.get("result").get("parameters").get("origin")
         destination = json_data.get("result").get("parameters").get("destination")
-        train = StopTime.get_next_stop_time_for_station_to_station(origin.upper(), destination.upper())
+        train = StopTime.get_n_many_departures_origin_dest(origin.upper(), destination.upper(),1)[0]
         if train:
             speech = "The next departure from {} to {} is the {} {} train to {}".format(train.get("departing_from",""),
                                                                                         destination.title(),
@@ -224,7 +224,7 @@ class ApiService(Controller):
     def get_next_train_two_stations_next(self, json_data):
         origin = json_data.get("result").get("contexts")[0].get("parameters").get("origin")
         destination = json_data.get("result").get("contexts")[0].get("parameters").get("destination")
-        train = StopTime.get_nth_stop_time_for_station_to_station(origin.upper(), destination.upper(), 2)
+        train = StopTime.get_n_many_departures_origin_dest(origin.upper(), destination.upper(), 2)[1]
         if train:
             speech = "After that, the next departure from {} to {} is the {} {} train to {}".format(  train.get("departing_from",""),
                                                                                                 destination.title(),
@@ -249,8 +249,8 @@ class ApiService(Controller):
         #else:
         favorite_station_1 = existing_user.origin_station
         favorite_station_2 = existing_user.destination_station
-        train_from_1_to_2 = StopTime.get_next_stop_time_for_station_to_station(favorite_station_1.upper(), favorite_station_2.upper())
-        train_from_2_to_1 = StopTime.get_next_stop_time_for_station_to_station(favorite_station_2.upper(), favorite_station_1.upper())
+        train_from_1_to_2 = StopTime.get_n_many_departures_origin_dest(favorite_station_1.upper(), favorite_station_2.upper(),1)[0]
+        train_from_2_to_1 = StopTime.get_n_many_departures_origin_dest(favorite_station_2.upper(), favorite_station_1.upper(),1)[0]
         if train_from_1_to_2 and train_from_2_to_1:
             speech = "The next departure from {} to {} is the {} {} train to {}.  ".format(  train_from_1_to_2.get("departing_from",""),
                                                                                     favorite_station_2.title(),
@@ -326,9 +326,12 @@ class ApiService(Controller):
     def say_hello(self):
         return "HELLO"
 
+    """
+    # Not needed
     @route_with('/api/get_stops_by_id')
     def get_stops_by_id(self):
         return str(StopTime.get_stop_times_for_station_id(self.request.params["station_id"]))
+    """
 
     @route_with('/api/get_stops_by_name')
     def get_stops_by_name(self):
@@ -341,7 +344,7 @@ class ApiService(Controller):
 
     @route_with("/api/get_next_train_by_station_name")
     def get_next_train_by_station_name(self):
-        return str(StopTime.get_next_stop_time_for_station_name(self.request.params["station_name"]))
+        return str(StopTime.get_n_many_departures_for_station(self.request.params["station_name"].upper(), 1))
 
     # Test for webhook
     def praise_colin(self, json_data):

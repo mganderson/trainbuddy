@@ -1,0 +1,1434 @@
+{
+  "id": "055a220e-39fc-4ade-a710-d63163881c8e",
+  "name": "stations",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "30th st. phl.",
+      "synonyms": [
+        "30th st. phl.",
+        "30th Street Station",
+        "Thirtieth Street Station",
+        "Philadelphia",
+        "30th Street Philadelphia"
+      ]
+    },
+    {
+      "value": "absecon",
+      "synonyms": [
+        "absecon"
+      ]
+    },
+    {
+      "value": "allendale",
+      "synonyms": [
+        "allendale"
+      ]
+    },
+    {
+      "value": "allenhurst",
+      "synonyms": [
+        "allenhurst"
+      ]
+    },
+    {
+      "value": "anderson street",
+      "synonyms": [
+        "anderson street"
+      ]
+    },
+    {
+      "value": "annandale",
+      "synonyms": [
+        "annandale"
+      ]
+    },
+    {
+      "value": "asbury park",
+      "synonyms": [
+        "asbury park"
+      ]
+    },
+    {
+      "value": "atco",
+      "synonyms": [
+        "atco"
+      ]
+    },
+    {
+      "value": "atlantic city",
+      "synonyms": [
+        "atlantic city"
+      ]
+    },
+    {
+      "value": "avenel",
+      "synonyms": [
+        "avenel"
+      ]
+    },
+    {
+      "value": "basking ridge",
+      "synonyms": [
+        "basking ridge"
+      ]
+    },
+    {
+      "value": "bay head",
+      "synonyms": [
+        "bay head",
+        "bayhead"
+      ]
+    },
+    {
+      "value": "bay street",
+      "synonyms": [
+        "bay street"
+      ]
+    },
+    {
+      "value": "belmar",
+      "synonyms": [
+        "belmar"
+      ]
+    },
+    {
+      "value": "berkeley heights",
+      "synonyms": [
+        "berkeley heights"
+      ]
+    },
+    {
+      "value": "bernardsville",
+      "synonyms": [
+        "bernardsville"
+      ]
+    },
+    {
+      "value": "bloomfield",
+      "synonyms": [
+        "bloomfield"
+      ]
+    },
+    {
+      "value": "boonton",
+      "synonyms": [
+        "boonton"
+      ]
+    },
+    {
+      "value": "bound brook",
+      "synonyms": [
+        "bound brook"
+      ]
+    },
+    {
+      "value": "bradley beach",
+      "synonyms": [
+        "bradley beach"
+      ]
+    },
+    {
+      "value": "brick church",
+      "synonyms": [
+        "brick church"
+      ]
+    },
+    {
+      "value": "bridgewater",
+      "synonyms": [
+        "bridgewater"
+      ]
+    },
+    {
+      "value": "broadway",
+      "synonyms": [
+        "broadway"
+      ]
+    },
+    {
+      "value": "campbell hall",
+      "synonyms": [
+        "campbell hall"
+      ]
+    },
+    {
+      "value": "chatham",
+      "synonyms": [
+        "chatham"
+      ]
+    },
+    {
+      "value": "cherry hill",
+      "synonyms": [
+        "cherry hill"
+      ]
+    },
+    {
+      "value": "clifton",
+      "synonyms": [
+        "clifton"
+      ]
+    },
+    {
+      "value": "convent",
+      "synonyms": [
+        "convent"
+      ]
+    },
+    {
+      "value": "roselle park",
+      "synonyms": [
+        "roselle park"
+      ]
+    },
+    {
+      "value": "cranford",
+      "synonyms": [
+        "cranford"
+      ]
+    },
+    {
+      "value": "delawanna",
+      "synonyms": [
+        "delawanna"
+      ]
+    },
+    {
+      "value": "denville",
+      "synonyms": [
+        "denville"
+      ]
+    },
+    {
+      "value": "dover",
+      "synonyms": [
+        "dover"
+      ]
+    },
+    {
+      "value": "dunellen",
+      "synonyms": [
+        "dunellen"
+      ]
+    },
+    {
+      "value": "east orange",
+      "synonyms": [
+        "east orange"
+      ]
+    },
+    {
+      "value": "edison station",
+      "synonyms": [
+        "edison station"
+      ]
+    },
+    {
+      "value": "egg harbor",
+      "synonyms": [
+        "egg harbor"
+      ]
+    },
+    {
+      "value": "elberon",
+      "synonyms": [
+        "elberon"
+      ]
+    },
+    {
+      "value": "elizabeth",
+      "synonyms": [
+        "elizabeth"
+      ]
+    },
+    {
+      "value": "emerson",
+      "synonyms": [
+        "emerson"
+      ]
+    },
+    {
+      "value": "essex street",
+      "synonyms": [
+        "essex street"
+      ]
+    },
+    {
+      "value": "fanwood",
+      "synonyms": [
+        "fanwood"
+      ]
+    },
+    {
+      "value": "far hills",
+      "synonyms": [
+        "far hills"
+      ]
+    },
+    {
+      "value": "garfield",
+      "synonyms": [
+        "garfield"
+      ]
+    },
+    {
+      "value": "garwood",
+      "synonyms": [
+        "garwood"
+      ]
+    },
+    {
+      "value": "gillette",
+      "synonyms": [
+        "gillette"
+      ]
+    },
+    {
+      "value": "gladstone",
+      "synonyms": [
+        "gladstone"
+      ]
+    },
+    {
+      "value": "glen ridge",
+      "synonyms": [
+        "glen ridge"
+      ]
+    },
+    {
+      "value": "glen rock boro hall",
+      "synonyms": [
+        "glen rock boro hall"
+      ]
+    },
+    {
+      "value": "glen rock main line",
+      "synonyms": [
+        "glen rock main line"
+      ]
+    },
+    {
+      "value": "hackettstown",
+      "synonyms": [
+        "hackettstown"
+      ]
+    },
+    {
+      "value": "hammonton",
+      "synonyms": [
+        "hammonton"
+      ]
+    },
+    {
+      "value": "harriman",
+      "synonyms": [
+        "harriman"
+      ]
+    },
+    {
+      "value": "hawthorne",
+      "synonyms": [
+        "hawthorne"
+      ]
+    },
+    {
+      "value": "hazlet",
+      "synonyms": [
+        "hazlet"
+      ]
+    },
+    {
+      "value": "high bridge",
+      "synonyms": [
+        "high bridge"
+      ]
+    },
+    {
+      "value": "highland avenue",
+      "synonyms": [
+        "highland avenue"
+      ]
+    },
+    {
+      "value": "hillsdale",
+      "synonyms": [
+        "hillsdale"
+      ]
+    },
+    {
+      "value": "hoboken",
+      "synonyms": [
+        "hoboken"
+      ]
+    },
+    {
+      "value": "hohokus",
+      "synonyms": [
+        "hohokus"
+      ]
+    },
+    {
+      "value": "kingsland",
+      "synonyms": [
+        "kingsland"
+      ]
+    },
+    {
+      "value": "lake hopatcong",
+      "synonyms": [
+        "lake hopatcong"
+      ]
+    },
+    {
+      "value": "lebanon",
+      "synonyms": [
+        "lebanon"
+      ]
+    },
+    {
+      "value": "lincoln park",
+      "synonyms": [
+        "lincoln park"
+      ]
+    },
+    {
+      "value": "linden",
+      "synonyms": [
+        "linden"
+      ]
+    },
+    {
+      "value": "lindenwold",
+      "synonyms": [
+        "lindenwold"
+      ]
+    },
+    {
+      "value": "little falls",
+      "synonyms": [
+        "little falls"
+      ]
+    },
+    {
+      "value": "little silver",
+      "synonyms": [
+        "little silver"
+      ]
+    },
+    {
+      "value": "long branch",
+      "synonyms": [
+        "long branch"
+      ]
+    },
+    {
+      "value": "lyndhurst",
+      "synonyms": [
+        "lyndhurst"
+      ]
+    },
+    {
+      "value": "lyons",
+      "synonyms": [
+        "lyons"
+      ]
+    },
+    {
+      "value": "madison",
+      "synonyms": [
+        "madison"
+      ]
+    },
+    {
+      "value": "mahwah",
+      "synonyms": [
+        "mahwah"
+      ]
+    },
+    {
+      "value": "manasquan",
+      "synonyms": [
+        "manasquan"
+      ]
+    },
+    {
+      "value": "maplewood",
+      "synonyms": [
+        "maplewood"
+      ]
+    },
+    {
+      "value": "metropark",
+      "synonyms": [
+        "metropark",
+        "metro park"
+      ]
+    },
+    {
+      "value": "metuchen",
+      "synonyms": [
+        "metuchen"
+      ]
+    },
+    {
+      "value": "middletown nj",
+      "synonyms": [
+        "middletown nj",
+        "middletown"
+      ]
+    },
+    {
+      "value": "middletown ny",
+      "synonyms": [
+        "middletown ny"
+      ]
+    },
+    {
+      "value": "millburn",
+      "synonyms": [
+        "millburn"
+      ]
+    },
+    {
+      "value": "millington",
+      "synonyms": [
+        "millington"
+      ]
+    },
+    {
+      "value": "montclair heights",
+      "synonyms": [
+        "montclair heights"
+      ]
+    },
+    {
+      "value": "montvale",
+      "synonyms": [
+        "montvale"
+      ]
+    },
+    {
+      "value": "morris plains",
+      "synonyms": [
+        "morris plains"
+      ]
+    },
+    {
+      "value": "morristown",
+      "synonyms": [
+        "morristown"
+      ]
+    },
+    {
+      "value": "mount olive",
+      "synonyms": [
+        "mount olive"
+      ]
+    },
+    {
+      "value": "mount tabor",
+      "synonyms": [
+        "mount tabor"
+      ]
+    },
+    {
+      "value": "mountain avenue",
+      "synonyms": [
+        "mountain avenue"
+      ]
+    },
+    {
+      "value": "mountain lakes",
+      "synonyms": [
+        "mountain lakes"
+      ]
+    },
+    {
+      "value": "mountain station",
+      "synonyms": [
+        "mountain station"
+      ]
+    },
+    {
+      "value": "mountain view",
+      "synonyms": [
+        "mountain view"
+      ]
+    },
+    {
+      "value": "murray hill",
+      "synonyms": [
+        "murray hill"
+      ]
+    },
+    {
+      "value": "nanuet",
+      "synonyms": [
+        "nanuet"
+      ]
+    },
+    {
+      "value": "netcong",
+      "synonyms": [
+        "netcong"
+      ]
+    },
+    {
+      "value": "netherwood",
+      "synonyms": [
+        "netherwood"
+      ]
+    },
+    {
+      "value": "new brunswick",
+      "synonyms": [
+        "new brunswick"
+      ]
+    },
+    {
+      "value": "new providence",
+      "synonyms": [
+        "new providence"
+      ]
+    },
+    {
+      "value": "new york penn station",
+      "synonyms": [
+        "new york penn station",
+        "new york penn",
+        "new york",
+        "penn",
+        "penn station"
+      ]
+    },
+    {
+      "value": "newark broad st",
+      "synonyms": [
+        "newark broad st",
+        "newark broad",
+        "broad street",
+        "newark broad street",
+        "broad street newark"
+      ]
+    },
+    {
+      "value": "newark penn station",
+      "synonyms": [
+        "newark penn station",
+        "newark penn",
+        "newark"
+      ]
+    },
+    {
+      "value": "north branch",
+      "synonyms": [
+        "north branch"
+      ]
+    },
+    {
+      "value": "north elizabeth",
+      "synonyms": [
+        "north elizabeth"
+      ]
+    },
+    {
+      "value": "new bridge landing",
+      "synonyms": [
+        "new bridge landing"
+      ]
+    },
+    {
+      "value": "oradell",
+      "synonyms": [
+        "oradell"
+      ]
+    },
+    {
+      "value": "orange",
+      "synonyms": [
+        "orange"
+      ]
+    },
+    {
+      "value": "otisville",
+      "synonyms": [
+        "otisville"
+      ]
+    },
+    {
+      "value": "park ridge",
+      "synonyms": [
+        "park ridge"
+      ]
+    },
+    {
+      "value": "passaic",
+      "synonyms": [
+        "passaic"
+      ]
+    },
+    {
+      "value": "paterson",
+      "synonyms": [
+        "paterson"
+      ]
+    },
+    {
+      "value": "peapack",
+      "synonyms": [
+        "peapack"
+      ]
+    },
+    {
+      "value": "pearl river",
+      "synonyms": [
+        "pearl river"
+      ]
+    },
+    {
+      "value": "perth amboy",
+      "synonyms": [
+        "perth amboy"
+      ]
+    },
+    {
+      "value": "plainfield",
+      "synonyms": [
+        "plainfield"
+      ]
+    },
+    {
+      "value": "plauderville",
+      "synonyms": [
+        "plauderville"
+      ]
+    },
+    {
+      "value": "point pleasant",
+      "synonyms": [
+        "point pleasant"
+      ]
+    },
+    {
+      "value": "port jervis",
+      "synonyms": [
+        "port jervis"
+      ]
+    },
+    {
+      "value": "princeton",
+      "synonyms": [
+        "princeton"
+      ]
+    },
+    {
+      "value": "princeton jct.",
+      "synonyms": [
+        "princeton jct.",
+        "princeton junction"
+      ]
+    },
+    {
+      "value": "radburn",
+      "synonyms": [
+        "radburn"
+      ]
+    },
+    {
+      "value": "rahway",
+      "synonyms": [
+        "rahway"
+      ]
+    },
+    {
+      "value": "ramsey",
+      "synonyms": [
+        "ramsey"
+      ]
+    },
+    {
+      "value": "raritan",
+      "synonyms": [
+        "raritan"
+      ]
+    },
+    {
+      "value": "red bank",
+      "synonyms": [
+        "red bank"
+      ]
+    },
+    {
+      "value": "ridgewood",
+      "synonyms": [
+        "ridgewood"
+      ]
+    },
+    {
+      "value": "river edge",
+      "synonyms": [
+        "river edge"
+      ]
+    },
+    {
+      "value": "rutherford",
+      "synonyms": [
+        "rutherford"
+      ]
+    },
+    {
+      "value": "salisbury mills-cornwall",
+      "synonyms": [
+        "salisbury mills-cornwall",
+        "salisbury mills cornwall"
+      ]
+    },
+    {
+      "value": "short hills",
+      "synonyms": [
+        "short hills"
+      ]
+    },
+    {
+      "value": "sloatsburg",
+      "synonyms": [
+        "sloatsburg"
+      ]
+    },
+    {
+      "value": "somerville",
+      "synonyms": [
+        "somerville"
+      ]
+    },
+    {
+      "value": "south amboy",
+      "synonyms": [
+        "south amboy"
+      ]
+    },
+    {
+      "value": "south orange",
+      "synonyms": [
+        "south orange"
+      ]
+    },
+    {
+      "value": "spring lake",
+      "synonyms": [
+        "spring lake"
+      ]
+    },
+    {
+      "value": "spring valley",
+      "synonyms": [
+        "spring valley"
+      ]
+    },
+    {
+      "value": "stirling",
+      "synonyms": [
+        "stirling"
+      ]
+    },
+    {
+      "value": "suffern",
+      "synonyms": [
+        "suffern"
+      ]
+    },
+    {
+      "value": "summit",
+      "synonyms": [
+        "summit"
+      ]
+    },
+    {
+      "value": "teterboro",
+      "synonyms": [
+        "teterboro"
+      ]
+    },
+    {
+      "value": "towaco",
+      "synonyms": [
+        "towaco"
+      ]
+    },
+    {
+      "value": "trenton transit center",
+      "synonyms": [
+        "trenton transit center",
+        "trenton"
+      ]
+    },
+    {
+      "value": "tuxedo",
+      "synonyms": [
+        "tuxedo"
+      ]
+    },
+    {
+      "value": "upper montclair",
+      "synonyms": [
+        "upper montclair"
+      ]
+    },
+    {
+      "value": "waldwick",
+      "synonyms": [
+        "waldwick"
+      ]
+    },
+    {
+      "value": "walnut street",
+      "synonyms": [
+        "walnut street"
+      ]
+    },
+    {
+      "value": "watchung avenue",
+      "synonyms": [
+        "watchung avenue"
+      ]
+    },
+    {
+      "value": "watsessing avenue",
+      "synonyms": [
+        "watsessing avenue"
+      ]
+    },
+    {
+      "value": "westfield",
+      "synonyms": [
+        "westfield"
+      ]
+    },
+    {
+      "value": "westwood",
+      "synonyms": [
+        "westwood"
+      ]
+    },
+    {
+      "value": "white house",
+      "synonyms": [
+        "white house"
+      ]
+    },
+    {
+      "value": "woodbridge",
+      "synonyms": [
+        "woodbridge"
+      ]
+    },
+    {
+      "value": "woodcliff lake",
+      "synonyms": [
+        "woodcliff lake"
+      ]
+    },
+    {
+      "value": "wood-ridge",
+      "synonyms": [
+        "wood-ridge",
+        "woodridge"
+      ]
+    },
+    {
+      "value": "military park light rail station",
+      "synonyms": [
+        "military park light rail station"
+      ]
+    },
+    {
+      "value": "davenport avenue light rail station",
+      "synonyms": [
+        "davenport avenue light rail station"
+      ]
+    },
+    {
+      "value": "norfolk street light rail station",
+      "synonyms": [
+        "norfolk street light rail station"
+      ]
+    },
+    {
+      "value": "park avenue newark light rail station",
+      "synonyms": [
+        "park avenue newark light rail station"
+      ]
+    },
+    {
+      "value": "warren street light rail station",
+      "synonyms": [
+        "warren street light rail station",
+        "warren street",
+        "njit"
+      ]
+    },
+    {
+      "value": "washington street light rail station",
+      "synonyms": [
+        "washington street light rail station"
+      ]
+    },
+    {
+      "value": "port imperial hblr station",
+      "synonyms": [
+        "port imperial hblr station"
+      ]
+    },
+    {
+      "value": "bloomfield avenue light rail station",
+      "synonyms": [
+        "bloomfield avenue light rail station"
+      ]
+    },
+    {
+      "value": "orange street light rail station",
+      "synonyms": [
+        "orange street light rail station"
+      ]
+    },
+    {
+      "value": "lincoln harbor light rail station",
+      "synonyms": [
+        "lincoln harbor light rail station"
+      ]
+    },
+    {
+      "value": "branch brook park light rail station",
+      "synonyms": [
+        "branch brook park light rail station"
+      ]
+    },
+    {
+      "value": "penn station light rail departure",
+      "synonyms": [
+        "penn station light rail departure"
+      ]
+    },
+    {
+      "value": "hamilton",
+      "synonyms": [
+        "hamilton"
+      ]
+    },
+    {
+      "value": "jersey ave.",
+      "synonyms": [
+        "jersey ave."
+      ]
+    },
+    {
+      "value": "exchange place light rail station",
+      "synonyms": [
+        "exchange place light rail station"
+      ]
+    },
+    {
+      "value": "essex street light rail station",
+      "synonyms": [
+        "essex street light rail station"
+      ]
+    },
+    {
+      "value": "marin boulevard light rail station",
+      "synonyms": [
+        "marin boulevard light rail station"
+      ]
+    },
+    {
+      "value": "jersey avenue light rail station",
+      "synonyms": [
+        "jersey avenue light rail station"
+      ]
+    },
+    {
+      "value": "liberty state park-ride light rail sta",
+      "synonyms": [
+        "liberty state park-ride light rail sta"
+      ]
+    },
+    {
+      "value": "garfield avenue light rail station",
+      "synonyms": [
+        "garfield avenue light rail station"
+      ]
+    },
+    {
+      "value": "mlk drive light rail station",
+      "synonyms": [
+        "mlk drive light rail station"
+      ]
+    },
+    {
+      "value": "west side avenue light rail station",
+      "synonyms": [
+        "west side avenue light rail station"
+      ]
+    },
+    {
+      "value": "richard street light rail station",
+      "synonyms": [
+        "richard street light rail station"
+      ]
+    },
+    {
+      "value": "danforth avenue light rail station",
+      "synonyms": [
+        "danforth avenue light rail station"
+      ]
+    },
+    {
+      "value": "45th street light rail station",
+      "synonyms": [
+        "45th street light rail station"
+      ]
+    },
+    {
+      "value": "34th street light rail station",
+      "synonyms": [
+        "34th street light rail station"
+      ]
+    },
+    {
+      "value": "aberdeen-matawan",
+      "synonyms": [
+        "aberdeen-matawan",
+        "aberdeen",
+        "matawan"
+      ]
+    },
+    {
+      "value": "harborside light rail station",
+      "synonyms": [
+        "harborside light rail station"
+      ]
+    },
+    {
+      "value": "harsimus cove light rail station",
+      "synonyms": [
+        "harsimus cove light rail station"
+      ]
+    },
+    {
+      "value": "newport light rail station",
+      "synonyms": [
+        "newport light rail station"
+      ]
+    },
+    {
+      "value": "newark airport railroad station",
+      "synonyms": [
+        "newark airport railroad station",
+        "newark airport",
+        "newark liberty",
+        "airport",
+        "the airport"
+      ]
+    },
+    {
+      "value": "silver lake light rail station",
+      "synonyms": [
+        "silver lake light rail station"
+      ]
+    },
+    {
+      "value": "grove street light rail station",
+      "synonyms": [
+        "grove street light rail station"
+      ]
+    },
+    {
+      "value": "msu",
+      "synonyms": [
+        "msu",
+        "montclair state university",
+        "montclair state",
+        "montclair university"
+      ]
+    },
+    {
+      "value": "union",
+      "synonyms": [
+        "union"
+      ]
+    },
+    {
+      "value": "frank r lautenberg secaucus lower level",
+      "synonyms": [
+        "frank r lautenberg secaucus lower level",
+        "secaucus lower"
+      ]
+    },
+    {
+      "value": "frank r lautenberg secaucus upper level",
+      "synonyms": [
+        "frank r lautenberg secaucus upper level",
+        "secaucus",
+        "secaucus upper"
+      ]
+    },
+    {
+      "value": "22nd street light rail station",
+      "synonyms": [
+        "22nd street light rail station"
+      ]
+    },
+    {
+      "value": "trenton transit center light rail sta",
+      "synonyms": [
+        "trenton transit center light rail sta",
+        "trenton light rail",
+        "trenton transit light rail",
+        "trenton transit light rail station"
+      ]
+    },
+    {
+      "value": "hamilton avenue light rail station",
+      "synonyms": [
+        "hamilton avenue light rail station"
+      ]
+    },
+    {
+      "value": "cass street light rail station",
+      "synonyms": [
+        "cass street light rail station"
+      ]
+    },
+    {
+      "value": "bordentown light rail station",
+      "synonyms": [
+        "bordentown light rail station"
+      ]
+    },
+    {
+      "value": "roebling light rail station",
+      "synonyms": [
+        "roebling light rail station"
+      ]
+    },
+    {
+      "value": "florence light rail station",
+      "synonyms": [
+        "florence light rail station"
+      ]
+    },
+    {
+      "value": "burlington towne ctr light rail station",
+      "synonyms": [
+        "burlington towne ctr light rail station"
+      ]
+    },
+    {
+      "value": "burlington south light rail station",
+      "synonyms": [
+        "burlington south light rail station"
+      ]
+    },
+    {
+      "value": "beverly/edgewater park light rail sta",
+      "synonyms": [
+        "beverly/edgewater park light rail sta"
+      ]
+    },
+    {
+      "value": "delanco light rail station",
+      "synonyms": [
+        "delanco light rail station"
+      ]
+    },
+    {
+      "value": "riverside light rail station",
+      "synonyms": [
+        "riverside light rail station"
+      ]
+    },
+    {
+      "value": "cinnaminson light rail station",
+      "synonyms": [
+        "cinnaminson light rail station"
+      ]
+    },
+    {
+      "value": "riverton light rail station",
+      "synonyms": [
+        "riverton light rail station"
+      ]
+    },
+    {
+      "value": "palmyra light rail station",
+      "synonyms": [
+        "palmyra light rail station"
+      ]
+    },
+    {
+      "value": "route 73/pennsauken light rail station",
+      "synonyms": [
+        "route 73/pennsauken light rail station"
+      ]
+    },
+    {
+      "value": "36th street light rail station",
+      "synonyms": [
+        "36th street light rail station"
+      ]
+    },
+    {
+      "value": "walter rand transportation ctr",
+      "synonyms": [
+        "walter rand transportation ctr"
+      ]
+    },
+    {
+      "value": "cooper street/rutgers light rail station",
+      "synonyms": [
+        "cooper street/rutgers light rail station"
+      ]
+    },
+    {
+      "value": "aquarium light rail station",
+      "synonyms": [
+        "aquarium light rail station"
+      ]
+    },
+    {
+      "value": "entertainment center light rail station",
+      "synonyms": [
+        "entertainment center light rail station"
+      ]
+    },
+    {
+      "value": "ramsey route 17 station",
+      "synonyms": [
+        "ramsey route 17 station"
+      ]
+    },
+    {
+      "value": "2nd street light rail station",
+      "synonyms": [
+        "2nd street light rail station"
+      ]
+    },
+    {
+      "value": "9th street light rail station",
+      "synonyms": [
+        "9th street light rail station"
+      ]
+    },
+    {
+      "value": "bergenline ave",
+      "synonyms": [
+        "bergenline ave"
+      ]
+    },
+    {
+      "value": "tonnelle avenue light rail station",
+      "synonyms": [
+        "tonnelle avenue light rail station"
+      ]
+    },
+    {
+      "value": "broad street light rail station",
+      "synonyms": [
+        "broad street light rail station"
+      ]
+    },
+    {
+      "value": "riverfront stadium light rail station",
+      "synonyms": [
+        "riverfront stadium light rail station"
+      ]
+    },
+    {
+      "value": "washington park light rail station",
+      "synonyms": [
+        "washington park light rail station"
+      ]
+    },
+    {
+      "value": "atlantic street light rail station",
+      "synonyms": [
+        "atlantic street light rail station"
+      ]
+    },
+    {
+      "value": "njpac/centre street light rail station",
+      "synonyms": [
+        "njpac/centre street light rail station"
+      ]
+    },
+    {
+      "value": "hoboken terminal light rail station",
+      "synonyms": [
+        "hoboken terminal light rail station"
+      ]
+    },
+    {
+      "value": "mount arlington",
+      "synonyms": [
+        "mount arlington"
+      ]
+    },
+    {
+      "value": "wayne/route 23 transit center [rr]",
+      "synonyms": [
+        "wayne/route 23 transit center [rr]"
+      ]
+    },
+    {
+      "value": "penn station light rail arrival",
+      "synonyms": [
+        "penn station light rail arrival",
+        "newark penn light rail arrival"
+      ]
+    },
+    {
+      "value": "8th street light rail station",
+      "synonyms": [
+        "8th street light rail station"
+      ]
+    },
+    {
+      "value": "pennsauken transit center light rail sta",
+      "synonyms": [
+        "pennsauken transit center light rail sta"
+      ]
+    },
+    {
+      "value": "pennsauken transit center",
+      "synonyms": [
+        "pennsauken transit center"
+      ]
+    },
+    {
+      "value": "wesmont",
+      "synonyms": [
+        "wesmont"
+      ]
+    },
+    {
+      "value": "newark penn",
+      "synonyms": [
+        "newark penn"
+      ]
+    },
+    {
+      "value": "new york",
+      "synonyms": [
+        "new york"
+      ]
+    },
+    {
+      "value": "middletown",
+      "synonyms": [
+        "middletown"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

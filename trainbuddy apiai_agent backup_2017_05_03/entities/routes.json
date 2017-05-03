@@ -1,0 +1,105 @@
+{
+  "id": "e09f9d4e-c6ca-4bee-936c-a18a9729ccb8",
+  "name": "routes",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Atlantic City Rail Line",
+      "synonyms": [
+        "Atlantic City Rail Line"
+      ]
+    },
+    {
+      "value": "Montclair-Boonton Line",
+      "synonyms": [
+        "Montclair-Boonton Line"
+      ]
+    },
+    {
+      "value": "Montclair-Boonton Line",
+      "synonyms": [
+        "Montclair-Boonton Line"
+      ]
+    },
+    {
+      "value": "Hudson-Bergen Light Rail",
+      "synonyms": [
+        "Hudson-Bergen Light Rail"
+      ]
+    },
+    {
+      "value": "Main/Bergen County Line",
+      "synonyms": [
+        "Main/Bergen County Line"
+      ]
+    },
+    {
+      "value": "Port Jervis Line",
+      "synonyms": [
+        "Port Jervis Line"
+      ]
+    },
+    {
+      "value": "Morris \u0026 Essex Line",
+      "synonyms": [
+        "Morris \u0026 Essex Line"
+      ]
+    },
+    {
+      "value": "Gladstone Branch",
+      "synonyms": [
+        "Gladstone Branch"
+      ]
+    },
+    {
+      "value": "Northeast Corridor",
+      "synonyms": [
+        "Northeast Corridor"
+      ]
+    },
+    {
+      "value": "North Jersey Coast Line",
+      "synonyms": [
+        "North Jersey Coast Line"
+      ]
+    },
+    {
+      "value": "North Jersey Coast Line",
+      "synonyms": [
+        "North Jersey Coast Line"
+      ]
+    },
+    {
+      "value": "Newark Light Rail",
+      "synonyms": [
+        "Newark Light Rail"
+      ]
+    },
+    {
+      "value": "Pascack Valley Line",
+      "synonyms": [
+        "Pascack Valley Line"
+      ]
+    },
+    {
+      "value": "Princeton Shuttle",
+      "synonyms": [
+        "Princeton Shuttle"
+      ]
+    },
+    {
+      "value": "Raritan Valley Line",
+      "synonyms": [
+        "Raritan Valley Line"
+      ]
+    },
+    {
+      "value": "Riverline Light Rail",
+      "synonyms": [
+        "Riverline Light Rail"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

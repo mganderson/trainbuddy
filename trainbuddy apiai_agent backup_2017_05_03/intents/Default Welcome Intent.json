@@ -1,0 +1,56 @@
+{
+  "userSays": [
+    {
+      "id": "2c18896d-290f-4687-aafe-aa9f61f0f0c5",
+      "data": [
+        {
+          "text": "what\u0027s good"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e2cf2af9-4922-4aad-adfb-09754406eb86",
+      "data": [
+        {
+          "text": "hi bud"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "0af93b8c-e1aa-40df-8ebc-31783f36f10a",
+  "name": "Default Welcome Intent",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.welcome",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "Hi!",
+            "Hello!",
+            "Good day!",
+            "Greetings!"
+          ]
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "WELCOME"
+    }
+  ]
+}

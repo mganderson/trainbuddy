@@ -27,6 +27,13 @@ class StopTimes(Controller):
         self.context["results"] = StopTime.get_n_many_departures_for_station(self.request.params["origin"], 6)
         self.context["origin"] = self.request.params["origin"].title()
 
+    @route
+    def select_one_station(self):
+        self.context["station_list"] = sorted(Stop.get_list_of_station_names_title_case())
+
+    @route
+    def select_two_stations(self):
+        self.context["station_list"] = sorted(Stop.get_list_of_station_names_title_case())
 
     #TODO
 	def view(self):

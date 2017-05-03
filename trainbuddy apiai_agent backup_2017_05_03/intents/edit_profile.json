@@ -1,0 +1,279 @@
+{
+  "userSays": [
+    {
+      "id": "4f6ab298-1704-4bf3-a713-81ef5d7ec2fe",
+      "data": [
+        {
+          "text": "change preferences"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "fb49b417-94cb-412e-85cc-b8944bf31110",
+      "data": [
+        {
+          "text": "change favorites"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ad6cbade-a107-41aa-94a5-aa649f689c0b",
+      "data": [
+        {
+          "text": "new favorite stations "
+        },
+        {
+          "text": "newark",
+          "alias": "favorite_station_1",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "hoboken",
+          "alias": "favorite_station_2",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c60e6929-73d8-4414-b7d5-d8ceb1523d09",
+      "data": [
+        {
+          "text": "my new favorite stations are "
+        },
+        {
+          "text": "long branch",
+          "alias": "favorite_station_1",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "metropark",
+          "alias": "favorite_station_2",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "3bf6a32b-23d0-4b74-8ec6-6fdb0863f167",
+      "data": [
+        {
+          "text": "change my favorite stations to "
+        },
+        {
+          "text": "red bank",
+          "alias": "favorite_station_1",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "long branch",
+          "alias": "favorite_station_2",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f3502f41-072c-4752-8182-ec9f6817c875",
+      "data": [
+        {
+          "text": "edit my preferences"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6baeed5c-a9ff-43f0-beb7-9882ccbb3186",
+      "data": [
+        {
+          "text": "update my preferences"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6428b181-96d0-40b1-b98f-b4475d6c3831",
+      "data": [
+        {
+          "text": "change my preferences"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6692e338-1824-44e3-898d-56373bdf12ce",
+      "data": [
+        {
+          "text": "change my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "026fa138-7e82-4163-bea1-5f897121bf06",
+      "data": [
+        {
+          "text": "update my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e1176c63-3bc3-4918-9408-80b7b6f61c85",
+      "data": [
+        {
+          "text": "edit my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "30d9caf4-8e90-41ff-b8a4-7b68dd7c3033",
+      "data": [
+        {
+          "text": "edit my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "aedfc8d5-fce5-44ba-8e5d-d0317b932b78",
+      "data": [
+        {
+          "text": "change my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c0ccb2cc-21fb-4e31-87bc-888d2c8c8cff",
+      "data": [
+        {
+          "text": "update my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "57991439-de53-495c-864c-575481c27382",
+      "data": [
+        {
+          "text": "please change my favorite stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b11b1867-a525-4478-8820-30e99d55df95",
+      "data": [
+        {
+          "text": "I\u0027d like to change my favorite stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f16fc52a-3a5c-4503-8494-befb8e381f8d",
+      "data": [
+        {
+          "text": "edit my favorite stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b27fb8b6-991a-4072-891a-45f3f49cf9ee",
+      "data": [
+        {
+          "text": "update my favorite stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "41d5d891-f2f7-48ca-b69a-8bd9f87dfe0c",
+  "name": "edit_profile",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "edit_profile-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "favorite_station_1",
+          "value": "$favorite_station_1",
+          "prompts": [
+            "I\u0027d be happy to update your profile with new favorite stations.  What\u0027s your first favorite station?",
+            "I didn\u0027t get your favorite stations.  What\u0027s your first favorite station?"
+          ],
+          "isList": false
+        },
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "favorite_station_2",
+          "value": "$favorite_station_2",
+          "prompts": [
+            "Got it.  What\u0027s your second favorite station that I should save?",
+            "Which is your other favorite station?"
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Are you sure you want to update your profile with these new favorite stations: $favorite_station_1 and $favorite_station_2 ?"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

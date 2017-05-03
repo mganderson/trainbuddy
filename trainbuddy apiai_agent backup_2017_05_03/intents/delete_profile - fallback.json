@@ -1,0 +1,36 @@
+{
+  "userSays": [],
+  "id": "647e332e-d513-4d89-9862-be5273ecd5b6",
+  "parentId": "32c60ef8-3953-4ca8-aee5-0316748bd0b0",
+  "rootParentId": "32c60ef8-3953-4ca8-aee5-0316748bd0b0",
+  "name": "delete_profile - fallback",
+  "auto": false,
+  "contexts": [
+    "delete_profile-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "delete_profile.delete_profile-fallback",
+      "affectedContexts": [
+        {
+          "name": "delete_profile-followup",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Sorry, I didn\u0027t quite understand that.  Please say \"yes\" or \"no\"."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": true,
+  "events": []
+}

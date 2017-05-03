@@ -1,0 +1,132 @@
+{
+  "userSays": [
+    {
+      "id": "1b0d72a4-b3e1-4549-80f9-d05248748a62",
+      "data": [
+        {
+          "text": "delete my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "bcab1f55-e179-497f-b0e6-33e80157c5f6",
+      "data": [
+        {
+          "text": "delete my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0a4fcedc-ded9-4b16-a782-f868e08583e7",
+      "data": [
+        {
+          "text": "i want to delete my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "50dc4ea4-1384-4578-a2c7-8d42c2762bc1",
+      "data": [
+        {
+          "text": "i want to erase my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "77f89c52-fe4c-4f92-a103-6e8349463299",
+      "data": [
+        {
+          "text": "i want to get rid of my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9c116e28-119f-40f3-9670-d708feec7b66",
+      "data": [
+        {
+          "text": "delete profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c8d29324-7bd8-4fc2-a1d8-3fef1d6c2ae9",
+      "data": [
+        {
+          "text": "delete account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2e2e8062-0c34-49f4-8a2b-41f5ebe30618",
+      "data": [
+        {
+          "text": "i want to get rid of my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b5512990-7cd1-4a47-9e4e-6e495b23354c",
+      "data": [
+        {
+          "text": "i want to erase my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "232c9461-2e0a-4753-a6bc-cf66ce75dfc1",
+      "data": [
+        {
+          "text": "i want to delete my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    }
+  ],
+  "id": "32c60ef8-3953-4ca8-aee5-0316748bd0b0",
+  "name": "delete_profile",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "delete_profile-followup",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Are you sure you want to delete your profile?  I won\u0027t be able to remember your favorite station pair if you do."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

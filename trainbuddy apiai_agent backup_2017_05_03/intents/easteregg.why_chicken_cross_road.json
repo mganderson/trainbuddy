@@ -1,0 +1,248 @@
+{
+  "userSays": [
+    {
+      "id": "cc594929-9138-41e7-a3e2-dbcfe83a2ed0",
+      "data": [
+        {
+          "text": "why did the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cross",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "41d4826a-70b9-4f56-b795-5abf9a5a9548",
+      "data": [
+        {
+          "text": "why didn\u0027t the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cross",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c4a895cf-1520-49a0-9a1e-06ea2f8ca1fc",
+      "data": [
+        {
+          "text": "so why did the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cross",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b9c92d7b-dc8c-4385-98fc-4165de194352",
+      "data": [
+        {
+          "text": "but why did the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cross",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f353843d-10bf-48c0-a46c-c1b5ada29512",
+      "data": [
+        {
+          "text": "why "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cross",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "89eb74d7-f50d-4671-bc68-a8394127bd99",
+      "data": [
+        {
+          "text": "when did the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cross",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c9f683de-35c6-48f1-8e8c-93ffe772542e",
+      "data": [
+        {
+          "text": "tell me why did the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cross",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2dc74ee8-8d6a-4dff-b360-ffcee77f7793",
+      "data": [
+        {
+          "text": "can you tell me why the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " crosses the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f278d95b-3e6d-48d8-9eb0-5b9871b6f9c5",
+      "data": [
+        {
+          "text": "do you know why the "
+        },
+        {
+          "text": "chicken",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " crosses the road"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "65a3cf36-00e2-473f-9616-737030c70aa9",
+  "name": "easteregg.why_chicken_cross_road",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "easteregg.why_chicken_cross_road",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "To complete another level of Angry Birds.",
+            "It was Chuck Norris\u0027s chicken. That\u0027s what she does."
+          ]
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

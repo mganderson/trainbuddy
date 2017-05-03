@@ -1,0 +1,26 @@
+{% extends "layouts/default.html" %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block bodycontent %}
+    <div class="page-header">
+        <h3>Select a station</h3>
+    </div>
+    
+
+    <form action="{{ uri(prefix=False, controller='stop_times', action='list_for_station_name') }}" method="GET">
+      <div class="form-group">
+        <label for="origin_station">Origin Station</label>
+        <select class="form-control" id="origin_station" name="origin">
+            {% for station in station_list %}
+                <option value="{{ station }}">{{ station }}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
+{% block end_of_body_scripts_and_css %}
+{% endblock %}

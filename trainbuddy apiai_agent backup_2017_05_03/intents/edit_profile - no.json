@@ -1,0 +1,152 @@
+{
+  "userSays": [
+    {
+      "id": "a5b281cf-0696-4e78-a627-395145b40f56",
+      "data": [
+        {
+          "text": "nope"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "356555ab-a30a-44ed-8318-81b751ca3eb1",
+      "data": [
+        {
+          "text": "nah"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a01ffe5f-4a6e-4144-a8e4-f3bb0f0115fb",
+      "data": [
+        {
+          "text": "no"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f754930c-a1d0-4b64-ae4a-6efd989ffee6",
+      "data": [
+        {
+          "text": "don\u0027t do it"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c0328fcf-b9be-4b9b-a1ed-5b34cfc119be",
+      "data": [
+        {
+          "text": "definitely not"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "25593e7e-9b8b-414d-8e80-92dd6619247f",
+      "data": [
+        {
+          "text": "not really"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "535290b3-88f1-4a4b-9f23-3ca42ea0e040",
+      "data": [
+        {
+          "text": "thanks but no"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3a643634-9cbf-4ac8-b813-c555e04a8cbd",
+      "data": [
+        {
+          "text": "not interested"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f6b6920e-668b-4982-9651-1dd2b3213f88",
+      "data": [
+        {
+          "text": "I don\u0027t think so"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "bece4ee1-da70-4ef2-a67f-6a853fa125e9",
+      "data": [
+        {
+          "text": "I disagree"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a48131d9-68d7-4328-bb5e-b612b249cc0d",
+      "data": [
+        {
+          "text": "I don\u0027t want that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "3c1441be-fbf5-45e1-a566-454232c9d37a",
+  "parentId": "41d5d891-f2f7-48ca-b69a-8bd9f87dfe0c",
+  "rootParentId": "41d5d891-f2f7-48ca-b69a-8bd9f87dfe0c",
+  "name": "edit_profile - no",
+  "auto": true,
+  "contexts": [
+    "edit_profile-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "edit_profile.edit_profile-no",
+      "affectedContexts": [
+        {
+          "name": "edit_profile-followup",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "edit_profile",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Ok, I won\u0027t update your profile.  If you do want to change your favorite stations later, just say \"edit profile\"."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

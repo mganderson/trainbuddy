@@ -1,0 +1,36 @@
+{
+  "userSays": [],
+  "id": "d48a5c30-6468-4ab9-b1f8-8c40c1b0c378",
+  "parentId": "fe4075ed-5068-42a2-900f-e5090d6fc6ad",
+  "rootParentId": "fe4075ed-5068-42a2-900f-e5090d6fc6ad",
+  "name": "create_profile - fallback",
+  "auto": false,
+  "contexts": [
+    "create_profile-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "create_profile.create_profile-fallback",
+      "affectedContexts": [
+        {
+          "name": "create_profile-followup",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I didn\u0027t quite get that.  Please say \"yes\" or \"no\""
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": true,
+  "events": []
+}

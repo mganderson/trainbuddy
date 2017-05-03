@@ -1,0 +1,166 @@
+{
+  "userSays": [
+    {
+      "id": "89e4e05d-2b80-4551-ba4e-8b931f78898b",
+      "data": [
+        {
+          "text": "one to "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a00da7b9-dfad-403f-9209-c76cbe067bcb",
+      "data": [
+        {
+          "text": "the next one to "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "00545903-dd2c-40e6-bed2-2b91eb5f6f7e",
+      "data": [
+        {
+          "text": "what about to "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c2200039-728c-4b0d-bfc9-9fdd9bee3a47",
+      "data": [
+        {
+          "text": "a train to "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "be85d87d-c649-4219-b6ea-477be18d96b6",
+      "data": [
+        {
+          "text": "to "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3ef7856f-b13f-42d4-944e-33cbb41ace7a",
+      "data": [
+        {
+          "text": "towards "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "7a654604-2c12-4dc3-b9fd-c78ca8de0d51",
+      "data": [
+        {
+          "text": "going towards "
+        },
+        {
+          "text": "red bank",
+          "alias": "destination",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "8bcc6466-9b70-43ca-a767-9fc312cd46e8",
+  "parentId": "8128731a-474b-449a-a913-c360541ba0fe",
+  "rootParentId": "8128731a-474b-449a-a913-c360541ba0fe",
+  "name": "get_next_train_one_station - towards",
+  "auto": true,
+  "contexts": [
+    "get_next_train_one_station-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "get_next_train_one_station.get_next_train_one_station-towards",
+      "affectedContexts": [
+        {
+          "name": "get_next_train_one_station-followup",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "destination",
+          "value": "$destination",
+          "prompts": [
+            "Towards which station?",
+            "To which station?"
+          ],
+          "isList": false
+        },
+        {
+          "required": false,
+          "dataType": "@stations",
+          "name": "stations"
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Hmm, I\u0027m having some difficulty finding a train."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

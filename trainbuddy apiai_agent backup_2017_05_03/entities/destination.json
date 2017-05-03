@@ -1,0 +1,400 @@
+{
+  "id": "a253f03e-1d3e-4105-bea9-1a41f23ba7e4",
+  "name": "destination",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "30th St. Phl.",
+      "synonyms": [
+        "30Th St. Phl.",
+        "30th Street Philadelphia",
+        "Philadelphia",
+        "30th Street Station"
+      ]
+    },
+    {
+      "value": "Atlantic City",
+      "synonyms": [
+        "Atlantic City"
+      ]
+    },
+    {
+      "value": "Hoboken",
+      "synonyms": [
+        "Hoboken"
+      ]
+    },
+    {
+      "value": "Lake Hopatcong",
+      "synonyms": [
+        "Lake Hopatcong"
+      ]
+    },
+    {
+      "value": "Denville",
+      "synonyms": [
+        "Denville"
+      ]
+    },
+    {
+      "value": "Mount Olive",
+      "synonyms": [
+        "Mount Olive"
+      ]
+    },
+    {
+      "value": "Dover",
+      "synonyms": [
+        "Dover"
+      ]
+    },
+    {
+      "value": "Hackettstown",
+      "synonyms": [
+        "Hackettstown"
+      ]
+    },
+    {
+      "value": "New York Penn Station",
+      "synonyms": [
+        "New York Penn Station",
+        "New York Penn",
+        "Penn Station New York"
+      ]
+    },
+    {
+      "value": "Msu",
+      "synonyms": [
+        "Msu",
+        "Montclair State University",
+        "MSU"
+      ]
+    },
+    {
+      "value": "Bay Street",
+      "synonyms": [
+        "Bay Street"
+      ]
+    },
+    {
+      "value": "Hblr Tonnelle",
+      "synonyms": [
+        "Hblr Tonnelle",
+        "Tonnelle",
+        "Tonnelle Avenue"
+      ]
+    },
+    {
+      "value": "Hblr Hoboken",
+      "synonyms": [
+        "Hblr Hoboken",
+        "Hoboken Light Rail",
+        "Hudson Bergen Light Rail Hoboken"
+      ]
+    },
+    {
+      "value": "Hblr West Side",
+      "synonyms": [
+        "Hblr West Side",
+        "West Side",
+        "West Side Avenue"
+      ]
+    },
+    {
+      "value": "Hblr Bayonne 8Th St",
+      "synonyms": [
+        "Hblr Bayonne 8Th St",
+        "Bayonne 8th Street",
+        "Bayonne 8th St"
+      ]
+    },
+    {
+      "value": "Hblr Flyer To Hoboken",
+      "synonyms": [
+        "Hblr Flyer To Hoboken",
+        "Flyer to Hoboken",
+        "Hoboken Flyer"
+      ]
+    },
+    {
+      "value": "Hblr Bayonne 22Nd St",
+      "synonyms": [
+        "Hblr Bayonne 22Nd St",
+        "Bayonne 22nd Stret"
+      ]
+    },
+    {
+      "value": "Hblr Flyer To Bayonne",
+      "synonyms": [
+        "Hblr Flyer To Bayonne",
+        "Bayonne Flyer",
+        "Flyer to Bayonne"
+      ]
+    },
+    {
+      "value": "Hblr Danforth Ave",
+      "synonyms": [
+        "Hblr Danforth Ave",
+        "Danforth Avenue"
+      ]
+    },
+    {
+      "value": "Suffern",
+      "synonyms": [
+        "Suffern"
+      ]
+    },
+    {
+      "value": "Waldwick",
+      "synonyms": [
+        "Waldwick"
+      ]
+    },
+    {
+      "value": "Ridgewood",
+      "synonyms": [
+        "Ridgewood"
+      ]
+    },
+    {
+      "value": "Port Jervis",
+      "synonyms": [
+        "Port Jervis"
+      ]
+    },
+    {
+      "value": "Middletown Ny",
+      "synonyms": [
+        "Middletown Ny",
+        "Middletown NY",
+        "Middletown, New York"
+      ]
+    },
+    {
+      "value": "Summit",
+      "synonyms": [
+        "Summit"
+      ]
+    },
+    {
+      "value": "Peapack",
+      "synonyms": [
+        "Peapack"
+      ]
+    },
+    {
+      "value": "Gladstone",
+      "synonyms": [
+        "Gladstone"
+      ]
+    },
+    {
+      "value": "Murray Hill",
+      "synonyms": [
+        "Murray Hill"
+      ]
+    },
+    {
+      "value": "Stirling",
+      "synonyms": [
+        "Stirling"
+      ]
+    },
+    {
+      "value": "Bernardsville",
+      "synonyms": [
+        "Bernardsville"
+      ]
+    },
+    {
+      "value": "Trenton Transit Center",
+      "synonyms": [
+        "Trenton Transit Center",
+        "Trenton",
+        "TTC"
+      ]
+    },
+    {
+      "value": "Rahway",
+      "synonyms": [
+        "Rahway"
+      ]
+    },
+    {
+      "value": "Frank R Lautenberg Secaucus Upper Level",
+      "synonyms": [
+        "Frank R Lautenberg Secaucus Upper Level",
+        "Secaucus Upper Level"
+      ]
+    },
+    {
+      "value": "Jersey Ave.",
+      "synonyms": [
+        "Jersey Ave.",
+        "Jersey Avenue"
+      ]
+    },
+    {
+      "value": "New Brunswick",
+      "synonyms": [
+        "New Brunswick"
+      ]
+    },
+    {
+      "value": "Long Branch",
+      "synonyms": [
+        "Long Branch"
+      ]
+    },
+    {
+      "value": "Bay Head",
+      "synonyms": [
+        "Bay Head"
+      ]
+    },
+    {
+      "value": "Aberdeen-Matawan",
+      "synonyms": [
+        "Aberdeen-Matawan",
+        "Matawan",
+        "Aberdeen"
+      ]
+    },
+    {
+      "value": "South Amboy",
+      "synonyms": [
+        "South Amboy"
+      ]
+    },
+    {
+      "value": "Nlr Broad St Via Penn",
+      "synonyms": [
+        "Nlr Broad St Via Penn"
+      ]
+    },
+    {
+      "value": "Nlr Penn Station",
+      "synonyms": [
+        "Nlr Penn Station"
+      ]
+    },
+    {
+      "value": "Nlr Grove St Via Penn",
+      "synonyms": [
+        "Nlr Grove St Via Penn"
+      ]
+    },
+    {
+      "value": "Nlr Grove Street",
+      "synonyms": [
+        "Nlr Grove Street"
+      ]
+    },
+    {
+      "value": "Nlr Broad St Station",
+      "synonyms": [
+        "Nlr Broad St Station"
+      ]
+    },
+    {
+      "value": "Nlr Branch Brook Park",
+      "synonyms": [
+        "Nlr Branch Brook Park"
+      ]
+    },
+    {
+      "value": "Spring Valley",
+      "synonyms": [
+        "Spring Valley"
+      ]
+    },
+    {
+      "value": "New Bridge Landing",
+      "synonyms": [
+        "New Bridge Landing"
+      ]
+    },
+    {
+      "value": "Princeton Jct.",
+      "synonyms": [
+        "Princeton Jct.",
+        "Princeton Junction"
+      ]
+    },
+    {
+      "value": "Princeton",
+      "synonyms": [
+        "Princeton"
+      ]
+    },
+    {
+      "value": "Newark Penn Station",
+      "synonyms": [
+        "Newark Penn Station",
+        "Newark"
+      ]
+    },
+    {
+      "value": "Raritan",
+      "synonyms": [
+        "Raritan"
+      ]
+    },
+    {
+      "value": "High Bridge",
+      "synonyms": [
+        "High Bridge"
+      ]
+    },
+    {
+      "value": "Rvln Waterfront Enter Center",
+      "synonyms": [
+        "Rvln Waterfront Enter Center"
+      ]
+    },
+    {
+      "value": "Rvln Trenton",
+      "synonyms": [
+        "Rvln Trenton"
+      ]
+    },
+    {
+      "value": "Rvln Burlington South",
+      "synonyms": [
+        "Rvln Burlington South"
+      ]
+    },
+    {
+      "value": "Rvln Pennsauken Rt 73 Station",
+      "synonyms": [
+        "Rvln Pennsauken Rt 73 Station"
+      ]
+    },
+    {
+      "value": "Rvln Camden Express",
+      "synonyms": [
+        "Rvln Camden Express"
+      ]
+    },
+    {
+      "value": "Rvln Camden",
+      "synonyms": [
+        "Rvln Camden"
+      ]
+    },
+    {
+      "value": "Rvln Trenton Express",
+      "synonyms": [
+        "Rvln Trenton Express"
+      ]
+    },
+    {
+      "value": "new york",
+      "synonyms": [
+        "new york"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

@@ -1,0 +1,137 @@
+{
+  "userSays": [
+    {
+      "id": "459134c2-34a4-4bba-be79-65abe3d8ad12",
+      "data": [
+        {
+          "text": "favorites"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "723edbc3-ada2-4684-8f83-279756ee582b",
+      "data": [
+        {
+          "text": "get favorites"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "edf47f6b-5674-47dd-8fa5-b997a776902d",
+      "data": [
+        {
+          "text": "get train for favorite stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1d9c1532-05ef-4299-af3a-8afe1214211d",
+      "data": [
+        {
+          "text": "get my train for favorite stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "90bd073d-91ec-4e33-8565-da7eefbb8bb2",
+      "data": [
+        {
+          "text": "get me favorite trains"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "7b712cf1-8dd3-467d-8940-a062f80cce46",
+      "data": [
+        {
+          "text": "whens the next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "cdad20a3-9611-4897-a08e-42c8500b9ce5",
+      "data": [
+        {
+          "text": "next departure"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8231915d-2600-4aea-9371-5bd99eaacdcf",
+      "data": [
+        {
+          "text": "next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "fb093ad2-6bec-4256-9393-b210dc175098",
+      "data": [
+        {
+          "text": "when\u0027s the next scheduled train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6b2dc31e-a677-4e89-bb33-8556afea98fb",
+      "data": [
+        {
+          "text": "next train times"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "636a41d5-0193-4bd3-b0f3-2671aeebd47c",
+      "data": [
+        {
+          "text": "when\u0027s the next train?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "17db7d2a-3095-4827-a9d1-0da011a866ad",
+  "name": "get_favoritepair_train_time",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "get_favoritepair_train_time",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I seem to be having difficulty finding a trains between your favorite stations departing any time soon.  Please try again later."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

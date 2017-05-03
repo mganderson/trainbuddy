@@ -1,0 +1,30 @@
+{
+  "userSays": [],
+  "id": "288d9ae8-3b34-49bd-a484-6079a7605814",
+  "parentId": "41d5d891-f2f7-48ca-b69a-8bd9f87dfe0c",
+  "rootParentId": "41d5d891-f2f7-48ca-b69a-8bd9f87dfe0c",
+  "name": "edit_profile - fallback",
+  "auto": false,
+  "contexts": [
+    "edit_profile-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "edit_profile.edit_profile-fallback",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I\u0027m sorry, I didn\u0027t get that.  Please say \"yes\" or \"no\"."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": true,
+  "events": []
+}

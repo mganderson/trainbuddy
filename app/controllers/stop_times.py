@@ -18,9 +18,9 @@ class StopTimes(Controller):
 
     @route
     def list_station_to_station(self):
-        self.context["results"] = StopTime.get_n_many_departures_origin_dest(self.request.params["origin"], self.request.params["dest"], 6)
+        self.context["results"] = StopTime.get_n_many_departures_origin_dest(self.request.params["origin"], self.request.params["destination"], 6)
         self.context["origin"] = self.request.params["origin"].title()
-        self.context["destination"] = self.request.params["dest"].title()
+        self.context["destination"] = self.request.params["destination"].title()
 
     @route
     def list_for_station_name(self):

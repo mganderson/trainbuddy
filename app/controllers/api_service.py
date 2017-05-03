@@ -242,6 +242,9 @@ class ApiService(Controller):
         existing_user = None
         try:
             existing_user = User.get_by_id(slack_id)
+            if existing_user == None:
+                speech = "I don't seem to have a profile saved with your favorite stations.  You can specify what station(s) you want train information for, or, if you are a Slack user, create a profile by saying \"create profile\""
+                return self.format_response(speech, speech, {}, [], "")
         except Exception as e:
             print e
             speech = "I don't seem to have a profile saved with your favorite stations.  You can specify what station(s) you want train information for, or, if you are a Slack user, create a profile by saying \"create profile\""
@@ -249,8 +252,14 @@ class ApiService(Controller):
         #else:
         favorite_station_1 = existing_user.origin_station
         favorite_station_2 = existing_user.destination_station
-        train_from_1_to_2 = StopTime.get_n_many_departures_origin_dest(favorite_station_1.upper(), favorite_station_2.upper(),1)[0]
-        train_from_2_to_1 = StopTime.get_n_many_departures_origin_dest(favorite_station_2.upper(), favorite_station_1.upper(),1)[0]
+        print "Favorite_station_1: {}  |  Favorite_station_2: {}  ".format(existing_user.origin_station, existing_user.destination_station)
+        try:
+            train_from_1_to_2 = StopTime.get_n_many_departures_origin_dest(favorite_station_1.upper(), favorite_station_2.upper(),1)[0]
+            train_from_2_to_1 = StopTime.get_n_many_departures_origin_dest(favorite_station_2.upper(), favorite_station_1.upper(),1)[0]
+        except Exception as e:
+            print "Exception: {}  |  favorite_station_1.upper(): {}  |  favorite_station_2.upper(): {}".format(e, favorite_station_1.upper(), favorite_station_2.upper())
+            speech = "I can't seem to find departures between {} and {} right now.".format(favorite_station_1.title(), favorite_station_2.title())
+            return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
         if train_from_1_to_2 and train_from_2_to_1:
             speech = "The next departure from {} to {} is the {} {} train to {}.  ".format(  train_from_1_to_2.get("departing_from",""),
                                                                                     favorite_station_2.title(),
@@ -325,13 +334,6 @@ class ApiService(Controller):
     @route_with('/api/say_hello')
     def say_hello(self):
         return "HELLO"
-
-    """
-    # Not needed
-    @route_with('/api/get_stops_by_id')
-    def get_stops_by_id(self):
-        return str(StopTime.get_stop_times_for_station_id(self.request.params["station_id"]))
-    """
 
     @route_with('/api/get_stops_by_name')
     def get_stops_by_name(self):

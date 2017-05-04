@@ -24,7 +24,9 @@ class Stop(Model):
                     stop_id_from_csv = int(row[0]) 
                     # Strip out extraneous quote marks from CSV values
                     stop_name_from_csv = row[2].replace('"', '')
-                    stop_object = Stop(stop_id=stop_id_from_csv, stop_name=stop_name_from_csv)
+                    stop_lat_from_csv = float(row[4])
+                    stop_lon_from_csv = float(row[5])
+                    stop_object = Stop(stop_id=stop_id_from_csv, stop_name=stop_name_from_csv, stop_lat=stop_lat_from_csv, stop_lon=stop_lon_from_csv)
                     # put() to datastore
                     stop_object.put()
 

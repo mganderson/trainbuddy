@@ -69,13 +69,19 @@ class ApiService(Controller):
             if slack_user:
                 self.context['data'] = self.delete_profile(json_data, slack_user_id)
             else:
-                speech = "Sorry, there's only profile for Slack users at this point, so there's no profile to delete for you."
+                speech = "Sorry, there's only profiles for Slack users at this point, so there's no profile to delete for you."
                 self.context['data'] = self.format_response(speech, speech,{}, [], "")
         elif json_data.get("result").get("action") == "edit_profile.edit_profile-yes":
             if slack_user:
                 self.context['data'] = self.edit_profile(json_data, slack_user_id)
             else:
                 speech = "Sorry, there doesn't seem to be a current profile for you."
+                self.context['data'] = self.format_response(speech, speech,{}, [], "")
+        elif json_data.get("result").get("action") == "check_favorites":
+            if slack_user:
+                self.context['data'] = self.check_favorites(json_data, slack_user_id)
+            else:
+                speech = "Sorry, there's only profiles for Slack users at this point, so there's I don't have a current profile for you."
                 self.context['data'] = self.format_response(speech, speech,{}, [], "")
         elif json_data.get("result").get("action") == "get_next_train_one_station":
             self.context['data'] = self.get_next_train_one_station(json_data)
@@ -91,6 +97,8 @@ class ApiService(Controller):
             self.context['data'] = self.get_next_train_two_stations_next(json_data)
         elif json_data.get("result").get("action") == "get_favoritepair_train_time":
             self.context['data'] = self.get_favoritepair_train_time(json_data, slack_user_id)
+        elif json_data.get("result").get("action") == "get_favoritepair_train_time.get_favoritepair_train_time-next":
+            self.context['data'] = self.get_favoritepair_train_time_next(json_data, slack_user_id)
         elif json_data.get("result").get("action") == "get_weather":
             self.context['data'] = self.get_weather(json_data)
         elif json_data.get("result").get("action") == "get_request_json":
@@ -138,11 +146,11 @@ class ApiService(Controller):
 
     def edit_profile(self, json_data, slack_id):
         existing_user = User.get_by_id(slack_id)
-        favorite_station_1 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_1")
-        favorite_station_2 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_2")
         if existing_user is None:
             speech = "A profile doesn't seem to be saved for you, so there's nothing to edit or update.  If you'd like to create one at any point, just say \"create profile\""
             return self.format_response(speech, speech, {}, [], "")
+        favorite_station_1 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_1")
+        favorite_station_2 = json_data.get("result").get("contexts")[0].get("parameters").get("favorite_station_2")
         try:
             User.update_slack_user(slack_id, favorite_station_1, favorite_station_2)
             speech = "User profile updated successfully."
@@ -151,6 +159,17 @@ class ApiService(Controller):
             print e
             speech = "Uh oh - I suffered some sort of error trying to update your profile.  I apologize for the inconvenience."
             return self.format_response(speech, speech, {}, [], "")
+
+    def check_favorites(self, json_data, slack_id):
+        try:
+            existing_user = User.get_by_id(slack_id)
+            speech = "I have your favorite stations saved as {} and {}.  If you'd like to change them, just say \"edit profile\".".format(existing_user.origin_station.title(), existing_user.destination_station.title())
+            return self.format_response(speech, speech, {}, [], "")
+        except Exception as e:
+            print e
+            speech = "Uh oh - I suffered some sort of error trying to get your profile information.  I apologize for the inconvenience."
+            return self.format_response(speech, speech, {}, [], "")
+
 
     def get_next_train_one_station(self, json_data):
         station = json_data.get("result").get("parameters").get("stations")
@@ -277,6 +296,47 @@ class ApiService(Controller):
             speech = "I can't seem to find departures between {} and {}.".format(favorite_station_1.title(), favorite_station_2.title())
         return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
 
+    def get_favoritepair_train_time_next(self, json_data, slack_id):
+        # Check if user has a profile saved; if not
+        # return an error message
+        existing_user = None
+        try:
+            existing_user = User.get_by_id(slack_id)
+            if existing_user == None:
+                speech = "I don't seem to have a profile saved with your favorite stations.  You can specify what station(s) you want train information for, or, if you are a Slack user, create a profile by saying \"create profile\""
+                return self.format_response(speech, speech, {}, [], "")
+        except Exception as e:
+            print e
+            speech = "I don't seem to have a profile saved with your favorite stations.  You can specify what station(s) you want train information for, or, if you are a Slack user, create a profile by saying \"create profile\""
+            return self.format_response(speech, speech, {}, [], "")
+        #else:
+        favorite_station_1 = existing_user.origin_station
+        favorite_station_2 = existing_user.destination_station
+        print "Favorite_station_1: {}  |  Favorite_station_2: {}  ".format(existing_user.origin_station, existing_user.destination_station)
+        try:
+            train_from_1_to_2 = StopTime.get_n_many_departures_origin_dest(favorite_station_1.upper(), favorite_station_2.upper(),2)[1]
+            train_from_2_to_1 = StopTime.get_n_many_departures_origin_dest(favorite_station_2.upper(), favorite_station_1.upper(),2)[1]
+        except Exception as e:
+            print "Exception: {}  |  favorite_station_1.upper(): {}  |  favorite_station_2.upper(): {}".format(e, favorite_station_1.upper(), favorite_station_2.upper())
+            speech = "I can't seem to find departures between {} and {} right now.".format(favorite_station_1.title(), favorite_station_2.title())
+            return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
+        if train_from_1_to_2 and train_from_2_to_1:
+            speech = "The following departure from {} to {} is the {} {} train to {}, ".format(  train_from_1_to_2.get("departing_from",""),
+                                                                                    favorite_station_2.title(),
+                                                                                    train_from_1_to_2.get("pretty_departure_time",""),
+                                                                                    train_from_1_to_2.get("route_name",""),
+                                                                                    train_from_1_to_2.get("terminus",""),
+                                                                                   )
+            speech += "and the following departure from {} to {} is the {} {} train to {}".format( train_from_2_to_1.get("departing_from",""),
+                                                                                    favorite_station_1.title(),
+                                                                                    train_from_2_to_1.get("pretty_departure_time",""),
+                                                                                    train_from_2_to_1.get("route_name",""),
+                                                                                    train_from_2_to_1.get("terminus",""),
+                                                                                       )
+        else:
+            speech = "I can't seem to the following departure between {} and {}.".format(favorite_station_1.title(), favorite_station_2.title())
+        return self.format_response(speech, speech, {}, [], "NJTransit GTFS Static Data")
+
     def get_weather(self, json_data):
         stop = json_data.get("result").get("parameters").get("stations")
         stop_id = Stop.get_station_id_from_station_name(stop)
@@ -292,9 +352,9 @@ class ApiService(Controller):
                                                                     description,
                                                                     city)
             except:
-                speech = "The weather service seems to have crapped out.  I'm sorry :'("
+                speech = "The weather info that Yahoo sent me seems a little weird.  I'm sorry I can't display the weather right now. Here's the json: {}".format(json_data)
         else:
-            speech = "The weather service seems to have crapped out.  I'm sorry :'("
+            speech = "Yahoo Weather's not speaking to me right now - I'm sorry for the inconvenience."
 
         return self.format_response(speech, speech, {}, [], "Yahoo Weather")
 

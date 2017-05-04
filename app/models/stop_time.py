@@ -36,7 +36,7 @@ class StopTime(Model):
         # origin station, and we don't want to return those to user.
         # This will still limit the total number of datastore queries to a 
         # relatively low number in cases where we are only getting one departure
-        stop_time_list = cls.get_x_next_stop_times_by_station_id(station_id, n*5)
+        stop_time_list = cls.get_x_next_stop_times_by_station_id(station_id, n*10)
         train_list =[cls.build_train_object_from_stop_time(x) for x in stop_time_list]
         train_list = cls.remove_trains_that_terminate_at_origin_station(train_list)
         # If n is greater than the number of results, set n to number of results

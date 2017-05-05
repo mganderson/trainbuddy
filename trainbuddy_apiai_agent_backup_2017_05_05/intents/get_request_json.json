@@ -1,0 +1,57 @@
+{
+  "userSays": [
+    {
+      "id": "9827a963-3b2a-4fa9-b357-451549baa9a2",
+      "data": [
+        {
+          "text": "json"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9630e6d0-9428-4d30-bcf7-702643c6ca90",
+      "data": [
+        {
+          "text": "request json"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9c3698c5-9e28-47c1-b0d5-aaa0c4745b43",
+      "data": [
+        {
+          "text": "give me the request json"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "30b07ac3-d0b9-4710-b891-bbb3da05e432",
+  "name": "get_request_json",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "get_request_json",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I acknowledge the intent get_request_json, but the webhook isn\u0027t working."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

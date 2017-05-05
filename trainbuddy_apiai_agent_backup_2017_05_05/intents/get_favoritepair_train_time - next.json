@@ -1,0 +1,181 @@
+{
+  "userSays": [
+    {
+      "id": "623eec5c-0b5e-4a9e-9875-f3d87e075721",
+      "data": [
+        {
+          "text": "next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "15ec88bf-b376-403d-b957-07edc8a94b37",
+      "data": [
+        {
+          "text": "what train\u0027s after that one"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "94cfb51d-1def-4f89-ad3f-8b54b15dcee2",
+      "data": [
+        {
+          "text": "what\u0027s the train after"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4a1d33fd-fcf6-4e20-870c-5cc2712958ff",
+      "data": [
+        {
+          "text": "what\u0027s after that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f163e2af-24a7-46de-bf39-25b29ecc0fd6",
+      "data": [
+        {
+          "text": "show me the next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f806f850-7140-4358-8009-29e8da2e22c8",
+      "data": [
+        {
+          "text": "next"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "420114ae-3c30-4e23-b789-4e07b3fee09c",
+      "data": [
+        {
+          "text": "next page"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a96a2c1b-babe-4f2e-835a-d8b669817a74",
+      "data": [
+        {
+          "text": "go forward"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "08dce08b-fc20-4fc3-8784-b7e1483acd33",
+      "data": [
+        {
+          "text": "show me next"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5f01a10d-b9b7-4068-88f1-cafad82f4898",
+      "data": [
+        {
+          "text": "following result"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3d88543b-6ae2-456b-a631-6f4bc4f329b3",
+      "data": [
+        {
+          "text": "switch to the next"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5ef96286-c9f4-4549-9c0d-3a68a8d12b4c",
+      "data": [
+        {
+          "text": "go to the next page"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1ae82012-4789-4ba7-9486-3e4bad2445f8",
+      "data": [
+        {
+          "text": "read the next results"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8dfc5f24-9db9-4b22-957d-6afdc4d6043e",
+      "data": [
+        {
+          "text": "show me the next page"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e1abe4e1-f135-4daf-8e98-7d50accf2aee",
+      "data": [
+        {
+          "text": "show me the following results"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "b6a62c51-faa9-423e-a01d-bc88fb3bd19a",
+  "parentId": "17db7d2a-3095-4827-a9d1-0da011a866ad",
+  "rootParentId": "17db7d2a-3095-4827-a9d1-0da011a866ad",
+  "name": "get_favoritepair_train_time - next",
+  "auto": true,
+  "contexts": [
+    "get_favoritepair_train_time-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "get_favoritepair_train_time.get_favoritepair_train_time-next",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

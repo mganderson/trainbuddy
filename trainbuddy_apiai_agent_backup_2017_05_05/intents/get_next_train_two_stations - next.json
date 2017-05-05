@@ -1,0 +1,211 @@
+{
+  "userSays": [
+    {
+      "id": "1af2dc59-ca7f-47a4-9713-cc8bd541f3bb",
+      "data": [
+        {
+          "text": "and then what train?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "eb9ab4b6-2368-44e9-84e5-7c525642a0e8",
+      "data": [
+        {
+          "text": "and then which train?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2748b4f3-1792-422f-bd64-de2fe5f34b12",
+      "data": [
+        {
+          "text": "what\u0027s after that?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9d29a988-5f68-4bb1-b744-f4eaa028fa0a",
+      "data": [
+        {
+          "text": "after that one"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "67cf294c-e569-4e33-94d6-56a13afeb8fe",
+      "data": [
+        {
+          "text": "the train after than"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a67f85ac-5e19-4608-a317-0eae40292369",
+      "data": [
+        {
+          "text": "after that"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e7ee8ff0-b35d-4b64-bc23-8d83d1a3e195",
+      "data": [
+        {
+          "text": "next train"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "cb40906a-fe3a-4ec8-875f-9e58862bec96",
+      "data": [
+        {
+          "text": "next one"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f806f850-7140-4358-8009-29e8da2e22c8",
+      "data": [
+        {
+          "text": "next"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "420114ae-3c30-4e23-b789-4e07b3fee09c",
+      "data": [
+        {
+          "text": "next page"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a96a2c1b-babe-4f2e-835a-d8b669817a74",
+      "data": [
+        {
+          "text": "go forward"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "08dce08b-fc20-4fc3-8784-b7e1483acd33",
+      "data": [
+        {
+          "text": "show me next"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5f01a10d-b9b7-4068-88f1-cafad82f4898",
+      "data": [
+        {
+          "text": "following result"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3d88543b-6ae2-456b-a631-6f4bc4f329b3",
+      "data": [
+        {
+          "text": "switch to the next"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5ef96286-c9f4-4549-9c0d-3a68a8d12b4c",
+      "data": [
+        {
+          "text": "go to the next page"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1ae82012-4789-4ba7-9486-3e4bad2445f8",
+      "data": [
+        {
+          "text": "read the next results"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8dfc5f24-9db9-4b22-957d-6afdc4d6043e",
+      "data": [
+        {
+          "text": "show me the next page"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e1abe4e1-f135-4daf-8e98-7d50accf2aee",
+      "data": [
+        {
+          "text": "show me the following results"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "49b56f6d-9055-48f4-ae8e-5c34c4fd83a0",
+  "parentId": "195f7012-219b-48ef-9e84-3472162bd2a6",
+  "rootParentId": "195f7012-219b-48ef-9e84-3472162bd2a6",
+  "name": "get_next_train_two_stations - next",
+  "auto": true,
+  "contexts": [
+    "get_next_train_two_stations-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "get_next_train_two_stations.get_next_train_two_stations-next",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

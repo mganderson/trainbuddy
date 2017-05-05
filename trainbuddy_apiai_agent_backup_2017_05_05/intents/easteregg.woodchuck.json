@@ -1,0 +1,214 @@
+{
+  "userSays": [
+    {
+      "id": "a3567be7-2bc2-4488-9136-26bb640686c6",
+      "data": [
+        {
+          "text": "find out how much "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " would a woodchuck chuck"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "52f7bfce-0c4f-4de3-ae00-192112a0c710",
+      "data": [
+        {
+          "text": "how much "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": true
+        },
+        {
+          "text": " does woodchuck chuck"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b751b2b7-44f1-4c8e-9a77-53d8d13e5bc6",
+      "data": [
+        {
+          "text": "do you know how much "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " would a woodchuck chuck"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c6c3d404-930b-41ff-b83e-c28ecd37c8e6",
+      "data": [
+        {
+          "text": "how "
+        },
+        {
+          "text": "many",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " chucks would a woodchuck chuck"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "533dd358-fadb-4ea7-8bb4-5c1b0102c71f",
+      "data": [
+        {
+          "text": "how "
+        },
+        {
+          "text": "many",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " chucks would a woodchuck chuck if a woodchuck could chuck "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "88b1a272-9909-4385-b10c-8d121fadefb2",
+      "data": [
+        {
+          "text": "tell me how "
+        },
+        {
+          "text": "many",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " times would a woodchuck chuck "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " if a woodchuck would chuck "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2705f6d0-f370-4cb5-beb6-23fee78f9d42",
+      "data": [
+        {
+          "text": "can you say how "
+        },
+        {
+          "text": "many",
+          "meta": "@sys.ignore",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": true
+        },
+        {
+          "text": " could a woodchuck chuck"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "40efd913-721f-4909-90d5-b2d3e6d1bca1",
+      "data": [
+        {
+          "text": "how much chuck could a woodchuck chuck if a woodchuck could chuck "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "16cb496f-cac2-4e56-b51b-8ef429e8b2f1",
+      "data": [
+        {
+          "text": "please tell how much could a woodchuck chuck if a woodchuck could chuck "
+        },
+        {
+          "text": "wood",
+          "meta": "@sys.ignore",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "160b1397-7cca-44f8-90e2-04cd00d2e185",
+  "name": "easteregg.woodchuck",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "easteregg.woodchuck",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "All I know is that Chuck Norris would chuck twice as much.",
+            "As much wood as a woodchuck could if a woodchuck could chuck wood!",
+            "Exactly 119 pieces and 7 sticks. I know some woodchucks in the neighborhood.",
+            "This was answered in a scientific journal Annals of Improbable Research in 1995, in a paper entitled \"The Ability of Woodchucks to Chuck Cellulose Fibers\". I won\u0027t spoil it for you. You\u0027re welcome!"
+          ]
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

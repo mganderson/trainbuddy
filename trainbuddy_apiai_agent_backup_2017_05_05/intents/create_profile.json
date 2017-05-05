@@ -1,0 +1,217 @@
+{
+  "userSays": [
+    {
+      "id": "ad9b85af-c7e9-4e60-959c-d6982a397fc0",
+      "data": [
+        {
+          "text": "save my favorite stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5f3da97c-434c-4fec-8dbe-705518368403",
+      "data": [
+        {
+          "text": "I would like to make a profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ae5b6fd5-75cf-40f7-be52-9fca2c2b0e72",
+      "data": [
+        {
+          "text": "I\u0027d like to create an account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0bf2cc4a-ee8f-4ece-acc8-f9953fe6c72b",
+      "data": [
+        {
+          "text": "I would like to create a profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "95b05a3e-adeb-4c77-806b-e74256203620",
+      "data": [
+        {
+          "text": "create profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "caa93d42-b6ff-4d05-8503-70c1b310e068",
+      "data": [
+        {
+          "text": "I mostly use "
+        },
+        {
+          "text": "Newark",
+          "alias": "favorite_station_1",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "Long Branch",
+          "alias": "favorite_station_2",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e1a16894-c8b4-4ad8-9d33-c0f04f6780f4",
+      "data": [
+        {
+          "text": "I travel from "
+        },
+        {
+          "text": "Red Bank",
+          "alias": "favorite_station_1",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "in the morning",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " and from "
+        },
+        {
+          "text": "Newark",
+          "alias": "favorite_station_2",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "at night",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "86ce63d0-1450-4f9f-b089-817ac87d2a2c",
+      "data": [
+        {
+          "text": "My favorite stations are "
+        },
+        {
+          "text": "Hoboken",
+          "alias": "favorite_station_1",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "Bayhead",
+          "alias": "favorite_station_2",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "76a30ba5-f5e9-4727-b8bb-e04a94c12394",
+      "data": [
+        {
+          "text": "red bank",
+          "alias": "favorite_station_1",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "metropark",
+          "alias": "favorite_station_2",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "fe4075ed-5068-42a2-900f-e5090d6fc6ad",
+  "name": "create_profile",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "create_profile-followup",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "favorite_station_1",
+          "value": "$favorite_station_1",
+          "prompts": [
+            "Sure, I\u0027d be happy to help you make a profile. First, what\u0027s your first favorite station?   (This might be the station you usually travel from in the morning, or whatever station you use the most.  To keep things convenient for you, I can remember the two stations you travel between most often.)",
+            "Sorry, I didn\u0027t get your first favorite station.  What station do you use the most?"
+          ]
+        },
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "favorite_station_2",
+          "value": "$favorite_station_2",
+          "prompts": [
+            "What\u0027s your other favorite station?   (This might be the station you usually travel from in the evening, or another station you use most often.)",
+            "Sorry, I didn\u0027t get your other favorite station. What\u0027s the other station that you use the most?"
+          ],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Got it.  To confirm, your two favorite stations are $favorite_station_1 and $favorite_station_2, right?"
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

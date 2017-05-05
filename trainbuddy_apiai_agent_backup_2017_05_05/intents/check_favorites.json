@@ -1,0 +1,167 @@
+{
+  "userSays": [
+    {
+      "id": "d41af405-491c-47ec-bf30-7b4804d0fec9",
+      "data": [
+        {
+          "text": "show me my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e7aa3605-f11e-47a1-a06f-e4be43fc665b",
+      "data": [
+        {
+          "text": "my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4979f6fe-6dd0-4971-b310-174f814c9567",
+      "data": [
+        {
+          "text": "show me my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a1981b94-9475-4c25-a079-ff787cae451c",
+      "data": [
+        {
+          "text": "my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "44e0b883-0c9a-4491-b70d-88ca69ab76e8",
+      "data": [
+        {
+          "text": "which stations are saved to my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b3b02f08-ea3a-49a7-89b8-c65a878140ba",
+      "data": [
+        {
+          "text": "which stations are associated with my account"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ef56a7aa-c903-4920-a071-0005c45957bb",
+      "data": [
+        {
+          "text": "I forgot what stations I saved. what are they?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0f7be13a-e0ef-43e6-8e21-f21c8cf98043",
+      "data": [
+        {
+          "text": "i forgot which stations I saved to my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "36266e78-eef2-4474-9f49-71a9e13eb84c",
+      "data": [
+        {
+          "text": "which stations did I save as my favorites"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4487c4b2-2980-466e-b32a-ca8fc911b057",
+      "data": [
+        {
+          "text": "what are my preference stations"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "fcf234c5-d8ca-4791-be93-cece64b585cc",
+      "data": [
+        {
+          "text": "which are the stations associated with my profile"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a0889bb1-dfdc-4ad6-813d-d874eea72296",
+      "data": [
+        {
+          "text": "which stations are saved as my preferences?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8a3c0fcc-2e67-4184-ac20-28add2904ba9",
+      "data": [
+        {
+          "text": "what are my preferences?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "cca65d4b-7d72-4a36-9c79-d5b210bff177",
+      "data": [
+        {
+          "text": "what are my favorite stations?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "2a9e4f31-211e-47dc-8985-c53271f67a09",
+  "name": "check_favorites",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "check_favorites",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I understand that you want to check which station are saved in your profile as your favorites, but my webhook seems to be acting up. Please try again in a few moments."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

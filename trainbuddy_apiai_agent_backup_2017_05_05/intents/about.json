@@ -1,0 +1,99 @@
+{
+  "userSays": [
+    {
+      "id": "2a1bc5a2-6e4f-4084-a707-cd365db4245d",
+      "data": [
+        {
+          "text": "what\u0027s your deal?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "7a387ab2-28e1-46b4-8a65-fa76d85f1514",
+      "data": [
+        {
+          "text": "about this bot"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "7dc9833b-c117-476e-8227-fa36b8e51149",
+      "data": [
+        {
+          "text": "about this bt"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4b993824-b64b-486f-b484-c3ae4b7a5feb",
+      "data": [
+        {
+          "text": "who is your creator"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0bcfc611-087c-4ecf-afb8-a2842712538c",
+      "data": [
+        {
+          "text": "about"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "611180cd-e09e-46a2-b261-d9d6a5739bd0",
+      "data": [
+        {
+          "text": "tell me about yourself"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0366a6cd-e2a5-4543-bd60-1d27582b9091",
+      "data": [
+        {
+          "text": "who made you"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "6dfcae26-1d0d-4642-b513-458dc7ffd0c4",
+  "name": "about",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "I was made by Michael Anderson for his IS 322 class at NJIT.  You can reach him at mga25@njit.edu or through github.com/mganderson, where my code lives.",
+            "Michael Anderson is my creator.  He made me for his IS 322 class at NJIT.  You can reach him at mga25@njit.edu or through github.com/mganderson, where my code lives."
+          ]
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

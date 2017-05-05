@@ -1,0 +1,102 @@
+{
+  "userSays": [
+    {
+      "id": "9ca10c36-b705-4236-9d89-d49b64807d99",
+      "data": [
+        {
+          "text": "how can i get train times"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9e8d0e67-77ad-441e-a1fa-14926e8c9e87",
+      "data": [
+        {
+          "text": "how do i work you"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2e5556bf-4c53-4242-99e2-117c22382c91",
+      "data": [
+        {
+          "text": "how do i get train times"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "dbc8cbb6-5e3b-4857-a310-2b3b80b4f6d1",
+      "data": [
+        {
+          "text": "how does this work"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "54154284-4ab1-4a79-a14b-64e5547b4e99",
+      "data": [
+        {
+          "text": "help me"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ee0de0c2-e1d5-4ad7-855a-606d3c77831c",
+      "data": [
+        {
+          "text": "how do i do this"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0bba04a3-0a3d-4ab3-a85c-e68a5140b5f5",
+      "data": [
+        {
+          "text": "help"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "d1175476-3057-4361-b09e-396b43e37e11",
+  "name": "help",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "help-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Let me tell you how I work - To find the next train leaving a station, you can say, for example, \"Next train from Hoboken\" or, \"Show me the next departure from Newark Penn\".  You can also ask for the next train between two stations, like \"When\u0027s the next train from Metropark to Rahway\".  Say \"more\" if you\u0027d like to hear more about how I work."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

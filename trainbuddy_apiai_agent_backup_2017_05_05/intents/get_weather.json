@@ -1,0 +1,171 @@
+{
+  "userSays": [
+    {
+      "id": "136a62be-4088-46bf-97fe-70e27f11af0f",
+      "data": [
+        {
+          "text": "is it sunny at "
+        },
+        {
+          "text": "gladstone",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        },
+        {
+          "text": " station"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "0262843e-ea0b-4a7c-b511-ba017be09d9b",
+      "data": [
+        {
+          "text": "what is the weather at "
+        },
+        {
+          "text": "new york penn station",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8da007fc-97ed-4f3d-aa7d-9220b1cb3571",
+      "data": [
+        {
+          "text": "what\u0027s it like out at "
+        },
+        {
+          "text": "metropark",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0220e80c-31c5-4e5e-b97e-e1590cb5889f",
+      "data": [
+        {
+          "text": "what\u0027s it like out by "
+        },
+        {
+          "text": "metropark",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a3b442b0-b805-47dc-afdb-367542fb0967",
+      "data": [
+        {
+          "text": "is it raining at "
+        },
+        {
+          "text": "long branch",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4912eaf1-5390-4525-8679-38b92b0a9522",
+      "data": [
+        {
+          "text": "what\u0027s the temperature at "
+        },
+        {
+          "text": "convent",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d7e8125b-7158-4511-9073-c7436035e557",
+      "data": [
+        {
+          "text": "what\u0027s it like out at "
+        },
+        {
+          "text": "hoboken",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f440975b-319f-4fea-a3a9-76c7a8577146",
+      "data": [
+        {
+          "text": "what\u0027s the weather at "
+        },
+        {
+          "text": "metropark",
+          "alias": "stations",
+          "meta": "@stations",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "0f36eb75-7a6e-4256-a4bc-f9e87b47047a",
+  "name": "get_weather",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "get_weather",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "required": true,
+          "dataType": "@stations",
+          "name": "stations",
+          "value": "$stations",
+          "prompts": [
+            "Sorry, for which station do you want the weather?",
+            "What station do you want the weather for?",
+            "What\u0027s the station that you want the weather for?"
+          ],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I understand that you want the weather for $stations, but my weather system seems to be acting up.  Please try again in a few moments."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

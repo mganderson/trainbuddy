@@ -1,0 +1,107 @@
+{
+  "userSays": [
+    {
+      "id": "75ae94a7-a3b4-4d59-a0a8-6c6acc662ad0",
+      "data": [
+        {
+          "text": "more"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2e6d74db-91f2-4e5a-b15f-138a52e5b22d",
+      "data": [
+        {
+          "text": "anything else"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "bff11217-2c08-4b67-81b9-2793201fed41",
+      "data": [
+        {
+          "text": "other results"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d586743a-bb14-4d9d-9e51-287d2b94eaed",
+      "data": [
+        {
+          "text": "what else"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "33290a74-8c51-40e4-ac5c-8424f2ec7a35",
+      "data": [
+        {
+          "text": "tell me more"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f91869c4-0ce4-4ba0-9b25-8d949b9da1e1",
+      "data": [
+        {
+          "text": "show me more"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a3dffe19-e473-4c99-b2d3-510d20050322",
+      "data": [
+        {
+          "text": "more information"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "70bab0d4-e674-4168-8a92-e6524ddb66f4",
+  "parentId": "ed7ddce7-3ae0-4894-944d-b4c10d91530d",
+  "rootParentId": "d1175476-3057-4361-b09e-396b43e37e11",
+  "name": "help - more - more - more",
+  "auto": true,
+  "contexts": [
+    "help-more-more-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "help.help-more.help-more-more.help-more-more-more",
+      "affectedContexts": [
+        {
+          "name": "help-more-more-more-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": "I\u0027m not just a conversational agent - I\u0027m a webapp too! Check me out at www.trainbuddyis322.appspot.com."
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

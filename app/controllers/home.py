@@ -18,4 +18,14 @@ class Home(Controller):
 
     @route
     def list(self):
-        pass
+    	if self.session["user_logged_in"] == "True":
+    		self.redirect("/home/logged_in")
+
+    @route
+    def logged_in(self):
+    	self.context["results1"] = StopTime.get_n_many_departures_origin_dest(self.session["favorite_station_1"], self.session["favorite_station_2"], 1)
+        self.context["results2"] = StopTime.get_n_many_departures_origin_dest(self.session["favorite_station_2"], self.session["favorite_station_1"], 1)
+        self.context["favorite_station_1"] = self.session["favorite_station_1"]
+        self.context["favorite_station_2"] = self.session["favorite_station_2"]
+
+        

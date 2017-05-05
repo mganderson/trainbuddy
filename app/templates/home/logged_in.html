@@ -1,0 +1,72 @@
+{% extends "layouts/default.html" %}
+
+{% block jumbotron %}
+  <div class="jumbotron">
+    <h1>Hi, buddy!</h1>
+    <p>
+    	Thanks for logging in! The next trains between your favorite stations are listed below 👍 
+    </p>
+    <p>
+    	🚃🚃🚃💨
+    </p>
+
+  </div>
+{% endblock %}
+
+{% block bodycontent %}
+    <div>
+        <h3>Next train from {{ favorite_station_1 }} to {{ favorite_station_2 }}:</h3>
+    </div>
+    
+    <table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Leaving at</th>
+            <th>Line</th>
+            <th>Destination</th>
+        </tr>
+    </thead>
+        <tbody>
+            {% for result in results1 %}
+            <tr>
+                <td>{{ result.pretty_departure_time }}</td>
+                <!--<td>{{ result.route_name }}</td>-->
+                <td>
+                    <span class="label label-default" style="background-color: {{result.route_color}}">
+                        {{result.route_short_name}}
+                    </span>
+                </td>
+                <td>{{ result.terminus }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <h3>Next train from {{ favorite_station_2 }} to {{ favorite_station_1 }}:</h3>
+    </div>
+    
+    <table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Leaving at</th>
+            <th>Line</th>
+            <th>Destination</th>
+        </tr>
+    </thead>
+        <tbody>
+            {% for result in results2 %}
+            <tr>
+                <td>{{ result.pretty_departure_time }}</td>
+                <!--<td>{{ result.route_name }}</td>-->
+                <td>
+                    <span class="label label-default" style="background-color: {{result.route_color}}">
+                        {{result.route_short_name}}
+                    </span>
+                </td>
+                <td>{{ result.terminus }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

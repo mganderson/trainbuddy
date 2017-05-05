@@ -1,12 +1,13 @@
 from ferris import BasicModel, Model
 from google.appengine.ext import ndb
+import random, crypt
 
 class WebappUser(Model):
     email = ndb.StringProperty(required=True, indexed=True)
-    hashed_password = ndb.IntegerProperty(required=True)
+    hashed_password = ndb.StringProperty(required=True)
     favorite_station_1 = ndb.StringProperty(required=True)
     favorite_station_2 = ndb.StringProperty(required=True)
-    is_active = ndb.BooleanProperty(required=True)
+    is_active = ndb.BooleanProperty()
 
     @classmethod
     def add_webapp_user(cls, email_arg, hashed_password_arg, favorite_station_1_arg, favorite_station_2_arg):
@@ -32,3 +33,4 @@ class WebappUser(Model):
     	user = cls.get_by_id(email)
     	user.origin_station = hashed_password
     	user.put()
+

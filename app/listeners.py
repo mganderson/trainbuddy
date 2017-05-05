@@ -23,6 +23,8 @@ def inject_authorization_chains(controller, authorizations):
 
 @on('controller_before_render')
 def before_render(controller):
+	if "user_logged_in" not in controller.session:
+		controller.session["user_logged_in"] = ""
 	try:
 		controller.context["user_logged_in"] = controller.session["user_logged_in"]
 		controller.context["email"] = controller.session["email"]
@@ -30,8 +32,5 @@ def before_render(controller):
 		controller.context["favorite_station_2"] = controller.session["favorite_station_2"]
 	except Exception as e:
 		print "In before_render() except block | Exception: {}".format(e)
-		controller.context["user_logged_in"] = ""
-		controller.context["email"] = ""
-		controller.context["favorite_station_1"] = ""
-		controller.context["favorite_station_2"] = ""
+
 

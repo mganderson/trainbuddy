@@ -1,0 +1,26 @@
+{% extends "layouts/default.html" %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block bodycontent %}
+
+<div class="page-header">
+    <h3>Are you sure you want to log out?</h3>
+</div>
+
+<div class="span12 text-center">
+
+<a href="{{ uri(prefix=False, controller='webapp_users', action='logout') }}">
+    <button type="button" class="btn btn-primary btn-xlarge">Log Out</button>
+</a>
+<a href="{{ uri(prefix=False, controller='home', action='list') }}">
+    <button type="button" class="btn btn-primary btn-xlarge">Cancel</button>
+</a>
+
+</div>
+
+{% endblock %}
+
+{% block end_of_body_scripts_and_css %}
+{% endblock %}

@@ -4,6 +4,26 @@
 {% endblock %}
 
 {% block bodycontent %}
+
+<div class="page-header">
+    <h3>Log in</h3>
+</div>
+
+<form name="login_form" action="{{ uri(prefix=False, controller='webapp_users', action='check_login') }}" method="POST">
+
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+	</div>
+
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Log in</button>
+</form>
+
 {% endblock %}
 
 {% block end_of_body_scripts_and_css %}

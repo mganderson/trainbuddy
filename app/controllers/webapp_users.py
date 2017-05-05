@@ -19,14 +19,64 @@ class WebappUsers(Controller):
         Model = (WebappUser)
 
     def add(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
         self.context["station_list"] = sorted(Stop.get_list_of_station_names_title_case())
 
     @route
     def login(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
         pass
 
     @route
+    def logout(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
+        self.session["user_logged_in"] = ""
+        self.session["email"] = ""
+        self.session["favorite_station_1"] = ""
+        self.session["favorite_station_2"] = ""
+        return self.redirect('/')
+
+    @route
+    def confirm_logout(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
+        pass
+
+    @route
+    def manage_profile(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
+        pass
+
+    @route
+    def check_login(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
+        email = self.request.params["email"]
+        raw_password = self.request.params["password"]
+
+        # Hash raw password and update hashed password attribute
+        pw_hash = hashlib.md5(raw_password).hexdigest()
+
+        existing_user = list(WebappUser.query(WebappUser.email == email).filter(WebappUser.hashed_password == pw_hash))
+        if len(existing_user) > 0:
+            self.session["user_logged_in"] = "True"
+            self.session["email"] = existing_user[0].email
+            self.session["favorite_station_1"] = existing_user[0].favorite_station_1
+            self.session["favorite_station_2"] = existing_user[0].favorite_station_2
+            message = "You're logged in as {}! Awesome!".format(email)
+            return self.redirect("/webapp_users/success?message={}".format(message))
+        else:
+            error_message = "Invalid email/password combination."
+            return self.redirect("/webapp_users/error?error_message={}".format(error_message))
+
+    @route
     def success(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
         self.context["message"] = self.request.params["message"]
 
         self.context["results1"] = StopTime.get_n_many_departures_origin_dest(self.session["favorite_station_1"], self.session["favorite_station_2"], 1)
@@ -36,10 +86,14 @@ class WebappUsers(Controller):
 
     @route
     def error(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
         self.context["error_message"] = self.request.params["error_message"]
 
     @route
     def create_webapp_user(self):
+        if "user_logged_in" not in self.session:
+            self.session["user_logged_in"] = ""
         email = self.request.params["email"]
         raw_password = self.request.params["password"]
         fav1 = self.request.params["favorite_station_1"]
@@ -64,6 +118,11 @@ class WebappUsers(Controller):
         self.session["email"] = user.email
         self.session["favorite_station_1"] = user.favorite_station_1
         self.session["favorite_station_2"] = user.favorite_station_2
+
+        self.context["user_logged_in"] = "True"
+        self.context["email"] = user.email
+        self.context["favorite_station_1"] = user.favorite_station_1
+        self.context["favorite_station_2"] = user.favorite_station_2
 
         message = "Account created for email {}! Wonderful!".format(email)
         return self.redirect("/webapp_users/success?message={}".format(message))

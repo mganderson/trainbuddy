@@ -63,7 +63,7 @@ class StopTime(Model):
         dest_id = Stop.get_station_id_from_station_name(dest_name_as_string)
 
         iteration = 0
-        MAX_ITER = 20
+        MAX_ITER = 5
         train_list = []
 
         while len(train_list) < n and iteration < MAX_ITER:

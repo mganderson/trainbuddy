@@ -20,6 +20,12 @@ class Home(Controller):
     def list(self):
         if "user_logged_in" not in self.session:
             self.session["user_logged_in"] = ""
+        if  "email" not in self.session:
+            self.session["email"] = ""
+        if  "favorite_station_1" not in self.session:
+            self.session["favorite_station_1"] = ""
+        if  "favorite_station_2" not in self.session:
+            self.session["favorite_station_2"] = ""
         print "self.session[\"user_logged_in\"]: {}".format(self.session["user_logged_in"])
         self.context["user_logged_in"] = self.session["user_logged_in"]
         if self.session["user_logged_in"] == "True":

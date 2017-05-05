@@ -57,7 +57,9 @@
         padding: 18px 28px;
         font-size: 22px;
         line-height: normal;
-        font-family: 'Boogaloo', cursive;
+        /*
+         *font-family: 'Boogaloo', cursive;
+         */
         -webkit-border-radius: 8px;
            -moz-border-radius: 8px;
                 border-radius: 8px;
@@ -88,6 +90,7 @@
               <li><a href="{{ uri(prefix=False, controller='webapp_users', action='manage_profile') }}">Manage Profile</a></li>
               <li><a href="{{ uri(prefix=False, controller='webapp_users', action='confirm_logout') }}">Log Out</a></li>
             {% else %}
+              <li><a href="{{ uri(prefix=False, controller='webapp_users', action='add') }}">Create Profile</a></li>
               <li><a href="{{ uri(prefix=False, controller='webapp_users', action='login') }}">Log In</a></li>
             {% endif %}
 
@@ -96,15 +99,18 @@
       </div>
     </nav>
 
-    <div class="container theme-showcase" role="main">
+    <div class="col-md-2 col-sm-0">
+    </div>
+    <div class="container theme-showcase col-md-8 col-sm-12" role="main">
+      {% block jumbotron %}
 
-    {% block jumbotron %}
+      {% endblock %}
 
-    {% endblock %}
-
-    {% block bodycontent %}
-    {% endblock %}
-
+      {% block bodycontent %}
+      {% endblock %}
+    </div>
+    <div class="col-md-2 col-sm-0">
+    </div>
     </div> <!-- /container -->
 
 

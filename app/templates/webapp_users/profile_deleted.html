@@ -5,11 +5,11 @@
 
 {% block bodycontent %}
     <div class="page-header">
-        <h3>Oh no!</h3>
+        <h3>Profile deleted</h3>
     </div>
 
-    <div class="alert alert-danger">
-        <strong>Error:</strong> {{ error_message }}
+    <div class="alert alert-info">
+        {{ message }}
     </div>
 
     <a href="{{ uri(prefix=False, controller='home', action='list') }}">

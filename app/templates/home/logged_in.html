@@ -14,6 +14,7 @@
         <h3>Next train from {{ favorite_station_1 }} to {{ favorite_station_2 }}:</h3>
     </div>
     
+    {% if results1|length > 0 %}
     <table class="table">
     <thead class="thead-inverse">
         <tr>
@@ -37,11 +38,17 @@
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <div class="alert alert-danger">
+        <strong>Uh oh!</strong> 😳 I can't seem to find any direct trains between {{ favorite_station_1 }} and {{ favorite_station_2 }} departing in the next few hours.
+    </div>
+    {% endif %}
 
     <div>
         <h3>Next train from {{ favorite_station_2 }} to {{ favorite_station_1 }}:</h3>
     </div>
-    
+
+    {% if results2|length > 0 %}
     <table class="table">
     <thead class="thead-inverse">
         <tr>
@@ -65,4 +72,9 @@
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <div class="alert alert-danger">
+        <strong>Oh no!</strong> 😵 I can't seem to find direct trains between {{ favorite_station_1 }} and {{ favorite_station_2 }} departing in the next few hours.
+    </div>
+    {% endif %}
 {% endblock %}

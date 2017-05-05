@@ -22,6 +22,9 @@
 	</div>
 
 	<button type="submit" class="btn btn-primary">Log in</button>
+	<a href="{{ uri(prefix=False, controller='home', action='list') }}">
+        <button type="button" class="btn btn-default">Go back</button>
+    </a>
 </form>
 
 {% endblock %}

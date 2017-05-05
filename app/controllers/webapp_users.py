@@ -30,6 +30,70 @@ class WebappUsers(Controller):
         pass
 
     @route
+    def update_favorites(self):
+        try:
+            email = self.session["email"]
+            existing_user = list(WebappUser.query(WebappUser.email == email))[0]
+            existing_user.favorite_station_1 = self.request.params["favorite_station_1"]
+            existing_user.favorite_station_2 = self.request.params["favorite_station_2"]
+            existing_user.put()
+            self.session["favorite_station_1"] = self.request.params["favorite_station_1"]
+            self.session["favorite_station_2"] = self.request.params["favorite_station_2"]
+            message = "Favorite stations updated for user {}! Wonderful!".format(email)
+            return self.redirect("/webapp_users/success?message={}".format(message))
+        except Exception as e:
+            error_message = "Unable to update favorite stations. Sorry, buddy."
+            return self.redirect("/webapp_users/error?error_message={}".format(error_message))
+
+    @route
+    def update_password(self):
+        try:
+            email = self.session["email"]
+            raw_password = self.request.params["password"]
+            existing_user = list(WebappUser.query(WebappUser.email == email))[0]
+            # Hash raw password and update hashed password attribute
+            pw_hash = hashlib.md5(raw_password).hexdigest()
+            existing_user.hashed_password = pw_hash
+            existing_user.put()
+            message = "Password updated for user {}! Wonderful!".format(email)
+            return self.redirect("/webapp_users/success?message={}".format(message))
+        except Exception as e:
+            error_message = "Unable to update your password - something went wrong. Sorry, buddy."
+            return self.redirect("/webapp_users/error?error_message={}".format(error_message))
+
+    @route
+    def delete_profile(self):
+        email = self.session["email"]
+        existing_user = list(WebappUser.query(WebappUser.email == email))[0]
+        existing_user.key.delete()
+        message = "Profile deleted for {}! Sad to see you go. You can always create a new profile whenever you want, though!".format(email)
+        self.session["user_logged_in"] = ""
+        self.session["email"] = ""
+        self.session["favorite_station_1"] = ""
+        self.session["favorite_station_2"] = ""
+        return self.redirect("/webapp_users/profile_deleted?message={}".format(message))
+
+    @route
+    def profile_deleted(self):
+        self.context["message"] = self.request.params["message"]
+        pass
+
+
+    @route
+    def change_favorites(self):
+        self.context["station_list"] = sorted(Stop.get_list_of_station_names_title_case())
+        pass
+
+    @route
+    def change_password(self):
+        pass
+
+    @route
+    def confirm_delete(self):
+        pass
+
+
+    @route
     def logout(self):
         if "user_logged_in" not in self.session:
             self.session["user_logged_in"] = ""

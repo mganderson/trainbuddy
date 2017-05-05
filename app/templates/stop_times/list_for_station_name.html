@@ -32,6 +32,10 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ uri(prefix=False, controller='stop_times', action='select_one_station') }}">
+        <button type="button" class="btn btn-default">Go back</button>
+    </a>
 {% endblock %}
 
 {% block end_of_body_scripts_and_css %}

@@ -5,17 +5,11 @@
 
 {% block bodycontent %}
 
-<div class="page-header">
-    <h3>Create profile</h3>
-</div>
+    <div class="page-header">
+        <h3>Change favorite stations</h3>
+    </div>
 
-<form name="create_profile_form" action="{{ uri(prefix=False, controller='webapp_users', action='create_webapp_user') }}" method="POST" onsubmit="return validateForm()">
-
-	<div class="form-group">
-		<label for="email">Your email</label>
-		<input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
-		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone - ever</small>
-	</div>
+<form name="create_profile_form" action="{{ uri(prefix=False, controller='webapp_users', action='update_favorites') }}" method="POST" onsubmit="return validateForm()">
 
 	<div class="form-group">
 		<label for="favorite_station_1">What stations do you travel between most?</label>
@@ -39,16 +33,9 @@
 		</select>
 		<small id="emailHelp" class="form-text text-muted">Please pick two stations on the same line</small>
 	</div>
-	<div class="form-group">
-		<label for="password">Password</label>
-		<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-	</div>
-	<div class="form-group">
-		<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
-	</div>
 
-	<button type="submit" class="btn btn-primary">Create Profile</button>
-	<a href="{{ uri(prefix=False, controller='home', action='list') }}">
+	<button type="submit" class="btn btn-primary">Update favorites</button>
+	<a href="{{ uri(prefix=False, controller='webapp_users', action='manage_profile') }}">
         <button type="button" class="btn btn-default">Go back</button>
     </a>
 </form>
@@ -59,9 +46,6 @@
 <script type="text/javascript">
     console.log("In validateForm()");
 	function validateForm() {
-    var email = document.create_profile_form.email.value;
-    var password = document.create_profile_form.password.value;
-    var confirm_password = document.create_profile_form.confirm_password.value;
     var origin = document.create_profile_form.favorite_station_1.value;
     var destination = document.create_profile_form.favorite_station_2.value;
     if (origin == destination) {
@@ -70,22 +54,7 @@
         alert("You must pick two different stations");
         return false;
     }
-    if (email == "") {
-        alert("Email is required");
-        return false;
-    }
-    if (password != confirm_password) {
-    	alert("Passwords do not match");
-    	return false;
-    }
-    if (password.length < 6) {
-    	alert("Password must be at least six characters");
-    	return false;
-    }
     return true;
 }
 </script>
 {% endblock %}
-
-
-

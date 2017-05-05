@@ -9,14 +9,16 @@
     </div>
     
 
+    {% if results|length > 0 %}
     <table class="table">
-    <thead class="thead-inverse">
-        <tr>
-            <th>Leaving at</th>
-            <th>Line</th>
-            <th>Destination</th>
-        </tr>
-    </thead>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Leaving at</th>
+                <th>Line</th>
+                <th>Destination</th>
+            </tr>
+        </thead>
+
         <tbody>
             {% for result in results %}
             <tr>
@@ -32,6 +34,16 @@
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <div class="alert alert-danger">
+        <strong>OH NO!</strong> I can't seem to find any direct trains between {{ origin }} and {{ destination }} 
+        departing in the next few hours. What disappointment! 😓 
+    </div>
+    {% endif %}
+
+    <a href="{{ uri(prefix=False, controller='stop_times', action='select_two_stations') }}">
+        <button type="button" class="btn btn-default">Go back</button>
+    </a>
 {% endblock %}
 
 {% block end_of_body_scripts_and_css %}

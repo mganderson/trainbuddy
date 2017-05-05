@@ -5,14 +5,14 @@
     <h1>Hi, buddy!</h1>
     <p>
     	TrainBuddy is the fun and delightful way to experience the wonderful world
-    	of NJTransit scheduling.  
+    	of NJ Transit.  
 
     	<!--TrainBuddy can let you know know when the next 
     	train to leave a station is, or the next trains between two points, or even 
     	tell you the weather at a given station. Wow!-->
     </p>
     <p>
-    	Get the party started by creating an account, so that TrainBuddy can remember
+    	Get the party started by creating a profile, so that TrainBuddy can remember
     	your favorite stations! 
     </p>
     <p>
@@ -23,6 +23,18 @@
 {% endblock %}
 
 {% block bodycontent %}
-<button type="button" class="btn btn-primary">Create an account</button>
-<button type="button" class="btn btn-primary">Login</button>
+<div class="row-fluid">
+
+    <div class="span12 text-center">
+
+    <a href="{{ uri(prefix=False, controller='webapp_users', action='add') }}">
+        <button type="button" class="btn btn-primary btn-xlarge">Create profile</button>
+    </a>
+    <a href="{{ uri(prefix=False, controller='webapp_users', action='login') }}">
+        <button type="button" class="btn btn-primary btn-xlarge">Login</button>
+    </a>
+
+    </div>
+
+</div>
 {% endblock %}

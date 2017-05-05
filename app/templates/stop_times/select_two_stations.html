@@ -9,10 +9,13 @@
     </div>
     
 
-    <form action="{{ uri(prefix=False, controller='stop_times', action='list_station_to_station') }}" method="GET">
+    <form action="{{ uri(prefix=False, controller='stop_times', action='list_station_to_station') }}" method="GET" name="twostationform" id="twostationform" onsubmit="return validateForm()">
       <div class="form-group">
         <label for="origin_station">Origin Station</label>
-        <select class="form-control" id="origin_station" name="origin">
+        <select class="form-control" id="origin_station" name="origin_station">
+            <option value="New York Penn Station">New York Penn Station</option>
+            <option value="Newark Penn Station">Newark Penn Station</option>
+            <option value="Hoboken">Hoboken</option>
             {% for station in station_list %}
                 <option value="{{ station }}">{{ station }}</option>
             {% endfor %}
@@ -20,10 +23,10 @@
       </div>
       <div class="form-group">
         <label for="destination_station">Destination Station</label>
-        <select class="form-control" id="destination_station" name="destination">
+        <select class="form-control" id="destination_station" name="destination_station">
             <option value="New York Penn Station">New York Penn Station</option>
-            <option value="New York Penn Station">Newark Penn Station</option>
-            <option value="New York Penn Station">Hoboken</option>
+            <option value="Newark Penn Station">Newark Penn Station</option>
+            <option value="Hoboken">Hoboken</option>
             {% for station in station_list %}
                 <option value="{{ station }}">{{ station }}</option>
             {% endfor %}
@@ -34,4 +37,15 @@
 {% endblock %}
 
 {% block end_of_body_scripts_and_css %}
+<script type="text/javascript">
+    function validateForm() {
+    console.log("In validateForm()");
+    var origin_station = document.forms["twostationform"]["origin_station"].value;
+    var destination_station = document.forms["create_profile_form"]["destination_station"].value;
+    if (origin_station == destination_station) {
+        alert("Origin and destination cannot be the same");
+        return false;
+    }
+}
+</script>
 {% endblock %}

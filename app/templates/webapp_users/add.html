@@ -1,0 +1,75 @@
+{% extends "layouts/default.html" %}
+
+{% block jumbotron %}
+{% endblock %}
+ß
+{% block bodycontent %}
+
+<div class="page-header">
+    <h3>Create profile</h3>
+</div>
+
+<form name="create_profile_form" action="{{ uri(prefix=False, controller='webapp_users', action='create_webapp_user') }}" method="POST" onsubmit="return validateForm()">
+
+	<div class="form-group">
+		<label for="email">Your email</label>
+		<input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone - ever</small>
+	</div>
+
+	<div class="form-group">
+		<label for="favorite_station_1">What stations do you travel between most?</label>
+		<select class="form-control" id="favorite_station_1" name="favorite_station_1">
+			<option value="New York Penn Station">New York Penn Station</option>
+			<option value="New York Penn Station">Newark Penn Station</option>
+			<option value="New York Penn Station">Hoboken</option>
+			{% for station in station_list %}
+			    <option value="{{ station }}">{{ station }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="form-group">
+		<select class="form-control" id="favorite_station_2" name="favorite_station_2">
+			<option value="New York Penn Station">New York Penn Station</option>
+			<option value="New York Penn Station">Newark Penn Station</option>
+			<option value="New York Penn Station">Hoboken</option>
+			{% for station in station_list %}
+			    <option value="{{ station }}">{{ station }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+	</div>
+	<div class="form-group">
+		<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Create Profile</button>
+</form>
+
+{% endblock %}
+
+{% block end_of_body_scripts_and_css %}
+<script type="text/javascript">
+	function validateForm() {
+    var email = document.forms["create_profile_form"]["email"].value;
+    var favorite_station_1 = document.forms["create_profile_form"]["favorite_station_1"].value;
+    var favorite_station_2 = document.forms["create_profile_form"]["favorite_station_2"].value;
+    var password = document.forms["create_profile_form"]["password"].value;
+    var confirm_password = document.forms["create_profile_form"]["confirm_password"].value;
+    if (email == "") {
+        alert("Email is required");
+        return false;
+    }
+    if (email == "") {
+        alert("Both favorite stations cannot be the same");
+        return false;
+    }
+}
+</script>
+{% endblock %}
+
+
+

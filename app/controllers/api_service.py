@@ -8,7 +8,7 @@ from ferris import Controller, scaffold, route, ndb, messages, route_with, local
 from ferris.components.flash_messages import FlashMessages
 from google.appengine.api import memcache, mail, users
 from datetime import datetime, timedelta
-import json
+import json, time
 import os
 import urllib
 
@@ -352,7 +352,20 @@ class ApiService(Controller):
                                                                     description,
                                                                     city)
             except:
-                speech = "The weather info that Yahoo sent me seems a little weird.  I'm sorry I can't display the weather right now. Here's the json: {}".format(json_data)
+                try:
+                    #try again ageter one second
+                    time.sleep(1)
+                    weather = get_weather_json_by_stop_id(stop_id)
+                    city = weather.get("query").get("results").get("channel").get("location").get("city")
+                    description = weather.get("query").get("results").get("channel").get("item").get("condition").get("text").lower()
+                    temp = weather.get("query").get("results").get("channel").get("item").get("condition").get("temp")
+                    units = weather.get("query").get("results").get("channel").get("units").get("temperature")
+                    speech = "Currently, it's {} {} and {} in {}".format(temp,
+                                                                        units,
+                                                                        description,
+                                                                        city)
+                except:
+                    speech = "The weather info that Yahoo sent me seems a little weird.  I'm sorry I can't display the weather right now."
         else:
             speech = "Yahoo Weather's not speaking to me right now - I'm sorry for the inconvenience."
 

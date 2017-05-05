@@ -18,27 +18,12 @@ class WebappUsers(Controller):
         Model = (WebappUser)
 
     def add(self):
+        self.context["station_list"] = sorted(Stop.get_list_of_station_names_title_case())
+
+    @route
+    def login(self):
         pass
 
     @route
-    def list_station_to_station(self):
-        self.context["results"] = StopTime.get_n_many_departures_origin_dest(self.request.params["origin"], self.request.params["destination"], 6)
-        self.context["origin"] = self.request.params["origin"].title()
-        self.context["destination"] = self.request.params["destination"].title()
-
-    @route
-    def list_for_station_name(self):
-        self.context["results"] = StopTime.get_n_many_departures_for_station(self.request.params["origin"], 6)
-        self.context["origin"] = self.request.params["origin"].title()
-
-    @route
-    def select_one_station(self):
-        self.context["station_list"] = sorted(Stop.get_list_of_station_names_title_case())
-
-    @route
-    def select_two_stations(self):
-        self.context["station_list"] = sorted(Stop.get_list_of_station_names_title_case())
-
-    #TODO
-	def view(self):
-		pass
+    def create_webapp_user(self):
+        pass

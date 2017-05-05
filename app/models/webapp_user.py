@@ -6,6 +6,7 @@ class WebappUser(Model):
     hashed_password = ndb.IntegerProperty(required=True)
     favorite_station_1 = ndb.StringProperty(required=True)
     favorite_station_2 = ndb.StringProperty(required=True)
+    is_active = ndb.BooleanProperty(required=True)
 
     @classmethod
     def add_webapp_user(cls, email_arg, hashed_password_arg, favorite_station_1_arg, favorite_station_2_arg):

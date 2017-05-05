@@ -13,6 +13,9 @@
       <div class="form-group">
         <label for="origin_station">Origin Station</label>
         <select class="form-control" id="origin_station" name="origin">
+            <option value="New York Penn Station">New York Penn Station</option>
+            <option value="Newark Penn Station">Newark Penn Station</option>
+            <option value="Hoboken">Hoboken</option>
             {% for station in station_list %}
                 <option value="{{ station }}">{{ station }}</option>
             {% endfor %}

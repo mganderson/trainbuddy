@@ -11,3 +11,4 @@ datastore.db
 db
 config.codekit
 *.DS_Store
+rail_data/.DS_Store

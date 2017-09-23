@@ -1,14 +1,19 @@
-Michael Anderson | TrainBuddy - Webhook for API.AI Conversational Agent
+TrainBuddy -  A conversational agent for Slack that helps you get train times
 -------
-IS 322 Project (Spring 2017 - API.AI conversational agent with webhook that processes NJTransit's GTFS schedule data to provide train time information.
+TrainBuddy is a Slack bot that uses API.ai to parse natural language user input and uses the webhook in this repository to fulfill user requests. TrainBuddy responds to inquiries about NJ Transit train times and allows users to save, update and delete account preferences (e.g., favorite stations).
 
-Webhook makes use of the Ferris framework (http://ferrisframework.org/) for Python and the Google App Engine.   The Google App Engine's NoSQL database NDB is used for this project.
+The webhook and companion webapp are built using the Ferris framework (http://ferrisframework.org/) for Python and the Google App Engine.   The Google App Engine's Datastore is used to store/query NJ Transit's General Transit Feed Specification data.
 
-For information:
+A simple webapp built to demonstrate the reusability of the webhook's code can be found at [http://trainbuddyis322.appspot.com/](http://trainbuddyis322.appspot.com/).
+
+Watch [the demonstration on YouTube](https://www.youtube.com/watch?v=1dA4shmMLR4) or check out the [presentation slide deck](https://docs.google.com/presentation/d/12xVI911ZNIlVRIf7hsaQflDCBAEOhUEZ_SCYsa8LLjk/edit?usp=sharing).
+
+**NOTE!** This project is not actively updated with current NJ Transit GTFS data and is for demonstration only.
+
+Questions/comments? Reach me at:
 
     mga25@njit.edu
  
-
 Licenses
 -------
 
